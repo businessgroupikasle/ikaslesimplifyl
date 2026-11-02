@@ -1,231 +1,106 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, Phone, Mail, MapPin, CheckCircle2, MessageCircle, AlertCircle } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Mail, MessageCircle, Phone, X } from 'lucide-react';
+import EnquiryForm from './EnquiryForm';
+import { CONTACT, whatsappLink } from '../data/site';
 
 export default function ContactModal({ isOpen, onClose, preselectedService = '' }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    businessName: '',
-    service: preselectedService || 'GST Filing',
-    message: '',
-  });
+  const panelRef = useRef(null);
 
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const previouslyFocused = document.activeElement;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
 
-  if (!isOpen) return null;
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'Tab' && panelRef.current) {
+        // Keep keyboard focus inside the dialog.
+        const nodes = panelRef.current.querySelectorAll('a[href], button:not([disabled]), input, select, textarea');
+        if (!nodes.length) return;
+        const first = nodes[0];
+        const last = nodes[nodes.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    const t = setTimeout(() => panelRef.current?.querySelector('input')?.focus(), 60);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim()) {
-      setError('Please fill in your name, phone number, and email.');
-      return;
-    }
-
-    try {
-      const stored = JSON.parse(localStorage.getItem('simplifyl_enquiries') || '[]');
-      stored.push({
-        ...formData,
-        submittedAt: new Date().toISOString(),
-        id: `ENQ-${Date.now()}`
-      });
-      localStorage.setItem('simplifyl_enquiries', JSON.stringify(stored));
-    } catch {
-      // ignore
-    }
-
-    setSubmitted(true);
-  };
-
-  const openWhatsApp = () => {
-    const text = encodeURIComponent(
-      `Hello Simplifyl Team! I would like to consult about ${formData.service} for my business.`
-    );
-    window.open(`https://wa.me/917845132962?text=${text}`, '_blank');
-  };
+    return () => {
+      clearTimeout(t);
+      document.body.style.overflow = prevOverflow;
+      document.removeEventListener('keydown', onKey);
+      previouslyFocused?.focus?.();
+    };
+  }, [isOpen, onClose]);
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 overflow-y-auto bg-[#142B4A]/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6">
+      {isOpen && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 15 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.96, y: 15 }}
-          transition={{ duration: 0.2 }}
-          className="bg-white rounded-2xl shadow-2xl max-w-xl w-full overflow-hidden border border-slate-200 relative"
+          key="contact-modal"
+          className="fixed inset-0 z-[70] flex items-end justify-center sm:items-center sm:p-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.18 }}
         >
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors z-10"
-            aria-label="Close dialog"
+          <div className="absolute inset-0 bg-[#0A0F1A]/55 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
+
+          <motion.div
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-modal-title"
+            initial={{ opacity: 0, y: 24, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.98 }}
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+            className="relative max-h-[92vh] w-full max-w-xl overflow-y-auto rounded-t-2xl border border-line bg-surface shadow-lg sm:rounded-2xl"
           >
-            <X className="w-4 h-4" />
-          </button>
-
-          <div className="p-6 sm:p-8">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#2563EB]">
-                CONSULTATION REQUEST
-              </span>
-            </div>
-            
-            <h3 className="text-xl sm:text-2xl font-extrabold text-[#142B4A]">
-              Get Free Consultation
-            </h3>
-            <p className="mt-1 text-xs sm:text-sm text-slate-600">
-              Speak with our tax and corporate compliance advisory team.
-            </p>
-
-            {error && (
-              <div className="mt-3 p-3 rounded-lg bg-red-50 text-red-700 text-xs flex items-center gap-2 border border-red-200">
-                <AlertCircle className="w-4 h-4 shrink-0" />
-                <span>{error}</span>
+            <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-line bg-surface/95 px-6 py-5 backdrop-blur sm:px-8">
+              <div>
+                <p className="font-mono text-2xs uppercase tracking-[0.14em] text-brand">Consultation request</p>
+                <h2 id="contact-modal-title" className="mt-2 text-xl font-semibold tracking-tight">
+                  Get a free consultation
+                </h2>
+                <p className="mt-1 text-sm text-fg-muted">Speak with our tax and corporate compliance advisory team.</p>
               </div>
-            )}
-
-            {submitted ? (
-              <div className="my-6 p-6 rounded-xl bg-blue-50/70 border border-blue-200 text-center">
-                <CheckCircle2 className="w-10 h-10 text-[#2563EB] mx-auto mb-2" />
-                <h4 className="text-base font-bold text-[#142B4A]">Enquiry Recorded</h4>
-                <p className="text-xs text-slate-600 mt-1 max-w-sm mx-auto leading-relaxed">
-                  Thank you! Your consultation request has been received. Our advisory desk will get in touch shortly.
-                </p>
-                <div className="mt-4 flex justify-center gap-3">
-                  <button
-                    onClick={openWhatsApp}
-                    className="px-4 py-2 rounded-full bg-[#142B4A] hover:bg-[#1E3E6B] text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 shadow-sm"
-                  >
-                    <MessageCircle className="w-3.5 h-3.5" />
-                    <span>Chat on WhatsApp</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setSubmitted(false);
-                      onClose();
-                    }}
-                    className="px-4 py-2 rounded-full bg-white border border-slate-300 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors"
-                  >
-                    Done
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="mt-5 space-y-3.5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <div>
-                    <label className="block text-xs font-bold text-[#142B4A] uppercase tracking-wider mb-1">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => {
-                        setFormData({ ...formData, name: e.target.value });
-                        setError('');
-                      }}
-                      placeholder="e.g. Rahul Sharma"
-                      className="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-[#142B4A] uppercase tracking-wider mb-1">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => {
-                        setFormData({ ...formData, phone: e.target.value });
-                        setError('');
-                      }}
-                      placeholder="e.g. 9876543210"
-                      className="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <div>
-                    <label className="block text-xs font-bold text-[#142B4A] uppercase tracking-wider mb-1">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => {
-                        setFormData({ ...formData, email: e.target.value });
-                        setError('');
-                      }}
-                      placeholder="e.g. rahul@company.com"
-                      className="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-[#142B4A] uppercase tracking-wider mb-1">
-                      Service Required
-                    </label>
-                    <select
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-                    >
-                      <option value="GST Filing">GST Filing</option>
-                      <option value="Business Registration">Business Registration</option>
-                      <option value="Trademark Registration">Trademark Registration</option>
-                      <option value="Compliance Support">Compliance Support</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-[#142B4A] uppercase tracking-wider mb-1">
-                    Message / Requirements
-                  </label>
-                  <textarea
-                    rows="3"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Briefly describe what service or advice you need..."
-                    className="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2563EB] resize-none"
-                  />
-                </div>
-
-                <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
-                  <button
-                    type="submit"
-                    className="w-full sm:flex-1 py-2.5 px-5 rounded-full bg-[#142B4A] hover:bg-[#1E3E6B] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-2"
-                  >
-                    <Send className="w-3.5 h-3.5" />
-                    <span>Submit Consultation Request</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={openWhatsApp}
-                    className="w-full sm:w-auto py-2.5 px-4 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs transition-colors flex items-center justify-center gap-1.5"
-                  >
-                    <MessageCircle className="w-3.5 h-3.5 text-[#2563EB]" />
-                    <span>WhatsApp</span>
-                  </button>
-                </div>
-              </form>
-            )}
-
-            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-              <span>Direct Call: +91 78451 32962</span>
-              <span>business@ikasle.in</span>
+              <button type="button" onClick={onClose} aria-label="Close dialog" className="btn btn-ghost -mr-2 h-9 w-9 shrink-0 p-0">
+                <X className="h-5 w-5" />
+              </button>
             </div>
-          </div>
+
+            <div className="px-6 py-6 sm:px-8">
+              <EnquiryForm compact preselectedService={preselectedService} onDone={onClose} />
+            </div>
+
+            <div className="grid grid-cols-3 border-t border-line bg-sunken text-xs font-medium text-fg-muted">
+              <a href={CONTACT.phoneHref} className="flex items-center justify-center gap-1.5 py-3.5 transition-colors hover:text-fg">
+                <Phone className="h-3.5 w-3.5" /> Call
+              </a>
+              <a
+                href={whatsappLink(`Hello Simplifyl Team! I would like to consult about ${preselectedService || 'your services'} for my business.`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 border-x border-line py-3.5 transition-colors hover:text-fg"
+              >
+                <MessageCircle className="h-3.5 w-3.5" /> WhatsApp
+              </a>
+              <a href={`mailto:${CONTACT.email}`} className="flex items-center justify-center gap-1.5 py-3.5 transition-colors hover:text-fg">
+                <Mail className="h-3.5 w-3.5" /> Email
+              </a>
+            </div>
+          </motion.div>
         </motion.div>
-      </div>
+      )}
     </AnimatePresence>
   );
 }

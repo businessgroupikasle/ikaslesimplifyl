@@ -1,305 +1,292 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, ChevronDown, FileText, Building2, ShieldCheck, FileCheck2 } from 'lucide-react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight, ChevronDown, Menu, Moon, Phone, Sun, X } from 'lucide-react';
 import Logo from './Logo';
-import { useRouter, Link } from '../lib/router';
+import { Button } from './ui';
+import { Link, useRouter } from '../lib/router';
+import { useTheme } from '../lib/theme';
+import { useContact } from '../lib/contact';
+import { CONTACT, NAV_LINKS, SERVICES } from '../data/site';
+import { cn } from '../lib/utils';
 
-export default function Navbar({ onOpenContact }) {
-  const { path, navigate } = useRouter();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+function ThemeToggle({ className }) {
+  const { theme, toggle } = useTheme();
+  const dark = theme === 'dark';
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
+      title={dark ? 'Light theme' : 'Dark theme'}
+      className={cn('btn btn-ghost h-9 w-9 p-0', className)}
+    >
+      {dark ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />}
+    </button>
+  );
+}
+
+function isActive(path, href) {
+  if (href === '/') return path === '/' || path === '/index.html';
+  if (href === '/services') return path === '/services' || SERVICES.some((s) => s.href === path);
+  return path === href;
+}
+
+function ServicesMenu({ path }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const closeTimer = useRef();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 15);
-    };
-
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setServicesDropdownOpen(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    document.addEventListener('mousedown', handleClickOutside);
+    if (!open) return undefined;
+    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    const onClick = (e) => ref.current && !ref.current.contains(e.target) && setOpen(false);
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onClick);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onClick);
     };
-  }, []);
+  }, [open]);
 
-  const isHome = path === '/' || path === '/index.html';
+  useEffect(() => setOpen(false), [path]);
 
-  const handleLinkClick = (e, targetHref) => {
-    setMobileMenuOpen(false);
-    setServicesDropdownOpen(false);
-
-    if (targetHref.startsWith('#')) {
-      if (isHome) {
-        e.preventDefault();
-        const element = document.getElementById(targetHref.substring(1));
-        if (element) {
-          const navOffset = 80;
-          const pos = element.getBoundingClientRect().top + window.pageYOffset - navOffset;
-          window.scrollTo({ top: pos, behavior: 'smooth' });
-        }
-      } else {
-        e.preventDefault();
-        navigate(`/${targetHref}`);
-      }
-    }
+  const enter = () => {
+    clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const leave = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), 120);
   };
 
-  const serviceItems = [
-    {
-      name: 'GST Filing',
-      href: '/gst-filing',
-      desc: 'Registration, returns (GSTR-1/3B/9), amendments & notice advisory.',
-      icon: FileText
-    },
-    {
-      name: 'Business Registrations',
-      href: '/business-registration',
-      desc: 'Private Limited, LLP, OPC, Partnership, Proprietorship & MSME.',
-      icon: Building2
-    },
-    {
-      name: 'Trademark Services',
-      href: '/trademark-registration',
-      desc: 'Search, trademark application, objection handling & renewals.',
-      icon: ShieldCheck
-    },
-    {
-      name: 'Compliance Support',
-      href: '/compliance-support',
-      desc: 'Annual ROC filings, Director KYC, minutes & secretarial audits.',
-      icon: FileCheck2
-    }
-  ];
-
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-200 ${
-        isScrolled
-          ? 'bg-white shadow-[0_2px_12px_rgba(20,43,74,0.06)] border-b border-slate-200/80 py-3'
-          : 'bg-white border-b border-slate-100 py-4 sm:py-5'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Logo />
-          </div>
+    <div ref={ref} className="relative" onMouseEnter={enter} onMouseLeave={leave}>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-haspopup="true"
+        className={cn(
+          'inline-flex h-9 items-center gap-1 rounded-md px-3 text-sm font-medium transition-colors',
+          isActive(path, '/services') ? 'text-fg' : 'text-fg-muted hover:bg-sunken hover:text-fg',
+        )}
+      >
+        Services
+        <ChevronDown className={cn('h-3.5 w-3.5 transition-transform duration-200', open && 'rotate-180')} />
+      </button>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-7" aria-label="Main navigation">
-            <Link
-              to="/"
-              className={`text-sm font-semibold transition-colors duration-150 ${
-                isHome ? 'text-[#142B4A]' : 'text-slate-600 hover:text-[#142B4A]'
-              }`}
-            >
-              Home
-            </Link>
-
-            <Link
-              to="/about"
-              className={`text-sm font-semibold transition-colors duration-150 ${
-                path === '/about' ? 'text-[#142B4A]' : 'text-slate-600 hover:text-[#142B4A]'
-              }`}
-            >
-              About Us
-            </Link>
-
-            {/* Services Dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                type="button"
-                onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
-                onMouseEnter={() => setServicesDropdownOpen(true)}
-                className={`inline-flex items-center gap-1.5 text-sm font-semibold transition-colors duration-150 py-1 ${
-                  path.startsWith('/services') || path === '/gst-filing' || path === '/business-registration' || path === '/trademark-registration' || path === '/compliance-support'
-                    ? 'text-[#2563EB]'
-                    : 'text-slate-600 hover:text-[#142B4A]'
-                }`}
-                aria-expanded={servicesDropdownOpen}
-              >
-                <span>Services</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180 text-[#2563EB]' : 'text-slate-400'}`} />
-              </button>
-
-              {/* Dropdown Menu */}
-              {servicesDropdownOpen && (
-                <div
-                  onMouseLeave={() => setServicesDropdownOpen(false)}
-                  className="absolute left-0 mt-2 w-80 rounded-xl bg-white border border-slate-200 shadow-xl p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
-                >
-                  <div className="p-2 border-b border-slate-100 flex items-center justify-between">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                      Our Core Practice Areas
-                    </span>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -4, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -4, scale: 0.98 }}
+            transition={{ duration: 0.14, ease: 'easeOut' }}
+            className="absolute left-1/2 top-full z-50 w-[560px] -translate-x-1/2 pt-2"
+          >
+            <div className="overflow-hidden rounded-xl border border-line bg-surface shadow-lg">
+              <div className="grid grid-cols-2 gap-1 p-2">
+                {SERVICES.map((item) => {
+                  const Icon = item.icon;
+                  const active = path === item.href;
+                  return (
                     <Link
-                      to="/services"
-                      onClick={() => setServicesDropdownOpen(false)}
-                      className="text-xs font-semibold text-[#2563EB] hover:underline"
+                      key={item.href}
+                      to={item.href}
+                      className={cn('group flex items-start gap-3 rounded-lg p-3 transition-colors hover:bg-sunken', active && 'bg-sunken')}
                     >
-                      All Services →
+                      <span className="icon-tile h-9 w-9 transition-colors group-hover:border-brand group-hover:bg-brand-solid group-hover:text-white">
+                        <Icon className="h-4 w-4" strokeWidth={1.75} />
+                      </span>
+                      <span>
+                        <span className="block text-sm font-medium text-fg">{item.name}</span>
+                        <span className="mt-0.5 block text-xs leading-5 text-fg-subtle">{item.desc}</span>
+                      </span>
                     </Link>
-                  </div>
-                  <div className="mt-1 space-y-1">
-                    {serviceItems.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <Link
-                          key={item.href}
-                          to={item.href}
-                          onClick={() => setServicesDropdownOpen(false)}
-                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-[#F5F7FA] transition-colors group"
-                        >
-                          <div className="w-8 h-8 rounded-lg bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center text-[#2563EB] shrink-0 mt-0.5 group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
-                            <Icon className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <p className="text-xs font-bold text-[#142B4A] group-hover:text-[#2563EB] transition-colors">
-                              {item.name}
-                            </p>
-                            <p className="text-[11px] text-slate-500 leading-tight mt-0.5 line-clamp-1">
-                              {item.desc}
-                            </p>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <Link
-              to="/faq"
-              className={`text-sm font-semibold transition-colors duration-150 ${
-                path === '/faq' ? 'text-[#142B4A]' : 'text-slate-600 hover:text-[#142B4A]'
-              }`}
-            >
-              FAQ
-            </Link>
-
-            <Link
-              to="/contact"
-              className={`text-sm font-semibold transition-colors duration-150 ${
-                path === '/contact' ? 'text-[#142B4A]' : 'text-slate-600 hover:text-[#142B4A]'
-              }`}
-            >
-              Contact
-            </Link>
-          </nav>
-
-          {/* Right Action: Get Free Consultation CTA */}
-          <div className="hidden lg:flex items-center">
-            <button
-              onClick={onOpenContact}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#142B4A] hover:bg-[#1E3E6B] text-white text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-sm hover:shadow active:scale-95 group"
-            >
-              <span>Get Free Consultation</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center">
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-700 hover:text-[#142B4A] hover:bg-slate-100 transition-colors focus:outline-none"
-              aria-label="Toggle navigation menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden absolute left-0 right-0 top-full bg-white border-b border-slate-200 shadow-xl py-5 px-6 z-50">
-          <nav className="flex flex-col space-y-3">
-            <Link
-              to="/"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-bold text-[#142B4A] py-1.5"
-            >
-              Home
-            </Link>
-
-            <Link
-              to="/about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-semibold text-slate-700 py-1.5"
-            >
-              About Us
-            </Link>
-
-            {/* Mobile Services Accordion */}
-            <div className="py-1">
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                Services
-              </p>
-              <div className="pl-2 space-y-2 border-l-2 border-slate-100">
-                {serviceItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xs font-semibold text-slate-700 hover:text-[#2563EB] py-1"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                <Link
-                  to="/services"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block text-xs font-bold text-[#2563EB] py-1"
-                >
-                  View All Services →
+                  );
+                })}
+              </div>
+              <div className="flex items-center justify-between border-t border-line bg-sunken px-5 py-3">
+                <span className="text-xs text-fg-subtle">Not sure where to start?</span>
+                <Link to="/services" className="inline-flex items-center gap-1 text-xs font-medium text-brand hover:text-brand-hover">
+                  View all services <ArrowRight className="h-3 w-3" />
                 </Link>
               </div>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
-            <Link
-              to="/faq"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-semibold text-slate-700 py-1.5"
-            >
-              FAQ
-            </Link>
+function MobileMenu({ open, onClose, path, onConsult }) {
+  useEffect(() => {
+    if (!open) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e) => e.key === 'Escape' && onClose();
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [open, onClose]);
 
-            <Link
-              to="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-semibold text-slate-700 py-1.5"
-            >
-              Contact
-            </Link>
-
-            <div className="pt-3 border-t border-slate-100">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenContact();
-                }}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#142B4A] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#1E3E6B] transition-colors shadow-sm"
-              >
-                <span>Get Free Consultation</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          id="mobile-menu"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.15 }}
+          className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-40 overflow-y-auto border-t border-line bg-canvas lg:hidden"
+        >
+          <nav className="container-page flex flex-col py-4" aria-label="Mobile navigation">
+            {NAV_LINKS.map((link) =>
+              link.children ? (
+                <div key={link.href} className="border-b border-line py-3">
+                  <p className="px-1 pb-2 font-mono text-2xs uppercase tracking-[0.14em] text-fg-subtle">Services</p>
+                  <div className="grid gap-1">
+                    {link.children.map((s) => {
+                      const Icon = s.icon;
+                      return (
+                        <Link
+                          key={s.href}
+                          to={s.href}
+                          className={cn('flex items-center gap-3 rounded-lg p-2.5 hover:bg-sunken', path === s.href && 'bg-sunken')}
+                        >
+                          <span className="icon-tile h-8 w-8">
+                            <Icon className="h-4 w-4" strokeWidth={1.75} />
+                          </span>
+                          <span className="text-[15px] font-medium text-fg">{s.name}</span>
+                        </Link>
+                      );
+                    })}
+                    <Link to="/services" className="flex items-center gap-1 px-2.5 py-2 text-sm font-medium text-brand">
+                      View all services <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={cn(
+                    'flex items-center justify-between border-b border-line px-1 py-4 text-[17px] font-medium',
+                    isActive(path, link.href) ? 'text-fg' : 'text-fg-muted',
+                  )}
+                >
+                  {link.name}
+                  <ArrowRight className="h-4 w-4 text-fg-subtle" />
+                </Link>
+              ),
+            )}
+            <div className="mt-6 grid gap-3">
+              <Button size="lg" onClick={onConsult}>
+                Get free consultation <ArrowRight className="h-4 w-4" />
+              </Button>
+              <Button size="lg" variant="secondary" href={CONTACT.phoneHref}>
+                <Phone className="h-4 w-4" /> {CONTACT.phoneDisplay}
+              </Button>
             </div>
           </nav>
-        </div>
+        </motion.div>
       )}
-    </header>
+    </AnimatePresence>
+  );
+}
+
+export default function Navbar() {
+  const { path } = useRouter();
+  const { openContact } = useContact();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => setMobileOpen(false), [path]);
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
+
+  return (
+    <>
+      <a
+        href="#main-content"
+        className="sr-only z-[60] rounded-md bg-brand-solid px-4 py-2 text-sm font-medium text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-3"
+      >
+        Skip to content
+      </a>
+      <header
+        className={cn(
+          'sticky top-0 z-50 h-[var(--header-h)] border-b transition-[background-color,border-color,box-shadow] duration-200',
+          scrolled || mobileOpen
+            ? 'border-line bg-canvas/85 shadow-xs backdrop-blur-xl backdrop-saturate-150'
+            : 'border-transparent bg-canvas',
+        )}
+      >
+        <div className="container-page flex h-full items-center justify-between gap-6">
+          <Logo />
+
+          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main navigation">
+            {NAV_LINKS.map((link) =>
+              link.children ? (
+                <ServicesMenu key={link.href} path={path} />
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  aria-current={isActive(path, link.href) ? 'page' : undefined}
+                  className={cn(
+                    'relative inline-flex h-9 items-center rounded-md px-3 text-sm font-medium transition-colors',
+                    isActive(path, link.href) ? 'text-fg' : 'text-fg-muted hover:bg-sunken hover:text-fg',
+                  )}
+                >
+                  {link.name}
+                  {isActive(path, link.href) && <span className="absolute inset-x-3 -bottom-[13px] h-0.5 rounded-full bg-brand" />}
+                </Link>
+              ),
+            )}
+          </nav>
+
+          <div className="flex items-center gap-1.5">
+            <ThemeToggle />
+            <a
+              href={CONTACT.phoneHref}
+              className="hidden h-9 items-center gap-2 rounded-md px-3 text-sm font-medium text-fg-muted transition-colors hover:bg-sunken hover:text-fg xl:inline-flex"
+            >
+              <Phone className="h-4 w-4" /> {CONTACT.phoneDisplay}
+            </a>
+            <Button size="sm" className="ml-1 hidden h-9 px-3.5 sm:inline-flex" onClick={() => openContact()}>
+              Free consultation
+            </Button>
+            <button
+              type="button"
+              onClick={() => setMobileOpen((o) => !o)}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              className="btn btn-ghost h-9 w-9 p-0 lg:hidden"
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
+        </div>
+      </header>
+      <MobileMenu
+        open={mobileOpen}
+        onClose={closeMobile}
+        path={path}
+        onConsult={() => {
+          setMobileOpen(false);
+          openContact();
+        }}
+      />
+    </>
   );
 }

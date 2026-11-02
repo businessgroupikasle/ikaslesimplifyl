@@ -51,8 +51,8 @@ export default function TermsPage() {
         lastUpdated="April 15, 2025"
         currentPath="/terms-and-conditions"
       >
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-navy-900">1. Acceptance of Terms</h2>
+        <section>
+          <h2>1. Acceptance of Terms</h2>
           <p>
             Welcome to Simplifyl Compliance Solutions (<strong>https://simplifyl.com</strong>). By accessing our website, initiating a consultation, or engaging our professional compliance, registration, or tax filing services, you ("Client", "User", or "You") agree to be legally bound by these Terms and Conditions ("Terms").
           </p>
@@ -61,12 +61,12 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">2. Scope of Compliance Services</h2>
+        <section>
+          <h2>2. Scope of Compliance Services</h2>
           <p>
             Simplifyl provides corporate facilitation, secretarial coordination, and statutory filing assistance across India, including:
           </p>
-          <ul className="list-disc pl-5 space-y-2">
+          <ul>
             <li><strong>GST Services:</strong> GST registration, monthly/quarterly returns (GSTR-1, 3B, 9), ITC reconciliations, and response to departmental intimations.</li>
             <li><strong>Entity Registrations:</strong> Private Limited, One Person Company (OPC), Limited Liability Partnership (LLP), Sole Proprietorship, and Partnership deeds.</li>
             <li><strong>Intellectual Property:</strong> Trademark search, TM-A application drafting and filing, notice of opposition assistance, and TM status watch.</li>
@@ -75,23 +75,23 @@ export default function TermsPage() {
           </ul>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">3. Client Responsibilities & Accuracy of Documents</h2>
+        <section>
+          <h2>3. Client Responsibilities & Accuracy of Documents</h2>
           <p>
             Clients are strictly responsible for:
           </p>
-          <ul className="list-disc pl-5 space-y-2">
+          <ul>
             <li>Providing genuine, accurate, unaltered, and complete documentation, KYC proofs, and financial records in a timely manner.</li>
             <li>Ensuring that all details submitted for incorporation, name approvals, trademark registration, or GST filings do not infringe third-party rights or violate statutory norms.</li>
             <li>Maintaining the security of digital signature dongles (DSC tokens), OTP verifications, and government portal credentials.</li>
           </ul>
-          <p className="text-sm text-slate-600 italic">
+          <p className="text-sm italic">
             Simplifyl acts on the basis of information and authorizations supplied by the client and shall not be liable for penalties arising from falsified, incomplete, or delayed documentation.
           </p>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">4. Government Fees & Professional Charges</h2>
+        <section>
+          <h2>4. Government Fees & Professional Charges</h2>
           <p>
             Service fees are divided into two distinct components: (a) Simplifyl professional consultancy and facilitation fees, and (b) Statutory Government fees, stamp duties, challans, or registry charges payable to the Ministry of Corporate Affairs (MCA), GSTN, Trademark Registry, or respective state governments.
           </p>
@@ -100,15 +100,15 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">5. Timelines & Government Approvals</h2>
+        <section>
+          <h2>5. Timelines & Government Approvals</h2>
           <p>
             While Simplifyl makes best endeavors to draft and upload compliance filings promptly, exact approval timelines (such as certificate of incorporation, DIN allocation, GSTIN issuance, or trademark registration) depend strictly on government processing queues, MCA/GST registrar scrutiny, and jurisdictional officer discretion. Simplifyl cannot guarantee turnaround times controlled exclusively by government machinery.
           </p>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">6. Limitation of Liability</h2>
+        <section>
+          <h2>6. Limitation of Liability</h2>
           <p>
             To the maximum extent permitted by Indian law, Simplifyl Compliance Solutions, its directors, employees, and contracted professionals shall not be liable for any indirect, incidental, consequential, special, or punitive damages—including lost profits, statutory penalties caused by client delays, or rejection of trademark applications by government examiners.
           </p>
@@ -117,17 +117,17 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">7. Governing Law & Dispute Resolution</h2>
+        <section>
+          <h2>7. Governing Law & Dispute Resolution</h2>
           <p>
             These Terms and any dispute or claim arising out of or in connection with them shall be governed by and construed in accordance with the laws of the Republic of India. The courts of Bengaluru, Karnataka, India shall have exclusive jurisdiction over any disputes.
           </p>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">8. Contact & Queries</h2>
+        <section>
+          <h2>8. Contact & Queries</h2>
           <p>
-            For any clarifications regarding these Terms and Conditions, please write to us at <a href="mailto:business@ikasle.in" className="text-blue-700 underline">business@ikasle.in</a> or call +91 78451 32962.
+            For any clarifications regarding these Terms and Conditions, please write to us at <a href="mailto:business@ikasle.in">business@ikasle.in</a> or call +91 78451 32962.
           </p>
         </section>
       </LegalLayout>

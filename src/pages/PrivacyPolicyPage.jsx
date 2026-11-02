@@ -51,8 +51,8 @@ export default function PrivacyPolicyPage() {
         lastUpdated="April 15, 2025"
         currentPath="/privacy-policy"
       >
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-navy-900">1. Introduction & Overview</h2>
+        <section>
+          <h2>1. Introduction & Overview</h2>
           <p>
             Simplifyl Compliance Solutions ("Simplifyl", "we", "our", or "us") is committed to protecting the privacy, confidentiality, and security of our clients, website visitors, and business partners. This Privacy Policy outlines our standards and practices regarding the collection, handling, storage, and disclosure of information gathered through our website (<strong>https://simplifyl.com</strong>) and our corporate compliance and advisory services.
           </p>
@@ -61,12 +61,12 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">2. Information We Collect</h2>
+        <section>
+          <h2>2. Information We Collect</h2>
           <p>
             To deliver accurate statutory and compliance services, we collect both personal identifiable information (PII) and corporate documentation, including:
           </p>
-          <ul className="list-disc pl-5 space-y-2">
+          <ul>
             <li>
               <strong>Contact Information:</strong> Full name, official email address, mobile/telephone number, and correspondence address.
             </li>
@@ -82,10 +82,10 @@ export default function PrivacyPolicyPage() {
           </ul>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">3. Purpose and Legal Basis of Data Processing</h2>
+        <section>
+          <h2>3. Purpose and Legal Basis of Data Processing</h2>
           <p>We process your data exclusively for lawful business and statutory objectives, including:</p>
-          <ul className="list-disc pl-5 space-y-2">
+          <ul>
             <li>Preparing and submitting statutory filings to regulatory portals including GSTN (Goods and Services Tax Network), MCA21 (Ministry of Corporate Affairs), and IP India (Trade Marks Registry).</li>
             <li>Communicating regarding filing statuses, compliance due dates, regulatory changes, and query resolutions.</li>
             <li>Invoicing, accounting, fee processing, and customer relationship management.</li>
@@ -93,12 +93,12 @@ export default function PrivacyPolicyPage() {
           </ul>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">4. Confidentiality & Third-Party Disclosures</h2>
+        <section>
+          <h2>4. Confidentiality & Third-Party Disclosures</h2>
           <p>
             Simplifyl does not sell, rent, or trade your personal or business data to third-party advertisers. Information is disclosed solely under the following conditions:
           </p>
-          <ul className="list-disc pl-5 space-y-2">
+          <ul>
             <li>
               <strong>Government & Regulatory Portals:</strong> When authorized by you to file documents with the Ministry of Corporate Affairs, Goods & Services Tax department, Controller General of Patents, Designs and Trademarks, or other statutory authorities.
             </li>
@@ -111,38 +111,38 @@ export default function PrivacyPolicyPage() {
           </ul>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">5. Data Security & Storage</h2>
+        <section>
+          <h2>5. Data Security & Storage</h2>
           <p>
             We implement industry-standard physical, electronic, and managerial safeguards—including SSL/TLS 256-bit encryption in transit, strict role-based access controls, and secure database backups—to prevent unauthorized access, alteration, disclosure, or destruction of your confidential information.
           </p>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">6. Data Retention Period</h2>
+        <section>
+          <h2>6. Data Retention Period</h2>
           <p>
             We retain statutory and compliance data for the statutory period mandated by the Companies Act, 2013, the Income Tax Act, 1961, and GST legislation (generally up to 8 financial years), or for as long as necessary to maintain active service engagements and resolve legal disputes.
           </p>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">7. Your Data Protection Rights</h2>
+        <section>
+          <h2>7. Your Data Protection Rights</h2>
           <p>
             Under prevailing Indian data protection framework, clients have the right to request access to their personal data, seek rectification of inaccurate information, withdraw consent for discretionary communications, and request grievance redressal.
           </p>
         </section>
 
-        <section className="space-y-4 pt-4 border-t border-slate-100">
-          <h2 className="text-xl font-bold text-navy-900">8. Grievance Officer & Contact Information</h2>
+        <section>
+          <h2>8. Grievance Officer & Contact Information</h2>
           <p>
             In accordance with the Information Technology Act, 2000 and rules made thereunder, any queries, feedback, or grievances regarding this Privacy Policy can be directed to:
           </p>
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-sm space-y-1">
+          <div className="legal-box space-y-1 text-sm">
             <p><strong>Grievance Officer:</strong> Compliance & Legal Officer</p>
             <p><strong>Organization:</strong> Simplifyl Compliance Solutions</p>
-            <p><strong>Email:</strong> <a href="mailto:business@ikasle.in" className="text-blue-700 underline">business@ikasle.in</a></p>
+            <p><strong>Email:</strong> <a href="mailto:business@ikasle.in">business@ikasle.in</a></p>
             <p><strong>Helpline:</strong> +91 78451 32962</p>
-            <p><strong>Website:</strong> <a href="https://simplifyl.com" className="text-blue-700 underline">https://simplifyl.com</a></p>
+            <p><strong>Website:</strong> <a href="https://simplifyl.com">https://simplifyl.com</a></p>
           </div>
         </section>
       </LegalLayout>

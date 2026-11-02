@@ -41,7 +41,14 @@ export function RouterProvider({ children }) {
       window.history.pushState({}, '', to);
     }
     setPath(window.location.pathname || '/');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Support links such as "/#services": scroll to the anchor once the new page renders.
+    const hash = to.includes('#') ? to.split('#')[1] : '';
+    if (hash) {
+      setTimeout(() => document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' }), 120);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
   };
 
   return (
