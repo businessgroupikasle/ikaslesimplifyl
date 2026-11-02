@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,21 +58,7 @@
     <!-- Performance: DNS Prefetch & Font Preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
-
-    <!-- Theme: apply saved / system theme before first paint to avoid a flash -->
-    <meta name="color-scheme" content="light dark" />
-    <script>
-      (function () {
-        try {
-          var saved = localStorage.getItem('simplifyl-theme');
-          var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-          document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-        } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      })();
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <!-- Structured Data: JSON-LD Schemas -->
     <script type="application/ld+json">
@@ -245,7 +231,7 @@
     }
     </script>
   </head>
-  <body>
+  <body class="bg-white text-navy-900 antialiased font-sans selection:bg-blue-100 selection:text-navy-900">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

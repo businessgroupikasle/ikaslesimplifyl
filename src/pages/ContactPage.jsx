@@ -1,56 +1,56 @@
 import React from 'react';
-import { Mail, MessageCircle, Phone } from 'lucide-react';
-import SiteLayout from '../components/SiteLayout';
-import PageHeader from '../components/PageHeader';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import SEOHead from '../components/SEOHead';
+import { Link } from '../lib/router';
 import ContactSection from '../components/ContactSection';
-import { CONTACT, whatsappLink } from '../data/site';
-
-const QUICK = [
-  { label: 'Call', value: CONTACT.phoneDisplay, href: CONTACT.phoneHref, icon: Phone },
-  { label: 'WhatsApp', value: 'Chat with support', href: whatsappLink(), icon: MessageCircle, external: true },
-  { label: 'Email', value: CONTACT.email, href: `mailto:${CONTACT.email}`, icon: Mail },
-];
 
 export default function ContactPage() {
   return (
-    <SiteLayout
-      seo={{
-        title: 'Contact Us | Consultation & Support | Simplifyl Compliance Solutions',
-        description:
-          'Get in touch with Simplifyl Compliance Solutions. Request a consultation for GST filing, company registrations, trademark security, and corporate compliance in India.',
-        canonicalUrl: 'https://simplifyl.com/contact',
-      }}
-    >
-      <PageHeader
-        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contact Us' }]}
-        eyebrow="Connect with us"
-        title="Consult with our specialists"
-        description="Have questions regarding GST filing, company incorporation, or trademark registration? Our advisory team is available to assist your business."
-      >
-        <div className="mt-8 grid gap-3 sm:grid-cols-3">
-          {QUICK.map((q) => {
-            const Icon = q.icon;
-            return (
-              <a
-                key={q.label}
-                href={q.href}
-                {...(q.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="card card-hover flex items-center gap-3 p-4"
-              >
-                <span className="icon-tile h-9 w-9">
-                  <Icon className="h-4 w-4" strokeWidth={1.75} />
-                </span>
-                <span className="min-w-0">
-                  <span className="block text-xs text-fg-subtle">{q.label}</span>
-                  <span className="block truncate text-sm font-medium text-fg">{q.value}</span>
-                </span>
-              </a>
-            );
-          })}
-        </div>
-      </PageHeader>
+    <div className="min-h-screen bg-white text-[#263445] flex flex-col font-sans">
+      <SEOHead
+        title="Contact Us | Consultation & Support | Simplifyl Compliance Solutions"
+        description="Get in touch with Simplifyl Compliance Solutions. Request a consultation for GST filing, company registrations, trademark security, and corporate compliance in India."
+        canonicalUrl="https://simplifyl.com/contact"
+        noIndex={false}
+      />
 
-      <ContactSection showHeader={false} />
-    </SiteLayout>
+      <Navbar />
+
+      <main className="flex-grow">
+        
+        {/* Hero */}
+        <section className="bg-[#142B4A] text-white py-14 lg:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-bold uppercase tracking-wider">
+                <span>CONNECT WITH US</span>
+              </div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                Consult With Our Specialists
+              </h1>
+              <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
+                Have questions regarding GST filing, company incorporation, or trademark registration? Our advisory team is available to assist your business.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Breadcrumb */}
+        <div className="bg-[#F5F7FA] border-b border-slate-200/80 py-3">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center text-xs text-slate-500">
+            <Link to="/" className="hover:text-[#142B4A]">Home</Link>
+            <span className="mx-2">/</span>
+            <span className="text-[#142B4A] font-semibold">Contact Us</span>
+          </div>
+        </div>
+
+        {/* Full Interactive Contact Section */}
+        <ContactSection />
+
+      </main>
+
+      <Footer />
+    </div>
   );
 }
