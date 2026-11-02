@@ -1,0 +1,29 @@
+# ==============================================================================
+# Robots.txt for Simplifyl Compliance Solutions (https://simplifyl.com)
+# ==============================================================================
+
+User-agent: *
+Allow: /
+
+# Disallow non-indexable and error routes
+Disallow: /404
+Disallow: /404.html
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /*?*
+
+# Allow indexing of static assets and resources needed for rendering
+Allow: /src/
+Allow: /assets/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.ico$
+
+# XML Sitemap Location
+Sitemap: https://simplifyl.com/sitemap.xml

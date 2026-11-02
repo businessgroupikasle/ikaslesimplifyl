@@ -1,0 +1,42 @@
+{
+  "name": "Simplifyl Compliance Solutions",
+  "short_name": "Simplifyl",
+  "description": "Comprehensive compliance solutions for Indian businesses: GST filing, private limited and LLP registrations, trademark protection, and corporate secretarial advisory.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#051427",
+  "theme_color": "#051427",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": [
+    "business",
+    "finance",
+    "productivity"
+  ],
+  "lang": "en-US",
+  "dir": "ltr"
+}

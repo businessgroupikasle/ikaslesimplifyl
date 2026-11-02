@@ -1,0 +1,11 @@
+# ==============================================================================
+# Security Policy for Simplifyl Compliance Solutions (RFC 9116)
+# ==============================================================================
+
+Contact: mailto:security@simplifyl.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://simplifyl.com/.well-known/security.txt
+Policy: https://simplifyl.com/security
+Hiring: https://simplifyl.com/#contact
+Acknowledgments: https://simplifyl.com/security-acknowledgments
