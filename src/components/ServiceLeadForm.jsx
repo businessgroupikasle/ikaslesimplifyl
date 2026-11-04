@@ -26,17 +26,57 @@ export default function ServiceLeadForm({ service }) {
     }
   };
 
-  // Phone change: strictly digits only, max 10 digits ("number also 10 num correct inukunum")
+  // Phone change: strictly digits only, max 10 digits
   const handlePhoneChange = (e) => {
     let raw = e.target.value.replace(/\D/g, '');
     if (raw.length === 12 && raw.startsWith('91')) {
       raw = raw.slice(2);
+    } else if (raw.length === 11 && raw.startsWith('0')) {
+      raw = raw.slice(1);
     }
+
+    const isOverLimit = raw.length > 10;
     const val = raw.slice(0, 10);
     setForm((f) => ({ ...f, phone: val }));
-    if (errors.phone) {
+
+    if (isOverLimit) {
+      setErrors((er) => ({
+        ...er,
+        phone: 'Phone number cannot exceed 10 digits.'
+      }));
+    } else if (!val) {
+      setErrors((er) => ({ ...er, phone: undefined }));
+    } else if (!/^[6-9]/.test(val)) {
+      setErrors((er) => ({
+        ...er,
+        phone: 'Mobile number must start with 6, 7, 8, or 9.'
+      }));
+    } else if (val.length === 10) {
       const check = validatePhone(val);
       setErrors((er) => ({ ...er, phone: check.isValid ? undefined : check.message }));
+    } else {
+      // Clear start-with error if now valid
+      setErrors((er) => ({
+        ...er,
+        phone: er.phone && er.phone.includes('must start with') ? undefined : er.phone
+      }));
+    }
+  };
+
+  const handlePhoneKeyDown = (e) => {
+    // If user attempts to type an 11th digit when already at 10 digits
+    if (
+      /^\d$/.test(e.key) &&
+      form.phone.length >= 10 &&
+      e.target.selectionStart === e.target.selectionEnd &&
+      !e.ctrlKey &&
+      !e.metaKey
+    ) {
+      e.preventDefault();
+      setErrors((er) => ({
+        ...er,
+        phone: 'Indian mobile number is limited to 10 digits.'
+      }));
     }
   };
 
@@ -124,7 +164,7 @@ export default function ServiceLeadForm({ service }) {
         new Promise((resolve) => setTimeout(resolve, 2000))
       ]);
       const result = res && res.ok ? await res.json().catch(() => ({})) : {};
-      setConfirmationSent(Boolean(result.delivered));
+      setConfirmationSent(Boolean(result.confirmationSent));
       setStatus('sent');
     } catch {
       setStatus('sent');
@@ -136,8 +176,8 @@ export default function ServiceLeadForm({ service }) {
   };
 
   const fieldClass = (hasError) =>
-    `w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#10364E] placeholder:text-slate-400 outline-none transition-colors focus:border-[#1C6FA5] focus:ring-4 focus:ring-[#1C6FA5]/10 ${
-      hasError ? 'border-red-400 bg-red-50/20' : 'border-slate-300'
+    `w-full rounded-xl border bg-white dark:bg-slate-800 px-4 py-3 text-sm text-[#10364E] dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-400 outline-none transition-colors focus:border-[#1C6FA5] focus:ring-4 focus:ring-[#1C6FA5]/10 ${
+      hasError ? 'border-red-400 bg-red-50/20 dark:bg-red-950/20' : 'border-slate-300 dark:border-slate-700'
     }`;
 
   if (status === 'sent' || status === 'saved') {
@@ -148,7 +188,13 @@ export default function ServiceLeadForm({ service }) {
         </span>
         <h3 className="text-xl font-extrabold text-[#10364E]">Sent Successfully!</h3>
         <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm mx-auto">
-          Your enquiry for <strong className="text-[#10364E]">{service}</strong> has been sent successfully. Our advisory team will call you back shortly.
+          Thank you! Your enquiry for <strong className="text-[#10364E]">{service}</strong> has been sent successfully.
+          {confirmationSent && (
+            <span className="block mt-1 font-medium text-[#1C6FA5]">
+              A thank-you confirmation email has been sent to your inbox.
+            </span>
+          )}
+          Our advisory team will call you back shortly.
         </p>
         <a
           href="tel:+917845132962"
@@ -176,14 +222,14 @@ export default function ServiceLeadForm({ service }) {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-[0_28px_60px_-28px_rgba(16,54,78,0.45)]"
+      className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-[0_28px_60px_-28px_rgba(16,54,78,0.45)]"
     >
-      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1C6FA5]">Free consultation</p>
-      <h3 className="mt-1.5 text-xl sm:text-2xl font-extrabold text-[#10364E] leading-snug">
+      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1C6FA5] dark:text-sky-400">Free consultation</p>
+      <h3 className="mt-1.5 text-xl sm:text-2xl font-extrabold text-[#10364E] dark:text-white leading-snug">
         Talk to our experts
       </h3>
-      <p className="mt-1.5 text-xs text-slate-500">
-        Share your details for <span className="font-semibold text-[#175B87]">{service}</span> and we will call you back.
+      <p className="mt-1.5 text-xs text-slate-500 dark:text-slate-400">
+        Share your details for <span className="font-semibold text-[#175B87] dark:text-sky-300">{service}</span> and we will call you back.
       </p>
 
       <div className="mt-5 space-y-3.5">
@@ -214,6 +260,7 @@ export default function ServiceLeadForm({ service }) {
             placeholder="Mobile number (10 digits)"
             value={form.phone}
             onChange={handlePhoneChange}
+            onKeyDown={handlePhoneKeyDown}
             onBlur={handleBlur('phone')}
             aria-invalid={!!errors.phone}
             className={fieldClass(errors.phone)}

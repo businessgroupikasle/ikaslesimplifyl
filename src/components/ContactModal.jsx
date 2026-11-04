@@ -152,29 +152,29 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.96, y: 15 }}
           transition={{ duration: 0.2 }}
-          className="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200 relative my-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-slate-200 dark:border-slate-800 relative my-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {/* Close Button */}
           <button
             onClick={handleClose}
-            className="absolute top-3.5 right-3.5 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors z-10"
+            className="absolute top-3.5 right-3.5 w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 flex items-center justify-center transition-colors z-10"
             aria-label="Close dialog"
           >
             <X className="w-3.5 h-3.5" />
           </button>
 
           <div className="p-5 sm:p-6">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-1.5">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 mb-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#1C6FA5]">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#1C6FA5] dark:text-sky-400">
                 CONSULTATION REQUEST
               </span>
             </div>
             
-            <h3 className="text-xl sm:text-2xl font-extrabold text-[#10364E] tracking-tight">
+            <h3 className="text-xl sm:text-2xl font-extrabold text-[#10364E] dark:text-white tracking-tight">
               Get a free consultation
             </h3>
-            <p className="mt-0.5 text-xs text-slate-500">
+            <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
               Speak with our tax and corporate compliance advisory team.
             </p>
 
@@ -193,7 +193,7 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                 </h4>
                 <p className="text-xs text-slate-600 mt-1 max-w-sm mx-auto leading-relaxed">
                   {emailDelivered
-                    ? `Your enquiry has been sent successfully. Our advisory desk will get in touch shortly.${confirmationSent ? ' A confirmation email is on its way to you.' : ''}`
+                    ? `Thank you! Your enquiry has been sent successfully. Our advisory desk will get in touch shortly.${confirmationSent ? ' A thank-you confirmation email has been sent to your inbox.' : ''}`
                     : 'Your request is saved, but we could not confirm it reached our team. If you do not hear from us soon, please call +91 78451 32962.'}
                 </p>
                 <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2">
@@ -240,7 +240,7 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
               <form onSubmit={handleSubmit} noValidate className="mt-3.5 space-y-3">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label htmlFor="modal-name" className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label htmlFor="modal-name" className="block text-xs font-semibold text-slate-700 dark:text-slate-200 mb-1">
                       Full name <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -263,10 +263,10 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                         }
                       }}
                       placeholder="e.g. Rahul Sharma"
-                      className={`w-full px-3 py-1.5 rounded-lg border text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 transition-colors ${
+                      className={`w-full px-3 py-1.5 rounded-lg border text-xs sm:text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-colors ${
                         errors.name
-                          ? 'border-red-400 bg-red-50/20 focus:ring-red-400'
-                          : 'border-slate-200 focus:ring-[#1C6FA5]'
+                          ? 'border-red-400 bg-red-50/20 dark:bg-red-950/20 focus:ring-red-400'
+                          : 'border-slate-300 dark:border-slate-700 focus:border-[#1C6FA5] focus:ring-[#1C6FA5]/20 dark:focus:border-sky-400 dark:focus:ring-sky-400/20'
                       }`}
                     />
                     {errors.name && (
@@ -277,7 +277,7 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                     )}
                   </div>
                   <div>
-                    <label htmlFor="modal-phone" className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label htmlFor="modal-phone" className="block text-xs font-semibold text-slate-700 dark:text-slate-200 mb-1">
                       Phone number <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -290,26 +290,58 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                         let raw = e.target.value.replace(/\D/g, '');
                         if (raw.length === 12 && raw.startsWith('91')) {
                           raw = raw.slice(2);
+                        } else if (raw.length === 11 && raw.startsWith('0')) {
+                          raw = raw.slice(1);
                         }
+                        const isOverLimit = raw.length > 10;
                         const val = raw.slice(0, 10);
                         setFormData({ ...formData, phone: val });
-                        if (errors.phone) {
+
+                        if (isOverLimit) {
+                          setErrors((prev) => ({ ...prev, phone: 'Phone number cannot exceed 10 digits.' }));
+                        } else if (!val) {
+                          setErrors((prev) => ({ ...prev, phone: undefined }));
+                        } else if (!/^[6-9]/.test(val)) {
+                          setErrors((prev) => ({ ...prev, phone: 'Mobile number must start with 6, 7, 8, or 9.' }));
+                        } else if (val.length === 10) {
                           const check = validatePhone(val);
                           setErrors((prev) => ({ ...prev, phone: check.isValid ? undefined : check.message }));
+                        } else {
+                          setErrors((prev) => ({
+                            ...prev,
+                            phone: prev.phone && prev.phone.includes('must start with') ? undefined : prev.phone
+                          }));
                         }
                         if (error) setError('');
+                      }}
+                      onKeyDown={(e) => {
+                        if (
+                          /^\d$/.test(e.key) &&
+                          formData.phone.length >= 10 &&
+                          e.target.selectionStart === e.target.selectionEnd &&
+                          !e.ctrlKey &&
+                          !e.metaKey
+                        ) {
+                          e.preventDefault();
+                          setErrors((prev) => ({
+                            ...prev,
+                            phone: 'Indian mobile number is limited to 10 digits.'
+                          }));
+                        }
                       }}
                       onBlur={() => {
                         const check = validatePhone(formData.phone);
                         if (!check.isValid) {
                           setErrors((prev) => ({ ...prev, phone: check.message }));
+                        } else {
+                          setErrors((prev) => ({ ...prev, phone: undefined }));
                         }
                       }}
                       placeholder="e.g. 9876543210"
-                      className={`w-full px-3 py-1.5 rounded-lg border text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 transition-colors ${
+                      className={`w-full px-3 py-1.5 rounded-lg border text-xs sm:text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-colors ${
                         errors.phone
-                          ? 'border-red-400 bg-red-50/20 focus:ring-red-400'
-                          : 'border-slate-200 focus:ring-[#1C6FA5]'
+                          ? 'border-red-400 bg-red-50/20 dark:bg-red-950/20 focus:ring-red-400'
+                          : 'border-slate-300 dark:border-slate-700 focus:border-[#1C6FA5] focus:ring-[#1C6FA5]/20 dark:focus:border-sky-400 dark:focus:ring-sky-400/20'
                       }`}
                     />
                     {errors.phone && (
@@ -323,7 +355,7 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label htmlFor="modal-email" className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label htmlFor="modal-email" className="block text-xs font-semibold text-slate-700 dark:text-slate-200 mb-1">
                       Email address <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -346,10 +378,10 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                         }
                       }}
                       placeholder="you@company.com"
-                      className={`w-full px-3 py-1.5 rounded-lg border text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 transition-colors ${
+                      className={`w-full px-3 py-1.5 rounded-lg border text-xs sm:text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-colors ${
                         errors.email
-                          ? 'border-red-400 bg-red-50/20 focus:ring-red-400'
-                          : 'border-slate-200 focus:ring-[#1C6FA5]'
+                          ? 'border-red-400 bg-red-50/20 dark:bg-red-950/20 focus:ring-red-400'
+                          : 'border-slate-300 dark:border-slate-700 focus:border-[#1C6FA5] focus:ring-[#1C6FA5]/20 dark:focus:border-sky-400 dark:focus:ring-sky-400/20'
                       }`}
                     />
                     {errors.email && (
@@ -360,7 +392,7 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                     )}
                   </div>
                   <div>
-                    <label htmlFor="modal-service" className="block text-xs font-semibold text-slate-700 mb-1">
+                    <label htmlFor="modal-service" className="block text-xs font-semibold text-slate-700 dark:text-slate-200 mb-1">
                       Service <span className="text-red-500">*</span>
                     </label>
                     <select
@@ -377,10 +409,10 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                           setErrors((prev) => ({ ...prev, service: 'Please select a valid service.' }));
                         }
                       }}
-                      className={`w-full px-3 py-1.5 rounded-lg border text-xs sm:text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 transition-colors ${
+                      className={`w-full px-3 py-1.5 rounded-lg border text-xs sm:text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 transition-colors ${
                         errors.service
-                          ? 'border-red-400 bg-red-50/20 focus:ring-red-400'
-                          : 'border-slate-200 focus:ring-[#1C6FA5]'
+                          ? 'border-red-400 bg-red-50/20 dark:bg-red-950/20 focus:ring-red-400'
+                          : 'border-slate-300 dark:border-slate-700 focus:border-[#1C6FA5] focus:ring-[#1C6FA5]/20 dark:focus:border-sky-400 dark:focus:ring-sky-400/20'
                       }`}
                     >
                       <option value="" disabled>Select a service...</option>
@@ -400,7 +432,7 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                 </div>
 
                 <div>
-                  <label htmlFor="modal-message" className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label htmlFor="modal-message" className="block text-xs font-semibold text-slate-700 dark:text-slate-200 mb-1">
                     Message (optional)
                   </label>
                   <textarea
@@ -409,7 +441,7 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Briefly describe what you need help with..."
-                    className="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5] resize-none h-16"
+                    className="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5]/20 focus:border-[#1C6FA5] dark:focus:border-sky-400 dark:focus:ring-sky-400/20 resize-none h-16 transition-colors"
                   />
                 </div>
 
@@ -435,27 +467,27 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
               </form>
             )}
 
-            <div className="grid grid-cols-3 border-t border-slate-200 bg-slate-50 text-xs font-medium text-slate-600 -mx-5 -mb-5 sm:-mx-6 sm:-mb-6 mt-4">
+            <div className="grid grid-cols-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 text-xs font-medium text-slate-600 dark:text-slate-300 -mx-5 -mb-5 sm:-mx-6 sm:-mb-6 mt-4">
               <a
                 href="tel:+917845132962"
-                className="flex items-center justify-center gap-1.5 py-2.5 hover:text-[#10364E] hover:bg-slate-100 transition-colors"
+                className="flex items-center justify-center gap-1.5 py-2.5 hover:text-[#10364E] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
-                <Phone className="w-3.5 h-3.5 text-slate-500" />
+                <Phone className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
                 <span>Call</span>
               </a>
               <button
                 type="button"
                 onClick={openWhatsApp}
-                className="flex items-center justify-center gap-1.5 border-x border-slate-200 py-2.5 hover:text-[#10364E] hover:bg-slate-100 transition-colors"
+                className="flex items-center justify-center gap-1.5 border-x border-slate-200 dark:border-slate-800 py-2.5 hover:text-[#10364E] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-slate-500" />
+                <MessageCircle className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
                 <span>WhatsApp</span>
               </button>
               <a
                 href="mailto:businessgroupikasle@gmail.com"
-                className="flex items-center justify-center gap-1.5 py-2.5 hover:text-[#10364E] hover:bg-slate-100 transition-colors"
+                className="flex items-center justify-center gap-1.5 py-2.5 hover:text-[#10364E] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
-                <Mail className="w-3.5 h-3.5 text-slate-500" />
+                <Mail className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
                 <span>Email</span>
               </a>
             </div>

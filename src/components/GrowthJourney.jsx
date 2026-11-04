@@ -81,7 +81,7 @@ export default function GrowthJourney() {
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
             From first idea to{' '}
-            <span className="font-script text-5xl sm:text-6xl bg-gradient-to-r from-sky-300 to-indigo-300 bg-clip-text text-transparent">
+            <span className="inline-block font-script text-5xl sm:text-6xl bg-gradient-to-r from-sky-300 to-indigo-300 bg-clip-text text-transparent pr-4 pb-1">
               enterprise
             </span>
           </h2>

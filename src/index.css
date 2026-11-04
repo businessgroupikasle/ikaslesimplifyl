@@ -31,6 +31,35 @@
   [data-theme='dark'] h1, [data-theme='dark'] h2, [data-theme='dark'] h3, [data-theme='dark'] h4, [data-theme='dark'] h5, [data-theme='dark'] h6 {
     color: #f8fafc;
   }
+
+  /* Form control contrast safeguards across light & dark modes */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+  textarea,
+  select {
+    color: #0f172a;
+    background-color: #ffffff;
+  }
+
+  html.dark input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+  html.dark textarea,
+  html.dark select,
+  [data-theme='dark'] input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+  [data-theme='dark'] textarea,
+  [data-theme='dark'] select {
+    color: #f8fafc;
+    background-color: #1e293b;
+  }
+
+  ::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+  }
+
+  html.dark ::placeholder,
+  [data-theme='dark'] ::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+  }
 }
 
 /* Custom corporate scrollbar */
@@ -51,6 +80,10 @@
 /* Script annotation styles */
 .font-script {
   font-family: 'Caveat', cursive;
+  display: inline-block;
+  padding-right: 0.18em;
+  padding-bottom: 0.18em;
+  line-height: normal;
 }
 
 /* Clean Professional Corporate Card */

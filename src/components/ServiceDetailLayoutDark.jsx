@@ -166,9 +166,9 @@ export default function ServiceDetailLayout({ config }) {
                   {practice}
                 </span>
 
-                <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
+                <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
                   {titleMain}{' '}
-                  <span className="font-script text-5xl sm:text-6xl lg:text-7xl bg-gradient-to-r from-sky-300 to-blue-200 bg-clip-text text-transparent">
+                  <span className="inline-block font-script text-5xl sm:text-6xl lg:text-7xl bg-gradient-to-r from-sky-300 to-blue-200 bg-clip-text text-transparent pb-3 pr-2">
                     {titleAccent}
                   </span>
                 </h1>
@@ -480,7 +480,7 @@ export default function ServiceDetailLayout({ config }) {
 
                 <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
                   {finalCta.title}{' '}
-                  <span className="font-script text-4xl sm:text-5xl lg:text-6xl bg-gradient-to-r from-sky-300 to-blue-200 bg-clip-text text-transparent">
+                  <span className="inline-block font-script text-4xl sm:text-5xl lg:text-6xl bg-gradient-to-r from-sky-300 to-blue-200 bg-clip-text text-transparent pb-2 pr-2">
                     {finalCta.accent}
                   </span>
                 </h2>

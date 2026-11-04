@@ -19,7 +19,8 @@ import {
   Volume2,
   VolumeX,
   Clock,
-  ArrowRight
+  ArrowRight,
+  Loader2
 } from 'lucide-react';
 import { useRouter } from '../lib/router';
 import { validateFullName, validatePhone } from '../lib/validation';
@@ -193,10 +194,32 @@ function InChatLeadForm({ defaultService = 'GST Filing', onSubmitSuccess }) {
             let raw = e.target.value.replace(/\D/g, '');
             if (raw.length === 12 && raw.startsWith('91')) {
               raw = raw.slice(2);
+            } else if (raw.length === 11 && raw.startsWith('0')) {
+              raw = raw.slice(1);
             }
+            const isOverLimit = raw.length > 10;
             const val = raw.slice(0, 10);
             setPhone(val);
-            if (error) setError('');
+
+            if (isOverLimit) {
+              setError('Phone number cannot exceed 10 digits.');
+            } else if (val && !/^[6-9]/.test(val)) {
+              setError('Mobile number must start with 6, 7, 8, or 9.');
+            } else if (error) {
+              setError('');
+            }
+          }}
+          onKeyDown={(e) => {
+            if (
+              /^\d$/.test(e.key) &&
+              phone.length >= 10 &&
+              e.target.selectionStart === e.target.selectionEnd &&
+              !e.ctrlKey &&
+              !e.metaKey
+            ) {
+              e.preventDefault();
+              setError('Indian mobile number is limited to 10 digits.');
+            }
           }}
           placeholder="e.g. 9876543210"
           className="w-full px-2.5 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5]"

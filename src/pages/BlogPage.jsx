@@ -72,9 +72,9 @@ export default function BlogPage() {
                 Insights &amp; Guides
               </span>
 
-              <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
+              <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
                 Practical guides for businesses that stay{' '}
-                <span className="whitespace-nowrap font-script text-5xl sm:text-6xl lg:text-7xl bg-gradient-to-r from-sky-300 to-blue-200 bg-clip-text text-transparent">
+                <span className="inline-block whitespace-nowrap font-script text-5xl sm:text-6xl lg:text-7xl bg-gradient-to-r from-sky-300 to-blue-200 bg-clip-text text-transparent pb-3 pr-2">
                   compliant
                 </span>
               </h1>
@@ -250,7 +250,7 @@ export default function BlogPage() {
               <div className="relative max-w-2xl mx-auto">
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
                   Need advice for{' '}
-                  <span className="font-script text-4xl sm:text-5xl bg-gradient-to-r from-sky-300 to-blue-200 bg-clip-text text-transparent">
+                  <span className="inline-block font-script text-4xl sm:text-5xl bg-gradient-to-r from-sky-300 to-blue-200 bg-clip-text text-transparent pb-2 pr-2">
                     your business?
                   </span>
                 </h2>

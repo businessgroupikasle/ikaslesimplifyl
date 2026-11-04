@@ -124,7 +124,7 @@ export default function ContactSection({ preselectedService = '' }) {
           type: 'connected',
           text: result.delivered
             ? result.confirmationSent
-              ? 'Your enquiry has been emailed to our advisory team, and a confirmation has been sent to your email address.'
+              ? 'Your enquiry has been delivered to our advisory team, and a thank-you confirmation email has been sent to your email.'
               : 'Your enquiry has been emailed to our advisory team.'
             : 'Your enquiry is saved, but we could not confirm it reached our team. If you do not hear from us within 1 business day, please call +91 78451 32962.'
         });
@@ -331,11 +331,11 @@ export default function ContactSection({ preselectedService = '' }) {
 
           {/* Right Side: Functional Enquiry Form */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 shadow-sm">
-              <h3 className="text-xl font-bold text-[#10364E] mb-1">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <h3 className="text-xl font-bold text-[#10364E] dark:text-white mb-1">
                 Submit an Enquiry
               </h3>
-              <p className="text-xs text-slate-500 mb-6">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
                 Fill in the details below to receive a response from our advisory team.
               </p>
 
@@ -432,7 +432,7 @@ export default function ContactSection({ preselectedService = '' }) {
                 {/* Full Name & Phone Number */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="fullName" className="block text-xs font-bold text-[#10364E] uppercase tracking-wider mb-1.5">
+                    <label htmlFor="fullName" className="block text-xs font-bold text-[#10364E] dark:text-slate-200 uppercase tracking-wider mb-1.5">
                       Full Name *
                     </label>
                     <input
@@ -454,8 +454,8 @@ export default function ContactSection({ preselectedService = '' }) {
                         }
                       }}
                       placeholder="e.g. Rahul Sharma"
-                      className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-800 bg-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5] transition-colors ${
-                        errors.fullName ? 'border-red-400 bg-red-50/20' : 'border-slate-200'
+                      className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5] transition-colors ${
+                        errors.fullName ? 'border-red-400 bg-red-50/20 dark:bg-red-950/20' : 'border-slate-300 dark:border-slate-700'
                       }`}
                     />
                     {errors.fullName && (
@@ -464,7 +464,7 @@ export default function ContactSection({ preselectedService = '' }) {
                   </div>
 
                   <div>
-                    <label htmlFor="phone" className="block text-xs font-bold text-[#10364E] uppercase tracking-wider mb-1.5">
+                    <label htmlFor="phone" className="block text-xs font-bold text-[#10364E] dark:text-slate-200 uppercase tracking-wider mb-1.5">
                       Phone Number *
                     </label>
                     <input
@@ -477,23 +477,55 @@ export default function ContactSection({ preselectedService = '' }) {
                         let raw = e.target.value.replace(/\D/g, '');
                         if (raw.length === 12 && raw.startsWith('91')) {
                           raw = raw.slice(2);
+                        } else if (raw.length === 11 && raw.startsWith('0')) {
+                          raw = raw.slice(1);
                         }
+                        const isOverLimit = raw.length > 10;
                         const val = raw.slice(0, 10);
                         setFormData({ ...formData, phone: val });
-                        if (errors.phone) {
+
+                        if (isOverLimit) {
+                          setErrors((prev) => ({ ...prev, phone: 'Phone number cannot exceed 10 digits.' }));
+                        } else if (!val) {
+                          setErrors((prev) => ({ ...prev, phone: null }));
+                        } else if (!/^[6-9]/.test(val)) {
+                          setErrors((prev) => ({ ...prev, phone: 'Mobile number must start with 6, 7, 8, or 9.' }));
+                        } else if (val.length === 10) {
                           const check = validatePhone(val);
                           setErrors((prev) => ({ ...prev, phone: check.isValid ? null : check.message }));
+                        } else {
+                          setErrors((prev) => ({
+                            ...prev,
+                            phone: prev.phone && prev.phone.includes('must start with') ? null : prev.phone
+                          }));
+                        }
+                      }}
+                      onKeyDown={(e) => {
+                        if (
+                          /^\d$/.test(e.key) &&
+                          formData.phone.length >= 10 &&
+                          e.target.selectionStart === e.target.selectionEnd &&
+                          !e.ctrlKey &&
+                          !e.metaKey
+                        ) {
+                          e.preventDefault();
+                          setErrors((prev) => ({
+                            ...prev,
+                            phone: 'Indian mobile number is limited to 10 digits.'
+                          }));
                         }
                       }}
                       onBlur={() => {
                         const check = validatePhone(formData.phone);
                         if (!check.isValid) {
                           setErrors((prev) => ({ ...prev, phone: check.message }));
+                        } else {
+                          setErrors((prev) => ({ ...prev, phone: null }));
                         }
                       }}
                       placeholder="e.g. 9876543210"
-                      className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-800 bg-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5] transition-colors ${
-                        errors.phone ? 'border-red-400 bg-red-50/20' : 'border-slate-200'
+                      className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5] transition-colors ${
+                        errors.phone ? 'border-red-400 bg-red-50/20 dark:bg-red-950/20' : 'border-slate-300 dark:border-slate-700'
                       }`}
                     />
                     {errors.phone && (
@@ -505,7 +537,7 @@ export default function ContactSection({ preselectedService = '' }) {
                 {/* Email Address & Select Service */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="email" className="block text-xs font-bold text-[#10364E] uppercase tracking-wider mb-1.5">
+                    <label htmlFor="email" className="block text-xs font-bold text-[#10364E] dark:text-slate-200 uppercase tracking-wider mb-1.5">
                       Email Address *
                     </label>
                     <input
@@ -527,8 +559,8 @@ export default function ContactSection({ preselectedService = '' }) {
                         }
                       }}
                       placeholder="e.g. rahul@company.com"
-                      className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-800 bg-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5] transition-colors ${
-                        errors.email ? 'border-red-400 bg-red-50/20' : 'border-slate-200'
+                      className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5] transition-colors ${
+                        errors.email ? 'border-red-400 bg-red-50/20 dark:bg-red-950/20' : 'border-slate-300 dark:border-slate-700'
                       }`}
                     />
                     {errors.email && (
@@ -537,7 +569,7 @@ export default function ContactSection({ preselectedService = '' }) {
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-xs font-bold text-[#10364E] uppercase tracking-wider mb-1.5">
+                    <label htmlFor="service" className="block text-xs font-bold text-[#10364E] dark:text-slate-200 uppercase tracking-wider mb-1.5">
                       Select Service *
                     </label>
                     <select
@@ -553,10 +585,10 @@ export default function ContactSection({ preselectedService = '' }) {
                           setErrors((prev) => ({ ...prev, service: 'Please select a valid service.' }));
                         }
                       }}
-                      className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 transition-colors ${
+                      className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 transition-colors ${
                         errors.service
-                          ? 'border-red-400 bg-red-50/20 focus:ring-red-400'
-                          : 'border-slate-200 focus:ring-[#1C6FA5]'
+                          ? 'border-red-400 bg-red-50/20 dark:bg-red-950/20 focus:ring-red-400'
+                          : 'border-slate-300 dark:border-slate-700 focus:border-[#1C6FA5]'
                       }`}
                     >
                       <option value="" disabled>Select a service...</option>
@@ -574,7 +606,7 @@ export default function ContactSection({ preselectedService = '' }) {
 
                 {/* Business Name (Optional) */}
                 <div>
-                  <label htmlFor="businessName" className="block text-xs font-bold text-[#10364E] uppercase tracking-wider mb-1.5">
+                  <label htmlFor="businessName" className="block text-xs font-bold text-[#10364E] dark:text-slate-200 uppercase tracking-wider mb-1.5">
                     Business Name <span className="text-slate-400 font-normal lowercase">(optional)</span>
                   </label>
                   <input
@@ -583,13 +615,13 @@ export default function ContactSection({ preselectedService = '' }) {
                     value={formData.businessName}
                     onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                     placeholder="e.g. Apex Enterprises Pvt Ltd"
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-xs sm:text-sm text-slate-800 bg-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5] transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs sm:text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5] transition-colors"
                   />
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-xs font-bold text-[#10364E] uppercase tracking-wider mb-1.5">
+                  <label htmlFor="message" className="block text-xs font-bold text-[#10364E] dark:text-slate-200 uppercase tracking-wider mb-1.5">
                     Message / Requirements *
                   </label>
                   <textarea
@@ -601,8 +633,8 @@ export default function ContactSection({ preselectedService = '' }) {
                       if (errors.message) setErrors({ ...errors, message: null });
                     }}
                     placeholder="Briefly describe your requirements or questions..."
-                    className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm text-slate-800 bg-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5] transition-colors resize-none ${
-                      errors.message ? 'border-red-400 bg-red-50/20' : 'border-slate-200'
+                    className={`w-full px-3.5 py-2.5 rounded-lg border text-xs sm:text-sm bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1C6FA5] transition-colors resize-none ${
+                      errors.message ? 'border-red-400 bg-red-50/20 dark:bg-red-950/20' : 'border-slate-300 dark:border-slate-700'
                     }`}
                   />
                   {errors.message && (

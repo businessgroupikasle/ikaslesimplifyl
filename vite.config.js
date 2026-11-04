@@ -156,7 +156,8 @@ function apiMiddleware() {
                 res.end(JSON.stringify({ success: false, error: `API route ${endpoint} not found` }));
                 return;
               }
-              const { default: handler } = await import(pathToFileURL(apiFilePath).href);
+              const moduleUrl = `${pathToFileURL(apiFilePath).href}?t=${Date.now()}`;
+              const { default: handler } = await import(moduleUrl);
               await handler(req, res);
             } catch (err) {
               res.statusCode = 500;

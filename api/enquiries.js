@@ -14,104 +14,170 @@ const escapeHtml = (value) =>
 // The chatbot form has no real email field and submits a placeholder address.
 const PLACEHOLDER_EMAIL_DOMAIN = /@chatbot-enquiry\.simplifyl\.com$/i;
 
-// Light abuse guard: at most one confirmation per address per minute.
-// (In-memory, so it resets on cold starts; it only slows down repeat sends.)
-const recentConfirmations = new Map();
-const CONFIRMATION_COOLDOWN_MS = 60 * 1000;
-
 function shouldSendConfirmation(visitorEmail) {
-  if (PLACEHOLDER_EMAIL_DOMAIN.test(visitorEmail)) return false;
-
-  const now = Date.now();
-  for (const [addr, at] of recentConfirmations) {
-    if (now - at > CONFIRMATION_COOLDOWN_MS) recentConfirmations.delete(addr);
-  }
-  const key = visitorEmail.toLowerCase();
-  if (recentConfirmations.has(key)) return false;
-  recentConfirmations.set(key, now);
-  return true;
+  if (!visitorEmail || typeof visitorEmail !== 'string') return false;
+  const clean = visitorEmail.trim();
+  if (!clean || PLACEHOLDER_EMAIL_DOMAIN.test(clean)) return false;
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean);
 }
 
-function buildConfirmationEmail({ smtpUser, recipientEmail, visitorEmail, contactName, service, formattedTime }) {
+function buildConfirmationEmail({
+  smtpUser,
+  recipientEmail,
+  visitorEmail,
+  contactName,
+  phone,
+  service,
+  businessName,
+  message,
+  formattedTime
+}) {
   const name = contactName || 'there';
   const safeName = escapeHtml(name);
-  const safeService = escapeHtml(service);
+  const safeService = escapeHtml(service || 'General Consultation');
+  const safePhone = escapeHtml(phone || 'Not provided');
+  const safeBusiness = escapeHtml(businessName || '');
+  const safeMessage = escapeHtml(message || '');
 
   return {
     from: `"Simplifyl Compliance Solutions" <${smtpUser}>`,
     to: visitorEmail,
     replyTo: recipientEmail,
-    subject: 'We have received your enquiry | Simplifyl Compliance Solutions',
+    subject: `Thank You for Your Enquiry | Simplifyl Compliance Solutions`,
     text: `
 Dear ${name},
 
-Thank you for contacting Simplifyl Compliance Solutions.
+Thank you for contacting Simplifyl Compliance Solutions!
 
-We have received your enquiry about ${service}. Our advisory team will review your requirements and reach out within 1 business day.
+We have successfully received your enquiry regarding ${service || 'our services'}. Our specialized compliance and tax advisory team is reviewing your requirements and will reach out to you within 1 business day.
 
-Submitted on: ${formattedTime} (IST)
+--- SUMMARY OF YOUR ENQUIRY ---
+• Service Requested: ${service || 'General Advisory'}
+• Full Name: ${name}
+• Contact Phone: ${phone || 'Not provided'}
+• Email: ${visitorEmail}
+${businessName ? `• Business / Entity: ${businessName}\n` : ''}${message ? `• Your Message: ${message}\n` : ''}• Submitted On: ${formattedTime} (IST)
 
-Need to reach us sooner?
-Phone / WhatsApp: +91 78451 32962
-Email: ${recipientEmail}
-Business hours: Monday to Saturday, 9:30 AM to 6:30 PM IST
+--- NEED IMMEDIATE ASSISTANCE? ---
+If you need urgent support or have any questions, feel free to contact us directly:
+• Phone / WhatsApp: +91 78451 32962
+• Email: ${recipientEmail}
+• Business Hours: Monday to Saturday, 9:30 AM to 6:30 PM IST
+• Office Address: 1639/ A, 2nd Floor, Hopes, Coimbatore, India - 641004
 
 Warm regards,
-Simplifyl Compliance Solutions
-1639/ A, 2nd Floor, Hopes, Coimbatore, India - 641004
+Simplifyl Compliance Solutions Advisory Desk
+https://simplifyl.com
 
-This is an automated acknowledgement. If you did not submit this enquiry, you can safely ignore this email.
+(This is an automated confirmation acknowledging your enquiry. If you did not make this request, please safely ignore this email.)
     `.trim(),
     html: `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #F8FAFC; color: #1E293B; margin: 0; padding: 24px; }
-    .card { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; border: 1px solid #E2E8F0; overflow: hidden; }
-    .header { background: #10364E; padding: 28px 32px; color: #ffffff; }
-    .header h1 { margin: 0; font-size: 20px; font-weight: 700; }
-    .header p { margin: 6px 0 0; font-size: 13px; color: #92C6E7; }
+    .card { max-width: 620px; margin: 0 auto; background: #ffffff; border-radius: 14px; border: 1px solid #E2E8F0; overflow: hidden; box-shadow: 0 4px 16px rgba(16, 54, 78, 0.06); }
+    .header { background: #10364E; padding: 32px; color: #ffffff; text-align: left; }
+    .header .badge { display: inline-block; background: rgba(255, 255, 255, 0.12); color: #92C6E7; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .header h1 { margin: 0; font-size: 22px; font-weight: 700; line-height: 1.3; }
+    .header p { margin: 8px 0 0; font-size: 13px; color: #92C6E7; }
     .body { padding: 32px; font-size: 15px; line-height: 1.6; color: #334155; }
-    .summary { background: #F4F8FB; border: 1px solid #E3EFF8; border-radius: 10px; padding: 16px 20px; margin: 20px 0; }
-    .summary .label { font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em; }
-    .summary .value { font-size: 15px; font-weight: 600; color: #0F172A; margin-bottom: 10px; }
-    .summary .value:last-child { margin-bottom: 0; }
-    .contact { font-size: 14px; }
-    .contact a { color: #1C6FA5; text-decoration: none; font-weight: 600; }
-    .footer { background: #F1F5F9; padding: 16px 32px; font-size: 12px; color: #64748B; line-height: 1.5; }
+    .greeting { font-size: 17px; font-weight: 700; color: #10364E; margin-bottom: 12px; }
+    .summary-card { background: #F4F8FB; border: 1px solid #E3EFF8; border-radius: 10px; padding: 20px; margin: 24px 0; }
+    .summary-card h3 { margin: 0 0 14px 0; font-size: 13px; font-weight: 700; color: #10364E; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #E3EFF8; padding-bottom: 8px; }
+    .row { display: flex; margin-bottom: 10px; }
+    .row:last-child { margin-bottom: 0; }
+    .label { width: 140px; font-size: 12px; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.04em; }
+    .val { flex: 1; font-size: 14px; font-weight: 600; color: #0F172A; }
+    .service-pill { display: inline-block; background: #1C6FA5; color: #ffffff; padding: 2px 10px; border-radius: 9999px; font-size: 12px; font-weight: 600; }
+    .contact-box { background: #F8FAFC; border-left: 3px solid #1C6FA5; padding: 16px 20px; border-radius: 6px; margin: 24px 0; font-size: 14px; }
+    .contact-box h4 { margin: 0 0 8px 0; font-size: 14px; font-weight: 700; color: #10364E; }
+    .contact-box a { color: #1C6FA5; font-weight: 600; text-decoration: none; }
+    .signoff { margin-top: 24px; font-size: 14px; color: #475569; }
+    .signoff strong { color: #10364E; }
+    .footer { background: #F1F5F9; padding: 18px 32px; font-size: 12px; color: #64748B; text-align: center; line-height: 1.5; border-top: 1px solid #E2E8F0; }
   </style>
 </head>
 <body>
   <div class="card">
     <div class="header">
-      <h1>Thank you, we have received your enquiry</h1>
-      <p>Simplifyl Compliance Solutions</p>
+      <span class="badge">Confirmation &amp; Acknowledgement</span>
+      <h1>Thank You, ${safeName}!</h1>
+      <p>We have received your enquiry | Simplifyl Compliance Solutions</p>
     </div>
     <div class="body">
-      <p>Dear ${safeName},</p>
-      <p>Thank you for contacting Simplifyl. Our advisory team will review your requirements and reach out within <strong>1 business day</strong>.</p>
-
-      <div class="summary">
-        <div class="label">Service requested</div>
-        <div class="value">${safeService}</div>
-        <div class="label">Submitted on</div>
-        <div class="value">${escapeHtml(formattedTime)} (IST)</div>
-      </div>
-
-      <p class="contact">
-        <strong>Need to reach us sooner?</strong><br>
-        Phone / WhatsApp: <a href="tel:+917845132962">+91 78451 32962</a><br>
-        Email: <a href="mailto:${escapeHtml(recipientEmail)}">${escapeHtml(recipientEmail)}</a><br>
-        Business hours: Monday to Saturday, 9:30 AM to 6:30 PM IST
+      <div class="greeting">Dear ${safeName},</div>
+      <p>
+        Thank you for contacting <strong>Simplifyl Compliance Solutions</strong>. We have successfully registered your enquiry regarding <strong>${safeService}</strong>.
+      </p>
+      <p>
+        Our dedicated compliance and tax advisory team is reviewing your requirements and will connect with you within <strong>1 business day</strong> to discuss the next steps.
       </p>
 
-      <p>Warm regards,<br><strong>Simplifyl Compliance Solutions</strong><br>
-      <span style="font-size:13px;color:#64748B;">1639/ A, 2nd Floor, Hopes, Coimbatore, India - 641004</span></p>
+      <div class="summary-card">
+        <h3>Summary of Your Enquiry</h3>
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+          <tr>
+            <td style="padding: 6px 0; width: 140px; color: #64748B; font-weight: 600; font-size: 12px; text-transform: uppercase;">Service</td>
+            <td style="padding: 6px 0; font-weight: 600; color: #0F172A;"><span class="service-pill">${safeService}</span></td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 0; color: #64748B; font-weight: 600; font-size: 12px; text-transform: uppercase;">Full Name</td>
+            <td style="padding: 6px 0; font-weight: 600; color: #0F172A;">${safeName}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 0; color: #64748B; font-weight: 600; font-size: 12px; text-transform: uppercase;">Phone</td>
+            <td style="padding: 6px 0; font-weight: 600; color: #0F172A;">${safePhone}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 0; color: #64748B; font-weight: 600; font-size: 12px; text-transform: uppercase;">Email</td>
+            <td style="padding: 6px 0; font-weight: 600; color: #0F172A;">${escapeHtml(visitorEmail)}</td>
+          </tr>
+          ${
+            safeBusiness
+              ? `<tr>
+                  <td style="padding: 6px 0; color: #64748B; font-weight: 600; font-size: 12px; text-transform: uppercase;">Business</td>
+                  <td style="padding: 6px 0; font-weight: 600; color: #0F172A;">${safeBusiness}</td>
+                </tr>`
+              : ''
+          }
+          ${
+            safeMessage
+              ? `<tr>
+                  <td style="padding: 6px 0; vertical-align: top; color: #64748B; font-weight: 600; font-size: 12px; text-transform: uppercase;">Message</td>
+                  <td style="padding: 6px 0; font-weight: 500; color: #334155; line-height: 1.5;">${safeMessage.replace(/\n/g, '<br/>')}</td>
+                </tr>`
+              : ''
+          }
+          <tr>
+            <td style="padding: 6px 0; color: #64748B; font-weight: 600; font-size: 12px; text-transform: uppercase;">Submitted On</td>
+            <td style="padding: 6px 0; font-weight: 500; color: #64748B;">${escapeHtml(formattedTime)} (IST)</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="contact-box">
+        <h4>Need immediate assistance?</h4>
+        <p style="margin: 4px 0 0; line-height: 1.6;">
+          Phone / WhatsApp: <a href="tel:+917845132962">+91 78451 32962</a><br/>
+          Direct Email: <a href="mailto:${escapeHtml(recipientEmail)}">${escapeHtml(recipientEmail)}</a><br/>
+          Office Hours: Monday &ndash; Saturday, 9:30 AM to 6:30 PM IST<br/>
+          Address: 1639/ A, 2nd Floor, Hopes, Coimbatore, Tamil Nadu, India - 641004
+        </p>
+      </div>
+
+      <div class="signoff">
+        Warm regards,<br/>
+        <strong>Simplifyl Compliance Solutions Advisory Desk</strong><br/>
+        <span style="font-size: 12px; color: #64748B;">Simplifying Business, GST, and IP Compliances</span>
+      </div>
     </div>
     <div class="footer">
-      This is an automated acknowledgement. If you did not submit this enquiry, you can safely ignore this email.
+      This is an automated confirmation email sent to <strong>${escapeHtml(visitorEmail)}</strong>.<br/>
+      If you did not submit this enquiry on simplifyl.com, please safely disregard this email.
     </div>
   </div>
 </body>
@@ -322,38 +388,63 @@ Submitted At: ${formattedTime} (IST)
       `.trim()
     };
 
-    // 1. Notify the business (receiver)
-    const info = await transporter.sendMail(mailOptions);
-
-    // 2. Acknowledge the visitor (sender). A failure here must not fail the enquiry,
-    //    because the business has already been notified.
-    let confirmationSent = false;
+    // ── Dispatch Emails to Receiver and Sender in Parallel ──
     const visitorEmail = email.trim();
-    if (shouldSendConfirmation(visitorEmail)) {
-      try {
-        await transporter.sendMail(
+    const canSendConfirmation = shouldSendConfirmation(visitorEmail);
+
+    // Prepare dispatch tasks
+    const emailTasks = [
+      transporter.sendMail(mailOptions)
+    ];
+
+    if (canSendConfirmation) {
+      emailTasks.push(
+        transporter.sendMail(
           buildConfirmationEmail({
             smtpUser,
             recipientEmail,
             visitorEmail,
             contactName,
+            phone,
             service,
+            businessName,
+            message,
             formattedTime
           })
-        );
-        confirmationSent = true;
-      } catch (confirmErr) {
-        console.error('[Simplifyl SMTP] Confirmation email to visitor failed:', confirmErr.message);
-      }
+        )
+      );
+    }
+
+    const [adminOutcome, visitorOutcome] = await Promise.allSettled(emailTasks);
+
+    const deliveredToAdmin = adminOutcome.status === 'fulfilled';
+    const confirmationSent = canSendConfirmation && visitorOutcome?.status === 'fulfilled';
+
+    if (!deliveredToAdmin) {
+      console.error('[Simplifyl SMTP] Admin email delivery failed:', adminOutcome.reason);
+    }
+    if (canSendConfirmation && !confirmationSent) {
+      console.error('[Simplifyl SMTP] Sender thank-you email failed:', visitorOutcome?.reason);
+    }
+
+    // If both failed, throw error
+    if (!deliveredToAdmin && !confirmationSent) {
+      throw new Error(adminOutcome.reason?.message || visitorOutcome?.reason?.message || 'SMTP dispatch failed');
     }
 
     return res.status(200).json({
       success: true,
-      delivered: true,
+      delivered: deliveredToAdmin,
       confirmationSent,
-      messageId: info.messageId,
+      adminMessageId: deliveredToAdmin ? adminOutcome.value?.messageId : null,
+      confirmationMessageId: confirmationSent ? visitorOutcome?.value?.messageId : null,
       recipient: recipientEmail,
-      message: 'Enquiry successfully sent to businessgroupikasle@gmail.com via SMTP.'
+      sender: visitorEmail,
+      message: deliveredToAdmin && confirmationSent
+        ? 'Enquiry sent to receiver and thank-you confirmation sent to sender.'
+        : deliveredToAdmin
+          ? 'Enquiry sent to receiver.'
+          : 'Thank-you confirmation sent to sender.'
     });
   } catch (err) {
     console.error('[Simplifyl SMTP Error]:', err);
