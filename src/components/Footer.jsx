@@ -111,6 +111,11 @@ export default function Footer({ onOpenContact }) {
                 </Link>
               </li>
               <li>
+                <Link to="/blog" className="hover:text-white transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <Link to="/faq" className="hover:text-white transition-colors">
                   FAQ
                 </Link>

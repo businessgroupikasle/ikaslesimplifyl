@@ -15,6 +15,7 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
 
   const [submitted, setSubmitted] = useState(false);
   const [emailDelivered, setEmailDelivered] = useState(true);
+  const [confirmationSent, setConfirmationSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [error, setError] = useState('');
@@ -126,6 +127,7 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
       ]);
       const result = res && res.ok ? await res.json().catch(() => ({})) : {};
       delivered = Boolean(result.delivered);
+      setConfirmationSent(Boolean(result.confirmationSent));
     } catch {
       // network error; the local backup above is still saved
     } finally {
@@ -186,9 +188,13 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
             {submitted ? (
               <div className="my-5 p-5 rounded-xl bg-[#F4F8FB] border border-[#C1DEF0] text-center animate-in fade-in zoom-in-95 duration-200">
                 <CheckCircle2 className="w-10 h-10 text-[#1C6FA5] mx-auto mb-2" />
-                <h4 className="text-xl font-extrabold text-[#10364E]">Sent Successfully!</h4>
+                <h4 className="text-xl font-extrabold text-[#10364E]">
+                  {emailDelivered ? 'Sent Successfully!' : 'Enquiry Saved'}
+                </h4>
                 <p className="text-xs text-slate-600 mt-1 max-w-sm mx-auto leading-relaxed">
-                  Your enquiry has been sent successfully. Our advisory desk will get in touch shortly.
+                  {emailDelivered
+                    ? `Your enquiry has been sent successfully. Our advisory desk will get in touch shortly.${confirmationSent ? ' A confirmation email is on its way to you.' : ''}`
+                    : 'Your request is saved, but we could not confirm it reached our team. If you do not hear from us soon, please call +91 78451 32962.'}
                 </p>
                 <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2">
                   <button
@@ -242,7 +248,7 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                       type="text"
                       value={formData.name}
                       onChange={(e) => {
-                        const val = e.target.value;
+                        const val = e.target.value.replace(/[^a-zA-Z\s.'’-]/g, '');
                         setFormData({ ...formData, name: val });
                         if (errors.name) {
                           const check = validateFullName(val);

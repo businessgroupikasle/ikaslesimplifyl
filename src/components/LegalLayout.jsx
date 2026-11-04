@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowLeft, Shield, FileText, AlertCircle, Cookie, Home, ChevronRight, Mail, Phone } from 'lucide-react';
+import { ArrowLeft, Shield, FileText, AlertCircle, Cookie, Mail, Phone } from 'lucide-react';
 import Logo from './Logo';
+import Breadcrumb from './Breadcrumb';
 import { Link } from '../lib/router';
 
 const legalLinks = [
@@ -48,20 +49,12 @@ export default function LegalLayout({
       </header>
 
       {/* Hero Banner with Semantic Heading & Breadcrumbs */}
-      <section className="bg-[#10364E] text-white py-12 lg:py-16 relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="bg-[#10364E] text-white pt-8 pb-12 lg:pb-16 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-blue-200/80 mb-4">
-            <Link to="/" className="hover:text-white flex items-center gap-1 transition-colors">
-              <Home className="w-3.5 h-3.5" />
-              <span>Home</span>
-            </Link>
-            <ChevronRight className="w-3 h-3 text-slate-400" />
-            <span className="text-slate-300">Legal</span>
-            <ChevronRight className="w-3 h-3 text-slate-400" />
-            <span className="text-white font-medium">{title}</span>
-          </nav>
+          <Breadcrumb items={[{ label: 'Legal' }, { label: title }]} />
 
+          <div className="mt-9 lg:mt-12">
           {/* Page H1 Heading */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
             {title}
@@ -77,6 +70,7 @@ export default function LegalLayout({
             <span>Last Updated: <strong className="text-white">{lastUpdated}</strong></span>
             <span>•</span>
             <span>Governing Law: <strong className="text-white">Republic of India</strong></span>
+          </div>
           </div>
         </div>
       </section>

@@ -29,6 +29,7 @@ export default function ContactSection({ preselectedService = '' }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'duplicate' | 'error'
   const [backendNotice, setBackendNotice] = useState(null);
+  const [emailDelivered, setEmailDelivered] = useState(true);
 
   const validate = () => {
     const newErrors = {};
@@ -117,11 +118,14 @@ export default function ContactSection({ preselectedService = '' }) {
 
       if (response && response.ok) {
         const result = await response.json().catch(() => ({}));
+        setEmailDelivered(Boolean(result.delivered));
         setSubmitStatus('success');
         setBackendNotice({
           type: 'connected',
           text: result.delivered
-            ? 'Your enquiry has been emailed to our advisory team.'
+            ? result.confirmationSent
+              ? 'Your enquiry has been emailed to our advisory team, and a confirmation has been sent to your email address.'
+              : 'Your enquiry has been emailed to our advisory team.'
             : 'Your enquiry is saved, but we could not confirm it reached our team. If you do not hear from us within 1 business day, please call +91 78451 32962.'
         });
         setFormData({
@@ -134,6 +138,7 @@ export default function ContactSection({ preselectedService = '' }) {
         });
       } else {
         // Backend API returned non-200
+        setEmailDelivered(false);
         setSubmitStatus('success');
         setBackendNotice({
           type: 'missing_backend',
@@ -150,6 +155,7 @@ export default function ContactSection({ preselectedService = '' }) {
       }
     } catch {
       // Network failure or pure frontend development server
+      setEmailDelivered(false);
       setSubmitStatus('success');
       setBackendNotice({
         type: 'missing_backend',
@@ -372,11 +378,13 @@ export default function ContactSection({ preselectedService = '' }) {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h4 className="text-xl sm:text-2xl font-extrabold text-[#10364E]">
-                    Sent Successfully!
+                    {emailDelivered ? 'Sent Successfully!' : 'Enquiry Saved'}
                   </h4>
-                  <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                    Your enquiry has been sent successfully. Our compliance and tax advisory team will review your requirements and reach out within 1 business day.
-                  </p>
+                  {emailDelivered && (
+                    <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                      Your enquiry has been sent successfully. Our compliance and tax advisory team will review your requirements and reach out within 1 business day.
+                    </p>
+                  )}
 
                   {backendNotice && (
                     <div className="mt-4 p-3 rounded-lg bg-white border border-[#C1DEF0] max-w-md mx-auto text-xs text-slate-600 flex items-start gap-2 text-left shadow-xs">
@@ -432,7 +440,7 @@ export default function ContactSection({ preselectedService = '' }) {
                       type="text"
                       value={formData.fullName}
                       onChange={(e) => {
-                        const val = e.target.value;
+                        const val = e.target.value.replace(/[^a-zA-Z\s.'’-]/g, '');
                         setFormData({ ...formData, fullName: val });
                         if (errors.fullName) {
                           const check = validateFullName(val);

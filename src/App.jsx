@@ -13,6 +13,8 @@ const TrademarkRegistrationPage = lazy(() => import('./pages/TrademarkRegistrati
 const ComplianceSupportPage = lazy(() => import('./pages/ComplianceSupportPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const FaqPage = lazy(() => import('./pages/FaqPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
 const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
@@ -80,6 +82,12 @@ function RouteSwitch() {
           <FaqPage />
         </Suspense>
       );
+    case '/blog':
+      return (
+        <Suspense fallback={null}>
+          <BlogPage />
+        </Suspense>
+      );
     case '/tools':
       return (
         <Suspense fallback={null}>
@@ -117,6 +125,14 @@ function RouteSwitch() {
         </Suspense>
       );
     default:
+      // Individual blog articles live at /blog/<slug>
+      if (normalizedPath.startsWith('/blog/')) {
+        return (
+          <Suspense fallback={null}>
+            <BlogPostPage slug={normalizedPath.slice('/blog/'.length)} />
+          </Suspense>
+        );
+      }
       return (
         <Suspense fallback={null}>
           <NotFoundPage />

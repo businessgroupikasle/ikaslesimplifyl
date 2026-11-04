@@ -15,11 +15,16 @@ function seoMiddleware() {
     '/compliance-support',
     '/contact',
     '/faq',
+    '/blog',
     '/privacy-policy',
     '/terms-and-conditions',
     '/disclaimer',
     '/cookie-policy'
   ]);
+
+  // Blog articles live at /blog/<slug>
+  const isValidRoute = (pathname) =>
+    validCanonicalRoutes.has(pathname) || /^\/blog\/[a-z0-9-]+$/.test(pathname);
 
   return {
     name: 'seo-middleware',
@@ -57,7 +62,7 @@ function seoMiddleware() {
         }
 
         // 2. For non-existent routes or /404, serve 404 HTTP status
-        if (!validCanonicalRoutes.has(pathname)) {
+        if (!isValidRoute(pathname)) {
           const indexPath = fileURLToPath(new URL('./index.html', import.meta.url));
           const rawHtml = fs.readFileSync(indexPath, 'utf-8');
           server.transformIndexHtml(rawUrl, rawHtml).then((html) => {
@@ -100,7 +105,7 @@ function seoMiddleware() {
           return;
         }
 
-        if (!validCanonicalRoutes.has(pathname)) {
+        if (!isValidRoute(pathname)) {
           res.statusCode = 404;
         }
 

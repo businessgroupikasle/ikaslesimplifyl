@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
 import { Link } from '../lib/router';
+import Breadcrumb from '../components/Breadcrumb';
 import GstCalculator from '../components/tools/GstCalculator';
 import StructureFinder from '../components/tools/StructureFinder';
 import LateFeeEstimator from '../components/tools/LateFeeEstimator';
@@ -108,12 +109,13 @@ export default function ToolsPage() {
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)] pointer-events-none" />
           <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#1C6FA5] rounded-full blur-[120px] opacity-40 pointer-events-none" />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 lg:pb-28">
+            <Breadcrumb items={[{ label: 'Business Toolkit' }]} />
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }}
-              className="text-center max-w-3xl mx-auto"
+              className="mt-10 lg:mt-14 text-center max-w-3xl mx-auto"
             >
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-blue-200 text-xs font-bold uppercase tracking-wider">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> 100% free · No sign-up

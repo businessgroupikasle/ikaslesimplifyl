@@ -9,6 +9,117 @@ const escapeHtml = (value) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 
+// ── Visitor confirmation email ────────────────────────────────────────────
+
+// The chatbot form has no real email field and submits a placeholder address.
+const PLACEHOLDER_EMAIL_DOMAIN = /@chatbot-enquiry\.simplifyl\.com$/i;
+
+// Light abuse guard: at most one confirmation per address per minute.
+// (In-memory, so it resets on cold starts; it only slows down repeat sends.)
+const recentConfirmations = new Map();
+const CONFIRMATION_COOLDOWN_MS = 60 * 1000;
+
+function shouldSendConfirmation(visitorEmail) {
+  if (PLACEHOLDER_EMAIL_DOMAIN.test(visitorEmail)) return false;
+
+  const now = Date.now();
+  for (const [addr, at] of recentConfirmations) {
+    if (now - at > CONFIRMATION_COOLDOWN_MS) recentConfirmations.delete(addr);
+  }
+  const key = visitorEmail.toLowerCase();
+  if (recentConfirmations.has(key)) return false;
+  recentConfirmations.set(key, now);
+  return true;
+}
+
+function buildConfirmationEmail({ smtpUser, recipientEmail, visitorEmail, contactName, service, formattedTime }) {
+  const name = contactName || 'there';
+  const safeName = escapeHtml(name);
+  const safeService = escapeHtml(service);
+
+  return {
+    from: `"Simplifyl Compliance Solutions" <${smtpUser}>`,
+    to: visitorEmail,
+    replyTo: recipientEmail,
+    subject: 'We have received your enquiry | Simplifyl Compliance Solutions',
+    text: `
+Dear ${name},
+
+Thank you for contacting Simplifyl Compliance Solutions.
+
+We have received your enquiry about ${service}. Our advisory team will review your requirements and reach out within 1 business day.
+
+Submitted on: ${formattedTime} (IST)
+
+Need to reach us sooner?
+Phone / WhatsApp: +91 78451 32962
+Email: ${recipientEmail}
+Business hours: Monday to Saturday, 9:30 AM to 6:30 PM IST
+
+Warm regards,
+Simplifyl Compliance Solutions
+1639/ A, 2nd Floor, Hopes, Coimbatore, India - 641004
+
+This is an automated acknowledgement. If you did not submit this enquiry, you can safely ignore this email.
+    `.trim(),
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #F8FAFC; color: #1E293B; margin: 0; padding: 24px; }
+    .card { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; border: 1px solid #E2E8F0; overflow: hidden; }
+    .header { background: #10364E; padding: 28px 32px; color: #ffffff; }
+    .header h1 { margin: 0; font-size: 20px; font-weight: 700; }
+    .header p { margin: 6px 0 0; font-size: 13px; color: #92C6E7; }
+    .body { padding: 32px; font-size: 15px; line-height: 1.6; color: #334155; }
+    .summary { background: #F4F8FB; border: 1px solid #E3EFF8; border-radius: 10px; padding: 16px 20px; margin: 20px 0; }
+    .summary .label { font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.05em; }
+    .summary .value { font-size: 15px; font-weight: 600; color: #0F172A; margin-bottom: 10px; }
+    .summary .value:last-child { margin-bottom: 0; }
+    .contact { font-size: 14px; }
+    .contact a { color: #1C6FA5; text-decoration: none; font-weight: 600; }
+    .footer { background: #F1F5F9; padding: 16px 32px; font-size: 12px; color: #64748B; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <h1>Thank you, we have received your enquiry</h1>
+      <p>Simplifyl Compliance Solutions</p>
+    </div>
+    <div class="body">
+      <p>Dear ${safeName},</p>
+      <p>Thank you for contacting Simplifyl. Our advisory team will review your requirements and reach out within <strong>1 business day</strong>.</p>
+
+      <div class="summary">
+        <div class="label">Service requested</div>
+        <div class="value">${safeService}</div>
+        <div class="label">Submitted on</div>
+        <div class="value">${escapeHtml(formattedTime)} (IST)</div>
+      </div>
+
+      <p class="contact">
+        <strong>Need to reach us sooner?</strong><br>
+        Phone / WhatsApp: <a href="tel:+917845132962">+91 78451 32962</a><br>
+        Email: <a href="mailto:${escapeHtml(recipientEmail)}">${escapeHtml(recipientEmail)}</a><br>
+        Business hours: Monday to Saturday, 9:30 AM to 6:30 PM IST
+      </p>
+
+      <p>Warm regards,<br><strong>Simplifyl Compliance Solutions</strong><br>
+      <span style="font-size:13px;color:#64748B;">1639/ A, 2nd Floor, Hopes, Coimbatore, India - 641004</span></p>
+    </div>
+    <div class="footer">
+      This is an automated acknowledgement. If you did not submit this enquiry, you can safely ignore this email.
+    </div>
+  </div>
+</body>
+</html>
+    `.trim()
+  };
+}
+
 export default async function handler(req, res) {
   // Only allow POST requests
   if (req.method !== 'POST') {
@@ -32,7 +143,8 @@ export default async function handler(req, res) {
       submittedAt
     } = data;
 
-    const contactName = (fullName || name || '').trim();
+    // Single line, bounded length: this ends up in email subjects and greetings
+    const contactName = (fullName || name || '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, 80);
     const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL || 'businessgroupikasle@gmail.com';
 
     // Validate required fields
@@ -210,11 +322,35 @@ Submitted At: ${formattedTime} (IST)
       `.trim()
     };
 
+    // 1. Notify the business (receiver)
     const info = await transporter.sendMail(mailOptions);
+
+    // 2. Acknowledge the visitor (sender). A failure here must not fail the enquiry,
+    //    because the business has already been notified.
+    let confirmationSent = false;
+    const visitorEmail = email.trim();
+    if (shouldSendConfirmation(visitorEmail)) {
+      try {
+        await transporter.sendMail(
+          buildConfirmationEmail({
+            smtpUser,
+            recipientEmail,
+            visitorEmail,
+            contactName,
+            service,
+            formattedTime
+          })
+        );
+        confirmationSent = true;
+      } catch (confirmErr) {
+        console.error('[Simplifyl SMTP] Confirmation email to visitor failed:', confirmErr.message);
+      }
+    }
 
     return res.status(200).json({
       success: true,
       delivered: true,
+      confirmationSent,
       messageId: info.messageId,
       recipient: recipientEmail,
       message: 'Enquiry successfully sent to businessgroupikasle@gmail.com via SMTP.'

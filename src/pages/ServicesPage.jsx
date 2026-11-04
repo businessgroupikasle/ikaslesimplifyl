@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
 import ContactModal from '../components/ContactModal';
+import Breadcrumb from '../components/Breadcrumb';
 import { Link } from '../lib/router';
 import {
   FileText,
@@ -17,7 +18,6 @@ import {
   MessageSquare,
   Rocket,
   Sparkles,
-  ChevronRight,
 } from 'lucide-react';
 import gstImg from '../assets/article_gst.jpg';
 import bizImg from '../assets/article_business.jpg';
@@ -225,11 +225,7 @@ export default function ServicesPage() {
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 lg:pb-24">
             {/* Breadcrumb */}
-            <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-300">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <ChevronRight className="w-3 h-3 text-slate-500" />
-              <span className="text-white font-semibold">Services</span>
-            </nav>
+            <Breadcrumb items={[{ label: 'Services' }]} />
 
             <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
               {/* Left: headline */}

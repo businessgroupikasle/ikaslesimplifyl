@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
 import { Link } from '../lib/router';
+import Breadcrumb from '../components/Breadcrumb';
 import {
   CATEGORIES,
   MONTH_NAMES,
@@ -130,7 +131,9 @@ export default function ComplianceCalendarPage() {
           <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:22px_22px] pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] bg-[#1C6FA5] rounded-full blur-[120px] opacity-40 pointer-events-none" />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 lg:pb-20">
+            <Breadcrumb items={[{ label: 'Compliance Calendar' }]} />
+            <div className="mt-9 lg:mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -173,17 +176,9 @@ export default function ComplianceCalendarPage() {
                 </div>
               </motion.div>
             )}
+            </div>
           </div>
         </section>
-
-        {/* Breadcrumb */}
-        <div className="bg-[#F5F7FA] border-b border-slate-200/80 py-3">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end text-xs text-slate-500">
-            <Link to="/" className="hover:text-[#10364E]">Home</Link>
-            <span className="mx-2">/</span>
-            <span className="text-[#10364E] font-semibold">Compliance Calendar</span>
-          </div>
-        </div>
 
         <section className="py-12 lg:py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">

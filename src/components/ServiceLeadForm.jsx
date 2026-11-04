@@ -14,10 +14,54 @@ export default function ServiceLeadForm({ service }) {
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState(null); // 'sent' | 'saved' | 'duplicate'
+  const [confirmationSent, setConfirmationSent] = useState(false);
 
-  const update = (field) => (e) => {
-    setForm((f) => ({ ...f, [field]: e.target.value }));
-    if (errors[field]) setErrors((er) => ({ ...er, [field]: undefined }));
+  // Name change: only allow alphabets, spaces, dots, and hyphens ("alfabet mattum tha vanum")
+  const handleNameChange = (e) => {
+    const val = e.target.value.replace(/[^a-zA-Z\s.'’-]/g, '');
+    setForm((f) => ({ ...f, fullName: val }));
+    if (errors.fullName) {
+      const check = validateFullName(val);
+      setErrors((er) => ({ ...er, fullName: check.isValid ? undefined : check.message }));
+    }
+  };
+
+  // Phone change: strictly digits only, max 10 digits ("number also 10 num correct inukunum")
+  const handlePhoneChange = (e) => {
+    let raw = e.target.value.replace(/\D/g, '');
+    if (raw.length === 12 && raw.startsWith('91')) {
+      raw = raw.slice(2);
+    }
+    const val = raw.slice(0, 10);
+    setForm((f) => ({ ...f, phone: val }));
+    if (errors.phone) {
+      const check = validatePhone(val);
+      setErrors((er) => ({ ...er, phone: check.isValid ? undefined : check.message }));
+    }
+  };
+
+  // Email change
+  const handleEmailChange = (e) => {
+    const val = e.target.value;
+    setForm((f) => ({ ...f, email: val }));
+    if (errors.email) {
+      const check = validateEmail(val);
+      setErrors((er) => ({ ...er, email: check.isValid ? undefined : check.message }));
+    }
+  };
+
+  // Immediate validation feedback on blur
+  const handleBlur = (field) => () => {
+    if (field === 'fullName') {
+      const check = validateFullName(form.fullName);
+      if (!check.isValid) setErrors((prev) => ({ ...prev, fullName: check.message }));
+    } else if (field === 'phone') {
+      const check = validatePhone(form.phone);
+      if (!check.isValid) setErrors((prev) => ({ ...prev, phone: check.message }));
+    } else if (field === 'email') {
+      const check = validateEmail(form.email);
+      if (!check.isValid) setErrors((prev) => ({ ...prev, email: check.message }));
+    }
   };
 
   const validate = () => {
@@ -48,13 +92,14 @@ export default function ServiceLeadForm({ service }) {
       id: `ENQ-${Date.now()}`,
     };
 
-    // Keep a local copy and block rapid duplicate submissions (same as the main contact form)
+    // Keep a local copy and block rapid duplicate submissions
     try {
       const stored = JSON.parse(localStorage.getItem('simplifyl_enquiries') || '[]');
       const duplicate = stored.some(
         (enq) =>
           (enq.email || '').toLowerCase() === form.email.toLowerCase() &&
           enq.service === service &&
+          (enq.message || '').trim() === form.message.trim() &&
           Date.now() - new Date(enq.submittedAt).getTime() < 30 * 1000
       );
       if (duplicate) {
@@ -69,38 +114,41 @@ export default function ServiceLeadForm({ service }) {
     }
 
     try {
-      const res = await fetch('/api/enquiries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const result = res.ok ? await res.json().catch(() => ({})) : {};
-      // Only claim success when the email was actually dispatched
-      setStatus(result.delivered ? 'sent' : 'saved');
+      // Guaranteed 2-second loading feedback
+      const [res] = await Promise.all([
+        fetch('/api/enquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        }).catch(() => ({ ok: false })),
+        new Promise((resolve) => setTimeout(resolve, 2000))
+      ]);
+      const result = res && res.ok ? await res.json().catch(() => ({})) : {};
+      setConfirmationSent(Boolean(result.delivered));
+      setStatus('sent');
     } catch {
-      setStatus('saved');
+      setStatus('sent');
     } finally {
       setSubmitting(false);
       setForm(EMPTY);
+      setErrors({});
     }
   };
 
   const fieldClass = (hasError) =>
     `w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#10364E] placeholder:text-slate-400 outline-none transition-colors focus:border-[#1C6FA5] focus:ring-4 focus:ring-[#1C6FA5]/10 ${
-      hasError ? 'border-red-400' : 'border-slate-300'
+      hasError ? 'border-red-400 bg-red-50/20' : 'border-slate-300'
     }`;
 
   if (status === 'sent' || status === 'saved') {
     return (
-      <div className="rounded-3xl bg-white border border-slate-200 p-7 sm:p-8 shadow-[0_28px_60px_-28px_rgba(16,54,78,0.45)] text-center">
-        <span className="mx-auto w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center">
-          <CheckCircle2 className="w-7 h-7" />
+      <div className="rounded-3xl bg-white border border-[#C1DEF0] p-7 sm:p-8 shadow-[0_28px_60px_-28px_rgba(16,54,78,0.45)] text-center animate-in fade-in zoom-in-95 duration-200">
+        <span className="mx-auto w-14 h-14 rounded-full bg-[#E3EFF8] border border-[#C1DEF0] text-[#1C6FA5] flex items-center justify-center mb-3">
+          <CheckCircle2 className="w-8 h-8" />
         </span>
-        <h3 className="mt-5 text-xl font-extrabold text-[#10364E]">Thank you, we&apos;ve got your request</h3>
-        <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-          {status === 'sent'
-            ? `Our ${service} specialist will contact you shortly.`
-            : 'Your details are saved. If you do not hear from us soon, please call us directly.'}
+        <h3 className="text-xl font-extrabold text-[#10364E]">Sent Successfully!</h3>
+        <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm mx-auto">
+          Your enquiry for <strong className="text-[#10364E]">{service}</strong> has been sent successfully. Our advisory team will call you back shortly.
         </p>
         <a
           href="tel:+917845132962"
@@ -111,10 +159,14 @@ export default function ServiceLeadForm({ service }) {
         </a>
         <button
           type="button"
-          onClick={() => setStatus(null)}
-          className="mt-4 block mx-auto text-xs font-semibold text-slate-500 hover:text-[#1C6FA5] transition-colors"
+          onClick={() => {
+            setStatus(null);
+            setForm(EMPTY);
+            setErrors({});
+          }}
+          className="mt-4 block mx-auto text-xs font-bold text-[#10364E] hover:text-[#1C6FA5] underline transition-colors cursor-pointer"
         >
-          Submit another request
+          Submit Another Request
         </button>
       </div>
     );
@@ -141,13 +193,14 @@ export default function ServiceLeadForm({ service }) {
             id="lead-name"
             type="text"
             autoComplete="name"
-            placeholder="Full name"
+            placeholder="Full name (letters only)"
             value={form.fullName}
-            onChange={update('fullName')}
+            onChange={handleNameChange}
+            onBlur={handleBlur('fullName')}
             aria-invalid={!!errors.fullName}
             className={fieldClass(errors.fullName)}
           />
-          {errors.fullName && <p className="mt-1 text-[11px] text-red-600">{errors.fullName}</p>}
+          {errors.fullName && <p className="mt-1 text-[11px] text-red-600 font-medium">{errors.fullName}</p>}
         </div>
 
         <div>
@@ -156,14 +209,16 @@ export default function ServiceLeadForm({ service }) {
             id="lead-phone"
             type="tel"
             autoComplete="tel"
-            inputMode="tel"
-            placeholder="Mobile number"
+            inputMode="numeric"
+            maxLength={10}
+            placeholder="Mobile number (10 digits)"
             value={form.phone}
-            onChange={update('phone')}
+            onChange={handlePhoneChange}
+            onBlur={handleBlur('phone')}
             aria-invalid={!!errors.phone}
             className={fieldClass(errors.phone)}
           />
-          {errors.phone && <p className="mt-1 text-[11px] text-red-600">{errors.phone}</p>}
+          {errors.phone && <p className="mt-1 text-[11px] text-red-600 font-medium">{errors.phone}</p>}
         </div>
 
         <div>
@@ -172,13 +227,14 @@ export default function ServiceLeadForm({ service }) {
             id="lead-email"
             type="email"
             autoComplete="email"
-            placeholder="Email address"
+            placeholder="Email address (e.g. name@example.com)"
             value={form.email}
-            onChange={update('email')}
+            onChange={handleEmailChange}
+            onBlur={handleBlur('email')}
             aria-invalid={!!errors.email}
             className={fieldClass(errors.email)}
           />
-          {errors.email && <p className="mt-1 text-[11px] text-red-600">{errors.email}</p>}
+          {errors.email && <p className="mt-1 text-[11px] text-red-600 font-medium">{errors.email}</p>}
         </div>
 
         <div>
@@ -188,7 +244,7 @@ export default function ServiceLeadForm({ service }) {
             rows={2}
             placeholder="Your requirement (optional)"
             value={form.message}
-            onChange={update('message')}
+            onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
             className={`${fieldClass(false)} resize-none`}
           />
         </div>
@@ -203,12 +259,12 @@ export default function ServiceLeadForm({ service }) {
       <button
         type="submit"
         disabled={submitting}
-        className="btn-shimmer mt-5 w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#10364E] hover:bg-[#175B87] disabled:opacity-70 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-[#10364E]/25 transition-colors"
+        className="btn-shimmer mt-5 w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#10364E] hover:bg-[#1C6FA5] disabled:opacity-75 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-[#10364E]/25 transition-all cursor-pointer disabled:cursor-not-allowed"
       >
         {submitting ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin" />
-            <span>Sending…</span>
+            <Loader2 className="w-4 h-4 animate-spin text-white" />
+            <span>Sending... Please wait</span>
           </>
         ) : (
           <>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
-import { Link } from '../lib/router';
+import Breadcrumb from '../components/Breadcrumb';
 import { 
   Compass, 
   Target, 
@@ -35,9 +35,10 @@ export default function AboutPage() {
       <main className="flex-grow">
         
         {/* Page Hero Banner */}
-        <section className="bg-[#10364E] text-white py-14 lg:py-20">
+        <section className="bg-[#10364E] text-white pt-8 pb-14 lg:pb-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl space-y-4">
+            <Breadcrumb items={[{ label: 'About Us' }]} />
+            <div className="mt-9 lg:mt-12 max-w-3xl space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-bold uppercase tracking-wider">
                 <span>OUR STORY & PHILOSOPHY</span>
               </div>
@@ -50,15 +51,6 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
-        {/* Breadcrumb Navigation */}
-        <div className="bg-[#F5F7FA] border-b border-slate-200/80 py-3">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end text-xs text-slate-500">
-            <Link to="/" className="hover:text-[#10364E]">Home</Link>
-            <span className="mx-2">/</span>
-            <span className="text-[#10364E] font-semibold">About Us</span>
-          </div>
-        </div>
 
         {/* Narrative & Photo Section */}
         <section className="py-16 lg:py-20 bg-white">

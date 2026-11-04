@@ -19,6 +19,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import SEOHead from './SEOHead';
 import ContactModal from './ContactModal';
+import Breadcrumb from './Breadcrumb';
 import ServiceLeadForm from './ServiceLeadForm';
 import { Link } from '../lib/router';
 import { IMPACT_STATS } from '../data/mockData';
@@ -209,13 +210,10 @@ export default function ServiceDetailLayout({ config }) {
           <div className="absolute -top-28 -right-24 w-[520px] h-[520px] rounded-full bg-[#4FA2D8]/15 blur-3xl pointer-events-none" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 lg:pb-20">
-            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-xs text-slate-500">
-              <Link to="/" className="hover:text-[#1C6FA5] transition-colors">Home</Link>
-              <ChevronRight className="w-3 h-3 text-slate-400" />
-              <Link to="/services" className="hover:text-[#1C6FA5] transition-colors">Services</Link>
-              <ChevronRight className="w-3 h-3 text-slate-400" />
-              <span className="text-[#10364E] font-semibold">{breadcrumb}</span>
-            </nav>
+            <Breadcrumb
+              variant="light"
+              items={[{ label: 'Services', to: '/services' }, { label: breadcrumb }]}
+            />
 
             <div className="mt-9 lg:mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               <motion.div

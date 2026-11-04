@@ -172,7 +172,7 @@ function InChatLeadForm({ defaultService = 'GST Filing', onSubmitSuccess }) {
           type="text"
           value={name}
           onChange={(e) => {
-            setName(e.target.value);
+            setName(e.target.value.replace(/[^a-zA-Z\s.'’-]/g, ''));
             if (error) setError('');
           }}
           placeholder="e.g. Rahul Sharma"

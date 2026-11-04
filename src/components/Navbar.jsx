@@ -64,6 +64,7 @@ export default function Navbar({ onOpenContact }) {
         path === '/compliance-support'
       );
     }
+    if (href === '/blog') return path === '/blog' || path.startsWith('/blog/');
     return path === href;
   };
 
@@ -211,15 +212,15 @@ export default function Navbar({ onOpenContact }) {
             </div>
 
             <Link
-              to="/faq"
+              to="/blog"
               className={`relative text-sm font-semibold transition-colors duration-150 py-1 ${
-                isLinkActive('/faq')
+                isLinkActive('/blog')
                   ? 'text-[#10364E] dark:text-blue-400 font-bold'
                   : 'text-slate-600 hover:text-[#10364E] dark:text-slate-300 dark:hover:text-white'
               }`}
             >
-              <span>FAQ</span>
-              {isLinkActive('/faq') && (
+              <span>Blog</span>
+              {isLinkActive('/blog') && (
                 <span className="absolute inset-x-0 -bottom-2 h-0.5 rounded-full bg-[#1C6FA5]" />
               )}
             </Link>
@@ -334,13 +335,13 @@ export default function Navbar({ onOpenContact }) {
             </div>
 
             <Link
-              to="/faq"
+              to="/blog"
               onClick={() => setMobileMenuOpen(false)}
               className={`text-sm font-semibold py-1.5 ${
-                isLinkActive('/faq') ? 'text-[#1C6FA5]' : 'text-slate-700 dark:text-slate-300'
+                isLinkActive('/blog') ? 'text-[#1C6FA5]' : 'text-slate-700 dark:text-slate-300'
               }`}
             >
-              FAQ
+              Blog
             </Link>
 
             <Link
