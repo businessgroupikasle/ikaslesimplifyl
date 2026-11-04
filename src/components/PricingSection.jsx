@@ -64,14 +64,14 @@ export default function PricingSection({ onOpenContact }) {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-            <span className="text-xs font-bold text-[#2563EB] tracking-wider uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
+            <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
               TRANSPARENT STRUCTURE
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#142B4A] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] tracking-tight">
             Transparent Pricing for Your Business Needs
           </h2>
 
@@ -92,29 +92,29 @@ export default function PricingSection({ onOpenContact }) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: idx * 0.08 }}
                 whileHover={{ y: -8, scale: 1.015, transition: { type: 'spring', stiffness: 350, damping: 20 } }}
-                className={`relative flex flex-col justify-between p-6 rounded-2xl bg-white border transition-all duration-300 overflow-hidden card-glow ${
+                className={`relative flex flex-col justify-between p-6 rounded-2xl bg-white border glass-hover transition-all duration-300 overflow-hidden card-glow ${
                   isPopular
-                    ? 'border-[#2563EB] shadow-[0_12px_36px_rgba(37,99,235,0.18)]'
-                    : 'border-slate-200/90 shadow-[0_4px_16px_rgba(20,43,74,0.04)] hover:shadow-[0_20px_35px_-10px_rgba(37,99,235,0.18)] hover:border-blue-400'
+                    ? 'border-[#1C6FA5] shadow-[0_12px_36px_rgba(28,111,165,0.18)]'
+                    : 'border-slate-200/90 shadow-[0_4px_16px_rgba(16,54,78,0.04)]'
                 }`}
               >
                 {/* Top Glowing Gradient Accent Line */}
-                <div className={`absolute top-0 inset-x-0 h-1.5 ${isPopular ? 'bg-gradient-to-r from-[#142B4A] via-[#2563EB] to-[#38BDF8]' : 'bg-transparent'}`} />
+                <div className={`absolute top-0 inset-x-0 h-1.5 ${isPopular ? 'bg-gradient-to-r from-[#10364E] via-[#1C6FA5] to-[#4FA2D8]' : 'bg-transparent'}`} />
 
                 {isPopular && (
                   <div className="absolute top-3 right-3">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-[#2563EB] to-indigo-600 px-2.5 py-0.5 rounded-full shadow-xs">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-[#1C6FA5] to-indigo-600 px-2.5 py-0.5 rounded-full shadow-xs">
                       Popular Choice
                     </span>
                   </div>
                 )}
 
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#2563EB] bg-[#EFF6FF] px-2.5 py-1 rounded-full border border-blue-100">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#1C6FA5] bg-[#F4F8FB] px-2.5 py-1 rounded-full border border-blue-100">
                     {plan.badge}
                   </span>
 
-                  <h3 className="text-base font-extrabold text-[#142B4A] mt-3">
+                  <h3 className="text-base font-extrabold text-[#10364E] mt-3">
                     {plan.category}
                   </h3>
 
@@ -128,7 +128,7 @@ export default function PricingSection({ onOpenContact }) {
                       <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
                         Professional Service Fee:
                       </span>
-                      <span className="text-xs font-extrabold text-[#142B4A]">
+                      <span className="text-xs font-extrabold text-[#10364E]">
                         {plan.professionalFee}
                       </span>
                     </div>
@@ -151,7 +151,7 @@ export default function PricingSection({ onOpenContact }) {
                     <ul className="space-y-2">
                       {plan.included.map((inc, i) => (
                         <li key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5] shrink-0 mt-0.5" />
                           <span className="font-medium">{inc}</span>
                         </li>
                       ))}
@@ -165,8 +165,8 @@ export default function PricingSection({ onOpenContact }) {
                     onClick={() => onOpenContact(plan.category)}
                     className={`btn-shimmer w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm group/btn ${
                       isPopular
-                        ? 'bg-gradient-to-r from-[#142B4A] via-[#1A365D] to-[#2563EB] text-white hover:shadow-lg'
-                        : 'bg-[#142B4A] hover:bg-[#1E3E6B] text-white hover:shadow-md'
+                        ? 'bg-gradient-to-r from-[#10364E] via-[#144463] to-[#1C6FA5] text-white hover:shadow-lg'
+                        : 'bg-[#10364E] hover:bg-[#174E72] text-white hover:shadow-md'
                     }`}
                   >
                     <span>Enquire Now</span>
@@ -180,7 +180,7 @@ export default function PricingSection({ onOpenContact }) {
 
         {/* Pricing Notice */}
         <div className="mt-10 p-4 rounded-xl bg-white border border-slate-200 flex items-start gap-3 max-w-3xl mx-auto">
-          <Info className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
+          <Info className="w-4 h-4 text-[#1C6FA5] shrink-0 mt-0.5" />
           <p className="text-xs text-slate-500 leading-relaxed">
             <strong>Fee Transparency Policy:</strong> Government fees, stamp duties, and registration charges are determined strictly by official statutory portals (MCA, GSTN, Trademark Registry) and billed at exact actuals. Professional advisory fees are shared upfront before commencing any work with zero hidden additions.
           </p>

@@ -4,8 +4,8 @@ import React, { useEffect, useRef } from 'react';
  * Falling Rays Component (React Bits Pro style)
  * Features dynamic, fanning pulses of light cascading downward.
  *
- * @param {string} color1 - Primary ray color (default: '#051427')
- * @param {string} color2 - Secondary / highlight pulse color (default: '#38bdf8')
+ * @param {string} color1 - Primary ray color (default: '#091923')
+ * @param {string} color2 - Secondary / highlight pulse color (default: '#4FA2D8')
  * @param {number} rayCount - Number of falling rays (default: 37)
  * @param {number} rayWidth - Base width of individual rays (default: 0.005)
  * @param {number} pulseSpeed - Speed of falling light pulses (default: 0.4)
@@ -16,8 +16,8 @@ import React, { useEffect, useRef } from 'react';
  * @param {string} className - Additional CSS classes
  */
 export default function FallingRays({
-  color1 = '#051427',
-  color2 = '#38bdf8',
+  color1 = '#091923',
+  color2 = '#4FA2D8',
   rayCount = 37,
   rayWidth = 0.005,
   pulseSpeed = 0.4,
@@ -176,7 +176,7 @@ export default function FallingRays({
           pulseGrad.addColorStop(0, `rgba(${rgb1.r}, ${rgb1.g}, ${rgb1.b}, 0)`);
           pulseGrad.addColorStop(0.4, `rgba(${rgb1.r}, ${rgb1.g}, ${rgb1.b}, ${0.2 * ray.alphaFactor})`);
           pulseGrad.addColorStop(0.8, `rgba(${rgb2.r}, ${rgb2.g}, ${rgb2.b}, ${0.5 * ray.alphaFactor})`);
-          pulseGrad.addColorStop(1, `rgba(37, 99, 235, ${0.7 * ray.alphaFactor})`);
+          pulseGrad.addColorStop(1, `rgba(28, 111, 165, ${0.7 * ray.alphaFactor})`);
 
           // Draw the beam segment
           ctx.beginPath();
@@ -194,7 +194,7 @@ export default function FallingRays({
 
             ctx.beginPath();
             ctx.arc(headX, headY, effectiveRayWidth * 1.5, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(37, 99, 235, ${0.6 * ray.alphaFactor})`;
+            ctx.fillStyle = `rgba(28, 111, 165, ${0.6 * ray.alphaFactor})`;
             ctx.fill();
 
             // Core glow

@@ -15,7 +15,21 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: #142B4A;
+    color: #10364E;
+  }
+
+  html.dark, [data-theme='dark'] {
+    color-scheme: dark;
+  }
+
+  html.dark body, [data-theme='dark'] body {
+    background-color: #091822;
+    color: #cbd5e1;
+  }
+
+  html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6,
+  [data-theme='dark'] h1, [data-theme='dark'] h2, [data-theme='dark'] h3, [data-theme='dark'] h4, [data-theme='dark'] h5, [data-theme='dark'] h6 {
+    color: #f8fafc;
   }
 }
 
@@ -31,7 +45,7 @@
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #142B4A;
+  background: #10364E;
 }
 
 /* Script annotation styles */
@@ -49,8 +63,8 @@
 }
 
 .corporate-card:hover {
-  border-color: #BFDBFE;
-  box-shadow: 0 10px 25px -5px rgba(20, 43, 74, 0.08), 0 8px 10px -6px rgba(20, 43, 74, 0.04);
+  border-color: #C1DEF0;
+  box-shadow: 0 10px 25px -5px rgba(16, 54, 78, 0.08), 0 8px 10px -6px rgba(16, 54, 78, 0.04);
   transform: translateY(-2px);
 }
 
@@ -68,13 +82,13 @@
 }
 
 .corporate-badge-blue {
-  background: #EFF6FF;
-  color: #2563EB;
-  border: 1px solid #DBEAFE;
+  background: #F4F8FB;
+  color: #1C6FA5;
+  border: 1px solid #E3EFF8;
 }
 
 .corporate-badge-navy {
-  background: #142B4A;
+  background: #10364E;
   color: #ffffff;
 }
 
@@ -89,12 +103,12 @@
   background: #ffffff;
   border-radius: 14px;
   border: 1px solid #E5E7EB;
-  box-shadow: 0 2px 8px rgba(20, 43, 74, 0.04);
+  box-shadow: 0 2px 8px rgba(16, 54, 78, 0.04);
   transition: all 0.25s ease-in-out;
 }
 .neo-card:hover {
-  border-color: #BFDBFE;
-  box-shadow: 0 12px 24px -4px rgba(20, 43, 74, 0.08);
+  border-color: #C1DEF0;
+  box-shadow: 0 12px 24px -4px rgba(16, 54, 78, 0.08);
   transform: translateY(-3px);
 }
 
@@ -109,21 +123,21 @@
   letter-spacing: 0.025em;
 }
 .neo-badge-blue {
-  background: #EFF6FF;
-  color: #2563EB;
-  border: 1px solid #DBEAFE;
+  background: #F4F8FB;
+  color: #1C6FA5;
+  border: 1px solid #E3EFF8;
 }
 .neo-badge-navy {
-  background: #142B4A;
+  background: #10364E;
   color: #ffffff;
 }
 .neo-badge-gradient {
-  background: #142B4A;
+  background: #10364E;
   color: #ffffff;
 }
 
 .neo-icon-box {
-  background: #142B4A;
+  background: #10364E;
   color: #ffffff;
   border-radius: 10px;
   display: flex;
@@ -138,17 +152,17 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #051427 0%, #2563eb 50%, #38bdf8 100%);
+  background: linear-gradient(90deg, #091923 0%, #1C6FA5 50%, #4FA2D8 100%);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
 
 .neo-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(37, 99, 235, 0.4);
+  border-color: rgba(28, 111, 165, 0.4);
   box-shadow: 
-    0 24px 48px -8px rgba(37, 99, 235, 0.16),
-    0 0 20px 0 rgba(56, 189, 248, 0.12),
+    0 24px 48px -8px rgba(28, 111, 165, 0.16),
+    0 0 20px 0 rgba(79, 162, 216, 0.12),
     inset 0 1px 0 0 rgba(255, 255, 255, 1);
 }
 
@@ -158,16 +172,16 @@
 
 /* Elevated Neo Icon Container */
 .neo-icon-box {
-  background: linear-gradient(135deg, #1d4ed8 0%, #051427 100%);
+  background: linear-gradient(135deg, #175B87 0%, #091923 100%);
   color: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 8px 20px -2px rgba(29, 78, 216, 0.28);
+  box-shadow: 0 8px 20px -2px rgba(23, 91, 135, 0.28);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .group:hover .neo-icon-box {
   transform: scale(1.08) rotate(3deg);
-  box-shadow: 0 12px 28px -2px rgba(29, 78, 216, 0.45);
+  box-shadow: 0 12px 28px -2px rgba(23, 91, 135, 0.45);
 }
 
 /* High-Contrast Neo Badges */
@@ -184,21 +198,21 @@
 }
 
 .neo-badge-blue {
-  background: #eff6ff;
-  color: #1d4ed8;
-  border: 1px solid #bfdbfe;
+  background: #F4F8FB;
+  color: #175B87;
+  border: 1px solid #C1DEF0;
 }
 
 .neo-badge-navy {
-  background: #051427;
+  background: #091923;
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(5, 20, 39, 0.2);
+  box-shadow: 0 4px 12px rgba(9, 25, 35, 0.2);
 }
 
 .neo-badge-gradient {
-  background: linear-gradient(135deg, #051427 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #091923 0%, #175B87 100%);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.25);
+  box-shadow: 0 4px 14px rgba(23, 91, 135, 0.25);
 }
 
 /* Glass & Frosted Fallback Utilities */
@@ -207,7 +221,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 30px -4px rgba(5, 20, 39, 0.06);
+  box-shadow: 0 10px 30px -4px rgba(9, 25, 35, 0.06);
   border-radius: 24px;
 }
 
@@ -304,7 +318,7 @@
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(20, 43, 74, 0.1), rgba(56, 189, 248, 0.4));
+  background: linear-gradient(135deg, rgba(28, 111, 165, 0.22), rgba(16, 54, 78, 0.05), rgba(79, 162, 216, 0.22));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -325,4 +339,48 @@
 
 .animate-cursor {
   animation: blinkCursor 0.85s infinite;
+}
+
+/* ------------------------------------------------------------------
+   Frosted-glass hover: translucent sheen + soft theme-blue glow.
+   Used on content cards (add `glass-hover`; .neo-card gets it too).
+   Declared last so it wins over the Tailwind hover utilities.
+------------------------------------------------------------------- */
+.glass-hover:hover,
+.neo-card:hover {
+  background-color: rgba(255, 255, 255, 0.55);
+  background-image:
+    radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(145deg, rgba(244, 248, 251, 0.8) 0%, rgba(227, 239, 248, 0.35) 100%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border-color: rgba(79, 162, 216, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 10px 24px -14px rgba(28, 111, 165, 0.18),
+    0 0 14px rgba(79, 162, 216, 0.12);
+}
+
+[data-theme="dark"] .glass-hover:hover,
+[data-theme="dark"] .neo-card:hover,
+.dark .glass-hover:hover,
+.dark .neo-card:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  background-image:
+    radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(145deg, rgba(79, 162, 216, 0.16) 0%, rgba(28, 111, 165, 0.08) 100%);
+  border-color: rgba(79, 162, 216, 0.3);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 10px 24px -14px rgba(0, 0, 0, 0.4),
+    0 0 14px rgba(79, 162, 216, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-hover:hover,
+  .neo-card:hover {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }

@@ -151,7 +151,7 @@ export default function TestimonialsInsights({ onSelectArticle, onOpenContact })
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   whileHover={{ y: -6, scale: 1.02, transition: { type: 'spring', stiffness: 350, damping: 20 } }}
                   onClick={() => onSelectArticle(article)}
-                  className="neo-card p-3.5 group cursor-pointer flex flex-col hover:border-blue-400 hover:shadow-[0_20px_35px_-10px_rgba(37,99,235,0.18)] transition-all duration-300 card-glow"
+                  className="neo-card p-3.5 group cursor-pointer flex flex-col glass-hover transition-all duration-300 card-glow"
                 >
                   {/* Article Thumbnail */}
                   <div className="w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 shadow-sm border border-slate-100 group-hover:shadow-md transition-all duration-300 relative">

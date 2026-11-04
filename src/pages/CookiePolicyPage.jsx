@@ -113,7 +113,7 @@ export default function CookiePolicyPage() {
         <section>
           <h2>5. Contact Information</h2>
           <p>
-            For questions regarding our use of cookies or tracking technologies, please contact <a href="mailto:business@ikasle.in">business@ikasle.in</a> or reach out via our phone helpline at +91 78451 32962.
+            For questions regarding our use of cookies or tracking technologies, please contact <a href="mailto:businessgroupikasle@gmail.com">businessgroupikasle@gmail.com</a> or reach out via our phone helpline at +91 78451 32962.
           </p>
         </section>
       </LegalLayout>

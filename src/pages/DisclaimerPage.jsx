@@ -100,7 +100,7 @@ export default function DisclaimerPage() {
         <section>
           <h2>6. Clarifications & Professional Inquiries</h2>
           <p>
-            If you have questions regarding this Disclaimer, please contact our legal desk at <a href="mailto:business@ikasle.in">business@ikasle.in</a> or telephone +91 78451 32962.
+            If you have questions regarding this Disclaimer, please contact our legal desk at <a href="mailto:businessgroupikasle@gmail.com">businessgroupikasle@gmail.com</a> or telephone +91 78451 32962.
           </p>
         </section>
       </LegalLayout>

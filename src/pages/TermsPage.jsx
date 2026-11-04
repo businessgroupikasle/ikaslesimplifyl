@@ -127,7 +127,7 @@ export default function TermsPage() {
         <section>
           <h2>8. Contact & Queries</h2>
           <p>
-            For any clarifications regarding these Terms and Conditions, please write to us at <a href="mailto:business@ikasle.in">business@ikasle.in</a> or call +91 78451 32962.
+            For any clarifications regarding these Terms and Conditions, please write to us at <a href="mailto:businessgroupikasle@gmail.com">businessgroupikasle@gmail.com</a> or call +91 78451 32962.
           </p>
         </section>
       </LegalLayout>

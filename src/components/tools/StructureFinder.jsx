@@ -8,7 +8,7 @@ function ComplianceMeter({ level }) {
   return (
     <div className="flex gap-1" aria-label={`Compliance level ${level} of 5`}>
       {[1, 2, 3, 4, 5].map((i) => (
-        <span key={i} className={`h-1.5 w-5 rounded-full ${i <= level ? 'bg-[#2563EB]' : 'bg-slate-200'}`} />
+        <span key={i} className={`h-1.5 w-5 rounded-full ${i <= level ? 'bg-[#1C6FA5]' : 'bg-slate-200'}`} />
       ))}
     </div>
   );
@@ -54,7 +54,7 @@ export default function StructureFinder({ onOpenContact }) {
       {/* Progress */}
       <div className="h-1.5 bg-slate-100">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#142B4A] via-[#2563EB] to-sky-400"
+          className="h-full bg-gradient-to-r from-[#10364E] via-[#1C6FA5] to-sky-400"
           animate={{ width: `${progress}%` }}
           transition={{ type: 'spring', stiffness: 140, damping: 22 }}
         />
@@ -73,21 +73,21 @@ export default function StructureFinder({ onOpenContact }) {
               transition={{ duration: 0.25 }}
             >
               <div className="flex items-center justify-between mb-6">
-                <span className="text-xs font-bold text-[#2563EB] uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#1C6FA5] uppercase tracking-wider">
                   Question {step + 1} of {QUESTIONS.length}
                 </span>
                 {step > 0 && (
                   <button
                     type="button"
                     onClick={back}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-[#142B4A]"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-[#10364E]"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" /> Back
                   </button>
                 )}
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#142B4A] leading-tight max-w-xl">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#10364E] leading-tight max-w-xl">
                 {QUESTIONS[step].question}
               </h3>
 
@@ -100,12 +100,12 @@ export default function StructureFinder({ onOpenContact }) {
                       type="button"
                       onClick={() => choose(i)}
                       className={`group text-left p-5 rounded-2xl border-2 transition-all hover:-translate-y-0.5 hover:shadow-hover ${
-                        selected ? 'border-[#2563EB] bg-blue-50/60' : 'border-slate-200 hover:border-[#2563EB]/60 bg-white'
+                        selected ? 'border-[#1C6FA5] bg-blue-50/60' : 'border-slate-200 hover:border-[#1C6FA5]/60 bg-white'
                       }`}
                     >
                       <span className="flex items-center justify-between">
-                        <span className="text-base font-extrabold text-[#142B4A]">{opt.label}</span>
-                        <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#2563EB] group-hover:translate-x-1 transition-all" />
+                        <span className="text-base font-extrabold text-[#10364E]">{opt.label}</span>
+                        <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#1C6FA5] group-hover:translate-x-1 transition-all" />
                       </span>
                       <span className="block mt-1 text-xs text-slate-500 font-medium">{opt.hint}</span>
                     </button>
@@ -122,8 +122,8 @@ export default function StructureFinder({ onOpenContact }) {
               className="grid grid-cols-1 lg:grid-cols-5 gap-6"
             >
               {/* Winner */}
-              <div className="lg:col-span-3 relative rounded-2xl bg-gradient-to-br from-[#142B4A] to-[#1E3E6B] text-white p-6 sm:p-8 overflow-hidden">
-                <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-[#2563EB] blur-3xl opacity-40 pointer-events-none" />
+              <div className="lg:col-span-3 relative rounded-2xl bg-gradient-to-br from-[#10364E] to-[#174E72] text-white p-6 sm:p-8 overflow-hidden">
+                <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-[#1C6FA5] blur-3xl opacity-40 pointer-events-none" />
                 <div className="relative">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/15 border border-amber-300/30 text-amber-300 text-[11px] font-bold uppercase tracking-wider">
                     <Sparkles className="w-3.5 h-3.5" /> Best match · {top.match}%
@@ -161,14 +161,14 @@ export default function StructureFinder({ onOpenContact }) {
                       <button
                         type="button"
                         onClick={() => onOpenContact('Business Registration')}
-                        className="btn-shimmer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-[#142B4A] font-bold text-xs uppercase tracking-wider hover:bg-slate-100"
+                        className="btn-shimmer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-[#10364E] font-bold text-xs uppercase tracking-wider hover:bg-slate-100"
                       >
                         Register a {top.name.split(' ').slice(-1)[0]} <ArrowRight className="w-4 h-4" />
                       </button>
                     ) : (
                       <Link
                         to="/business-registration"
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-[#142B4A] font-bold text-xs uppercase tracking-wider hover:bg-slate-100"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-[#10364E] font-bold text-xs uppercase tracking-wider hover:bg-slate-100"
                       >
                         Explore Registration <ArrowRight className="w-4 h-4" />
                       </Link>
@@ -196,12 +196,12 @@ export default function StructureFinder({ onOpenContact }) {
                     className="p-4 rounded-2xl border border-slate-200 bg-[#F5F7FA]"
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <p className="text-sm font-extrabold text-[#142B4A]">{r.name}</p>
-                      <span className="text-xs font-extrabold text-[#2563EB]">{r.match}%</span>
+                      <p className="text-sm font-extrabold text-[#10364E]">{r.name}</p>
+                      <span className="text-xs font-extrabold text-[#1C6FA5]">{r.match}%</span>
                     </div>
                     <div className="mt-2 h-1.5 rounded-full bg-slate-200 overflow-hidden">
                       <motion.div
-                        className="h-full rounded-full bg-[#2563EB]/70"
+                        className="h-full rounded-full bg-[#1C6FA5]/70"
                         initial={{ width: 0 }}
                         animate={{ width: `${r.match}%` }}
                         transition={{ delay: 0.2 + i * 0.08, duration: 0.6 }}

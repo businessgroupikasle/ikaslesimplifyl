@@ -27,7 +27,7 @@ export default function LateFeeEstimator() {
             <label htmlFor="days-late" className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
               Days past due date
             </label>
-            <span className="text-2xl font-extrabold text-[#142B4A] tabular-nums">
+            <span className="text-2xl font-extrabold text-[#10364E] tabular-nums">
               {r.days}
               <span className="text-sm text-slate-400 font-bold"> days</span>
             </span>
@@ -39,7 +39,7 @@ export default function LateFeeEstimator() {
             max="365"
             value={daysLate}
             onChange={(e) => setDaysLate(e.target.value)}
-            className="mt-3 w-full accent-[#2563EB] cursor-pointer"
+            className="mt-3 w-full accent-[#1C6FA5] cursor-pointer"
           />
           <div className="flex justify-between text-[10px] text-slate-400 font-semibold mt-1">
             <span>0</span>
@@ -60,10 +60,10 @@ export default function LateFeeEstimator() {
               type="button"
               onClick={() => setIsNil(o.v)}
               className={`p-4 rounded-2xl border-2 text-left transition-all ${
-                isNil === o.v ? 'border-[#2563EB] bg-blue-50/60' : 'border-slate-200 hover:border-slate-300'
+                isNil === o.v ? 'border-[#1C6FA5] bg-blue-50/60' : 'border-slate-200 hover:border-slate-300'
               }`}
             >
-              <p className="text-sm font-extrabold text-[#142B4A]">{o.title}</p>
+              <p className="text-sm font-extrabold text-[#10364E]">{o.title}</p>
               <p className="text-xs text-slate-500 font-semibold">{o.sub}</p>
             </button>
           ))}
@@ -80,7 +80,7 @@ export default function LateFeeEstimator() {
                     type="button"
                     onClick={() => setBracketId(b.id)}
                     className={`px-2 py-2.5 rounded-xl border text-[11px] sm:text-xs font-bold transition-colors ${
-                      bracketId === b.id ? 'bg-[#142B4A] border-[#142B4A] text-white' : 'border-slate-200 text-[#142B4A] hover:border-[#2563EB]'
+                      bracketId === b.id ? 'bg-[#10364E] border-[#10364E] text-white' : 'border-slate-200 text-[#10364E] hover:border-[#1C6FA5]'
                     }`}
                   >
                     {b.label}
@@ -99,12 +99,12 @@ export default function LateFeeEstimator() {
                     type="checkbox"
                     checked={includeInterest}
                     onChange={(e) => setIncludeInterest(e.target.checked)}
-                    className="accent-[#2563EB]"
+                    className="accent-[#1C6FA5]"
                   />
                   Add 18% interest
                 </label>
               </div>
-              <div className="mt-2 flex items-center rounded-2xl border border-slate-200 bg-white focus-within:border-[#2563EB]">
+              <div className="mt-2 flex items-center rounded-2xl border border-slate-200 bg-white focus-within:border-[#1C6FA5]">
                 <span className="pl-4 text-lg font-bold text-slate-400">₹</span>
                 <input
                   id="tax-due"
@@ -113,7 +113,7 @@ export default function LateFeeEstimator() {
                   value={taxDue}
                   disabled={!includeInterest}
                   onChange={(e) => setTaxDue(e.target.value)}
-                  className="w-full bg-transparent px-3 py-3 text-lg font-extrabold text-[#142B4A] outline-none disabled:text-slate-300"
+                  className="w-full bg-transparent px-3 py-3 text-lg font-extrabold text-[#10364E] outline-none disabled:text-slate-300"
                 />
               </div>
             </div>
@@ -124,14 +124,14 @@ export default function LateFeeEstimator() {
       {/* Output */}
       <div className="rounded-3xl border border-slate-200 bg-gradient-to-b from-[#F5F7FA] to-white p-6 sm:p-8 flex flex-col">
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">
-          <AlarmClock className="w-4 h-4 text-[#2563EB]" /> Estimated cost of delay
+          <AlarmClock className="w-4 h-4 text-[#1C6FA5]" /> Estimated cost of delay
         </div>
 
         <motion.p
           key={r.total}
           initial={{ scale: 0.96, opacity: 0.5 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="mt-3 text-5xl font-extrabold text-[#142B4A] tracking-tight tabular-nums"
+          className="mt-3 text-5xl font-extrabold text-[#10364E] tracking-tight tabular-nums"
         >
           {formatINR(r.total, { decimals: 0 })}
         </motion.p>
@@ -152,19 +152,19 @@ export default function LateFeeEstimator() {
             <dt className="text-slate-500">
               Late fee ({r.days} × ₹{r.perDay}){r.capped && <span className="ml-1 text-[10px] font-bold text-amber-600">CAPPED</span>}
             </dt>
-            <dd className="font-bold text-[#142B4A]">{formatINR(r.lateFee, { decimals: 0 })}</dd>
+            <dd className="font-bold text-[#10364E]">{formatINR(r.lateFee, { decimals: 0 })}</dd>
           </div>
           {!isNil && includeInterest && (
             <div className="flex justify-between">
               <dt className="text-slate-500">Interest @ 18% p.a.</dt>
-              <dd className="font-bold text-[#142B4A]">{formatINR(r.interest)}</dd>
+              <dd className="font-bold text-[#10364E]">{formatINR(r.interest)}</dd>
             </div>
           )}
         </dl>
 
         <div className="mt-auto pt-6">
           <p className="flex items-start gap-2 text-[11px] text-slate-500 leading-relaxed p-3 rounded-xl bg-white border border-slate-200">
-            <Info className="w-4 h-4 text-[#2563EB] shrink-0" />
+            <Info className="w-4 h-4 text-[#1C6FA5] shrink-0" />
             Indicative estimate for GSTR-3B / GSTR-1 based on standard late-fee caps. The government revises fees and grants waivers
             from time to time. Confirm with a specialist before paying.
           </p>

@@ -14,13 +14,13 @@ function Toggle({ options, value, onChange, dark }) {
             type="button"
             onClick={() => onChange(opt.value)}
             className={`relative z-10 px-3 py-2 text-[11px] font-bold uppercase tracking-wider rounded-full transition-colors ${
-              active ? (dark ? 'text-[#142B4A]' : 'text-white') : dark ? 'text-blue-100' : 'text-slate-500'
+              active ? (dark ? 'text-[#10364E]' : 'text-white') : dark ? 'text-blue-100' : 'text-slate-500'
             }`}
           >
             {active && (
               <motion.span
                 layoutId={`toggle-${options[0].value}-${dark ? 'd' : 'l'}`}
-                className={`absolute inset-0 -z-10 rounded-full ${dark ? 'bg-white' : 'bg-[#142B4A]'}`}
+                className={`absolute inset-0 -z-10 rounded-full ${dark ? 'bg-white' : 'bg-[#10364E]'}`}
                 transition={{ type: 'spring', stiffness: 400, damping: 32 }}
               />
             )}
@@ -80,7 +80,7 @@ export default function GstCalculator({ compact = false }) {
             Amount
           </label>
           <div
-            className={`mt-2 flex items-center rounded-2xl border transition-colors focus-within:border-[#2563EB] ${
+            className={`mt-2 flex items-center rounded-2xl border transition-colors focus-within:border-[#1C6FA5] ${
               dark ? 'bg-white/5 border-white/15' : 'bg-white border-slate-200'
             }`}
           >
@@ -93,7 +93,7 @@ export default function GstCalculator({ compact = false }) {
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               className={`w-full bg-transparent px-3 py-3.5 text-xl font-extrabold outline-none ${
-                dark ? 'text-white placeholder:text-blue-200/50' : 'text-[#142B4A]'
+                dark ? 'text-white placeholder:text-blue-200/50' : 'text-[#10364E]'
               }`}
               placeholder="0"
             />
@@ -115,10 +115,10 @@ export default function GstCalculator({ compact = false }) {
                   }}
                   className={`px-4 py-2 rounded-xl text-sm font-extrabold border transition-all ${
                     active
-                      ? 'bg-[#2563EB] border-[#2563EB] text-white shadow-md shadow-blue-600/30 scale-105'
+                      ? 'bg-[#1C6FA5] border-[#1C6FA5] text-white shadow-md shadow-blue-600/30 scale-105'
                       : dark
                         ? 'bg-white/5 border-white/15 text-blue-100 hover:border-blue-300'
-                        : 'bg-white border-slate-200 text-[#142B4A] hover:border-[#2563EB]'
+                        : 'bg-white border-slate-200 text-[#10364E] hover:border-[#1C6FA5]'
                   }`}
                 >
                   {r}%
@@ -135,8 +135,8 @@ export default function GstCalculator({ compact = false }) {
                 onChange={(e) => setCustomRate(e.target.value)}
                 placeholder="Custom %"
                 aria-label="Custom GST rate"
-                className={`w-28 px-3 py-2 rounded-xl text-sm font-bold border outline-none focus:border-[#2563EB] ${
-                  customRate !== '' ? 'border-[#2563EB] text-[#2563EB]' : 'border-slate-200 text-[#142B4A]'
+                className={`w-28 px-3 py-2 rounded-xl text-sm font-bold border outline-none focus:border-[#1C6FA5] ${
+                  customRate !== '' ? 'border-[#1C6FA5] text-[#1C6FA5]' : 'border-slate-200 text-[#10364E]'
                 }`}
               />
             )}
@@ -177,12 +177,12 @@ export default function GstCalculator({ compact = false }) {
         className={
           compact
             ? 'rounded-2xl bg-white/5 border border-white/10 p-4'
-            : 'relative rounded-3xl bg-[#142B4A] text-white p-6 sm:p-8 overflow-hidden'
+            : 'relative rounded-3xl bg-[#10364E] text-white p-6 sm:p-8 overflow-hidden'
         }
       >
         {!compact && (
           <>
-            <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#2563EB] rounded-full blur-3xl opacity-30 pointer-events-none" />
+            <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#1C6FA5] rounded-full blur-3xl opacity-30 pointer-events-none" />
             <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:18px_18px] pointer-events-none" />
           </>
         )}

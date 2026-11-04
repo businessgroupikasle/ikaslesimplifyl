@@ -41,19 +41,19 @@ export default function TestimonialsSection({ onOpenContact }) {
   const current = testimonials[currentIndex];
 
   return (
-    <section className="py-16 lg:py-24 bg-white border-b border-slate-100">
+    <section className="pt-8 pb-10 lg:pt-10 lg:pb-12 bg-white border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-            <span className="text-xs font-bold text-[#2563EB] tracking-wider uppercase">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
+            <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
               CLIENT EXPERIENCES
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#142B4A] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] tracking-tight">
             What Our Clients Say
           </h2>
 
@@ -67,7 +67,7 @@ export default function TestimonialsSection({ onOpenContact }) {
           <div className="p-8 sm:p-10 rounded-2xl bg-[#F5F7FA] border border-slate-200 shadow-sm relative min-h-[280px] flex flex-col justify-between">
             
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB] bg-[#EFF6FF] px-2.5 py-1 rounded border border-[#DBEAFE]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1C6FA5] bg-[#F4F8FB] px-2.5 py-1 rounded border border-[#E3EFF8]">
                 {current.category}
               </span>
               <Quote className="w-8 h-8 text-slate-300 rotate-180" />
@@ -83,7 +83,7 @@ export default function TestimonialsSection({ onOpenContact }) {
                   exit={{ opacity: 0, x: -15 }}
                   transition={{ duration: 0.25 }}
                 >
-                  <p className="text-base sm:text-lg text-[#142B4A] font-medium leading-relaxed italic">
+                  <p className="text-base sm:text-lg text-[#10364E] font-medium leading-relaxed italic">
                     "{current.feedback}"
                   </p>
                 </motion.div>
@@ -102,15 +102,15 @@ export default function TestimonialsSection({ onOpenContact }) {
                     className="w-11 h-11 rounded-full object-cover border border-slate-300"
                   />
                 ) : (
-                  <div className="w-11 h-11 rounded-full bg-[#142B4A] text-white flex items-center justify-center font-bold text-sm">
+                  <div className="w-11 h-11 rounded-full bg-[#10364E] text-white flex items-center justify-center font-bold text-sm">
                     {current.name.charAt(0)}
                   </div>
                 )}
                 <div>
-                  <h4 className="text-sm font-bold text-[#142B4A] flex items-center gap-1.5">
+                  <h4 className="text-sm font-bold text-[#10364E] flex items-center gap-1.5">
                     <span>{current.name}</span>
                     {current.verified && (
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#2563EB]" title="Verified Client" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5]" title="Verified Client" />
                     )}
                   </h4>
                   <p className="text-xs text-slate-500">
@@ -123,7 +123,7 @@ export default function TestimonialsSection({ onOpenContact }) {
               <div className="flex items-center gap-2 self-end sm:self-auto">
                 <button
                   onClick={prevSlide}
-                  className="w-9 h-9 rounded-full bg-white border border-slate-300 text-slate-700 hover:text-[#142B4A] hover:bg-slate-50 flex items-center justify-center transition-colors shadow-xs"
+                  className="w-9 h-9 rounded-full bg-white border border-slate-300 text-slate-700 hover:text-[#10364E] hover:bg-slate-50 flex items-center justify-center transition-colors shadow-xs"
                   aria-label="Previous testimonial"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -133,7 +133,7 @@ export default function TestimonialsSection({ onOpenContact }) {
                 </span>
                 <button
                   onClick={nextSlide}
-                  className="w-9 h-9 rounded-full bg-white border border-slate-300 text-slate-700 hover:text-[#142B4A] hover:bg-slate-50 flex items-center justify-center transition-colors shadow-xs"
+                  className="w-9 h-9 rounded-full bg-white border border-slate-300 text-slate-700 hover:text-[#10364E] hover:bg-slate-50 flex items-center justify-center transition-colors shadow-xs"
                   aria-label="Next testimonial"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -149,7 +149,7 @@ export default function TestimonialsSection({ onOpenContact }) {
               Are you an existing client?{' '}
               <button
                 onClick={onOpenContact}
-                className="text-[#2563EB] font-semibold hover:underline"
+                className="text-[#1C6FA5] font-semibold hover:underline"
               >
                 Share your feedback with our team
               </button>

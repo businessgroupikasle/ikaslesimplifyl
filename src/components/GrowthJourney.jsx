@@ -12,7 +12,7 @@ const STAGES = [
     href: '/tools#structure-finder',
     cta: 'Take the quiz',
     items: ['Entity comparison', 'Founder agreements', 'Tax planning call'],
-    glow: 'from-amber-300 to-orange-400',
+    glow: 'from-blue-200 to-blue-400',
   },
   {
     id: 'register',
@@ -22,7 +22,7 @@ const STAGES = [
     href: '/business-registration',
     cta: 'Registration services',
     items: ['Pvt Ltd · LLP · OPC', 'PAN, TAN & DSC', 'Udyam MSME'],
-    glow: 'from-sky-300 to-blue-500',
+    glow: 'from-blue-300 to-blue-500',
   },
   {
     id: 'protect',
@@ -32,7 +32,7 @@ const STAGES = [
     href: '/trademark-registration',
     cta: 'Trademark services',
     items: ['Trademark search', 'TM application', 'Objection replies'],
-    glow: 'from-violet-300 to-indigo-500',
+    glow: 'from-blue-300 to-blue-500',
   },
   {
     id: 'operate',
@@ -42,7 +42,7 @@ const STAGES = [
     href: '/gst-filing',
     cta: 'GST services',
     items: ['GST registration', 'Monthly returns', 'ITC reconciliation'],
-    glow: 'from-teal-300 to-emerald-500',
+    glow: 'from-blue-300 to-blue-500',
   },
   {
     id: 'scale',
@@ -52,7 +52,7 @@ const STAGES = [
     href: '/compliance-support',
     cta: 'Compliance support',
     items: ['ROC annual filings', 'Board & AGM support', 'Director KYC'],
-    glow: 'from-rose-300 to-pink-500',
+    glow: 'from-blue-400 to-blue-500',
   },
 ];
 
@@ -62,10 +62,10 @@ export default function GrowthJourney() {
   const trackInView = useInView(trackRef, { once: true, margin: '-120px' });
 
   return (
-    <section id="journey" className="relative py-20 lg:py-28 bg-[#0C1C32] text-white overflow-hidden">
+    <section id="journey" className="relative py-12 lg:py-16 bg-[#0C2332] text-white overflow-hidden">
       {/* Atmosphere */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)] pointer-events-none" />
-      <div className="absolute top-1/3 -left-40 w-[520px] h-[520px] bg-[#2563EB] rounded-full blur-[140px] opacity-25 pointer-events-none" />
+      <div className="absolute top-1/3 -left-40 w-[520px] h-[520px] bg-[#1C6FA5] rounded-full blur-[140px] opacity-25 pointer-events-none" />
       <div className="absolute -bottom-40 -right-20 w-[460px] h-[460px] bg-indigo-500 rounded-full blur-[140px] opacity-20 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -96,7 +96,7 @@ export default function GrowthJourney() {
             {/* track */}
             <div className="absolute top-8 left-[10%] right-[10%] h-[2px] bg-white/10 rounded-full" />
             <motion.div
-              className="absolute top-8 left-[10%] h-[2px] rounded-full bg-gradient-to-r from-amber-300 via-sky-400 to-pink-400 shadow-[0_0_16px_rgba(56,189,248,0.7)]"
+              className="absolute top-8 left-[10%] h-[2px] rounded-full bg-gradient-to-r from-blue-200 via-blue-300 to-blue-500 shadow-[0_0_16px_rgba(79,162,216,0.7)]"
               initial={{ width: 0 }}
               animate={{ width: trackInView ? `${(active / (STAGES.length - 1)) * 80}%` : 0 }}
               transition={{ type: 'spring', stiffness: 60, damping: 18 }}
@@ -133,8 +133,8 @@ export default function GrowthJourney() {
                       <span
                         className={`relative w-16 h-16 rounded-2xl flex items-center justify-center border transition-all duration-300 ${
                           reached
-                            ? `bg-gradient-to-br ${s.glow} border-white/20 text-[#0C1C32] shadow-xl`
-                            : 'bg-[#142B4A] border-white/10 text-blue-200'
+                            ? `bg-gradient-to-br ${s.glow} border-white/20 text-[#0C2332] shadow-xl`
+                            : 'bg-[#10364E] border-white/10 text-blue-200'
                         } ${isActive ? 'scale-110' : 'group-hover:scale-105'}`}
                       >
                         <Icon className="w-7 h-7" />
@@ -159,7 +159,7 @@ export default function GrowthJourney() {
                       <ul className="mt-3 space-y-1.5">
                         {s.items.map((it) => (
                           <li key={it} className="flex items-center gap-2 text-xs text-slate-300">
-                            <Check className="w-3.5 h-3.5 text-emerald-300 shrink-0" /> {it}
+                            <Check className="w-3.5 h-3.5 text-blue-300 shrink-0" /> {it}
                           </li>
                         ))}
                       </ul>
@@ -193,7 +193,7 @@ export default function GrowthJourney() {
                 transition={{ duration: 0.35, delay: i * 0.05 }}
                 className="relative pl-10"
               >
-                <span className={`absolute -left-[21px] top-0 w-10 h-10 rounded-xl bg-gradient-to-br ${s.glow} text-[#0C1C32] flex items-center justify-center shadow-lg`}>
+                <span className={`absolute -left-[21px] top-0 w-10 h-10 rounded-xl bg-gradient-to-br ${s.glow} text-[#0C2332] flex items-center justify-center shadow-lg`}>
                   <Icon className="w-5 h-5" />
                 </span>
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-300">0{i + 1} · {s.label}</p>

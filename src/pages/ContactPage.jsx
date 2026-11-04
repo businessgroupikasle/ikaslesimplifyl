@@ -20,7 +20,7 @@ export default function ContactPage() {
       <main className="flex-grow">
         
         {/* Hero */}
-        <section className="bg-[#142B4A] text-white py-14 lg:py-20">
+        <section className="bg-[#10364E] text-white py-14 lg:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-bold uppercase tracking-wider">
@@ -38,10 +38,10 @@ export default function ContactPage() {
 
         {/* Breadcrumb */}
         <div className="bg-[#F5F7FA] border-b border-slate-200/80 py-3">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center text-xs text-slate-500">
-            <Link to="/" className="hover:text-[#142B4A]">Home</Link>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end text-xs text-slate-500">
+            <Link to="/" className="hover:text-[#10364E]">Home</Link>
             <span className="mx-2">/</span>
-            <span className="text-[#142B4A] font-semibold">Contact Us</span>
+            <span className="text-[#10364E] font-semibold">Contact Us</span>
           </div>
         </div>
 

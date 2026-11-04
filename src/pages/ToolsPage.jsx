@@ -66,7 +66,7 @@ function ToolSection({ tool, children, tinted }) {
             </div>
           </div>
           <div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#142B4A]">{tool.title}</h2>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#10364E]">{tool.title}</h2>
             <p className="text-sm text-slate-600 mt-1 max-w-xl">{tool.blurb}</p>
           </div>
         </motion.div>
@@ -104,9 +104,9 @@ export default function ToolsPage() {
 
       <main className="flex-grow">
         {/* Hero */}
-        <section className="relative bg-[#142B4A] text-white overflow-hidden">
+        <section className="relative bg-[#10364E] text-white overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)] pointer-events-none" />
-          <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#2563EB] rounded-full blur-[120px] opacity-40 pointer-events-none" />
+          <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#1C6FA5] rounded-full blur-[120px] opacity-40 pointer-events-none" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28">
             <motion.div
@@ -171,7 +171,7 @@ export default function ToolsPage() {
         {/* Cross-link to calendar */}
         <section className="py-16 lg:py-20 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative rounded-3xl bg-gradient-to-br from-[#142B4A] via-[#1E3E6B] to-[#2563EB] p-8 sm:p-12 overflow-hidden text-white">
+            <div className="relative rounded-3xl bg-gradient-to-br from-[#10364E] via-[#174E72] to-[#1C6FA5] p-8 sm:p-12 overflow-hidden text-white">
               <CalendarDays className="absolute -right-6 -bottom-6 w-48 h-48 text-white/10 rotate-12" />
               <div className="relative max-w-xl">
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Never pay a late fee again.</h2>
@@ -181,7 +181,7 @@ export default function ToolsPage() {
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
                   <Link
                     to="/compliance-calendar"
-                    className="btn-shimmer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-[#142B4A] font-bold text-xs uppercase tracking-wider hover:bg-slate-100"
+                    className="btn-shimmer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-[#10364E] font-bold text-xs uppercase tracking-wider hover:bg-slate-100"
                   >
                     Open Calendar <ArrowRight className="w-4 h-4" />
                   </Link>

@@ -140,7 +140,7 @@ export default function PrivacyPolicyPage() {
           <div className="legal-box space-y-1 text-sm">
             <p><strong>Grievance Officer:</strong> Compliance & Legal Officer</p>
             <p><strong>Organization:</strong> Simplifyl Compliance Solutions</p>
-            <p><strong>Email:</strong> <a href="mailto:business@ikasle.in">business@ikasle.in</a></p>
+            <p><strong>Email:</strong> <a href="mailto:businessgroupikasle@gmail.com">businessgroupikasle@gmail.com</a></p>
             <p><strong>Helpline:</strong> +91 78451 32962</p>
             <p><strong>Website:</strong> <a href="https://simplifyl.com">https://simplifyl.com</a></p>
           </div>

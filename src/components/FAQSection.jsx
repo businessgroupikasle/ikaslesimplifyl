@@ -42,19 +42,19 @@ export default function FAQSection({ onOpenContact }) {
   };
 
   return (
-    <section id="faq" className="py-16 lg:py-24 bg-[#F5F7FA] border-b border-slate-200/80">
+    <section id="faq" className="pt-8 pb-10 lg:pt-10 lg:pb-12 bg-[#F5F7FA] border-b border-slate-200/80">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-            <span className="text-xs font-bold text-[#2563EB] tracking-wider uppercase">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
+            <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
               KNOWLEDGE BASE
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#142B4A] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] tracking-tight">
             Frequently Asked Questions
           </h2>
 
@@ -78,10 +78,10 @@ export default function FAQSection({ onOpenContact }) {
                   className="w-full flex items-center justify-between p-4 sm:p-5 text-left transition-colors hover:bg-slate-50 focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-sm sm:text-base font-bold text-[#142B4A] pr-4">
+                  <span className="text-sm sm:text-base font-bold text-[#10364E] pr-4">
                     {index + 1}. {faq.q}
                   </span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'bg-[#142B4A] text-white rotate-180' : 'bg-[#F5F7FA] text-slate-500'}`}>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'bg-[#10364E] text-white rotate-180' : 'bg-[#F5F7FA] text-slate-500'}`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
@@ -99,7 +99,7 @@ export default function FAQSection({ onOpenContact }) {
         {/* Still Have Questions Box */}
         <div className="mt-12 p-6 rounded-xl bg-white border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
-            <h4 className="text-sm font-bold text-[#142B4A]">
+            <h4 className="text-sm font-bold text-[#10364E]">
               Have a question not listed here?
             </h4>
             <p className="text-xs text-slate-500 mt-0.5">
@@ -108,7 +108,7 @@ export default function FAQSection({ onOpenContact }) {
           </div>
           <button
             onClick={onOpenContact}
-            className="px-5 py-2.5 rounded-full bg-[#142B4A] hover:bg-[#1E3E6B] text-white text-xs font-bold uppercase tracking-wider transition-colors shrink-0"
+            className="px-5 py-2.5 rounded-full bg-[#10364E] hover:bg-[#174E72] text-white text-xs font-bold uppercase tracking-wider transition-colors shrink-0"
           >
             Ask a Consultant
           </button>

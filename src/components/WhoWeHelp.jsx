@@ -63,14 +63,14 @@ export default function WhoWeHelp({ onOpenContact }) {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-            <span className="text-xs font-bold text-[#2563EB] tracking-wider uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
+            <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
               CLIENT DIVERSITY
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#142B4A] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] tracking-tight">
             Business Support for Every Stage of Growth
           </h2>
 
@@ -90,22 +90,22 @@ export default function WhoWeHelp({ onOpenContact }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: idx * 0.05 }}
-                className="group relative p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(20,43,74,0.04)] hover:shadow-[0_16px_32px_rgba(37,99,235,0.1)] hover:border-blue-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                className="group relative p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(16,54,78,0.04)] hover:-translate-y-1.5 glass-hover transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 {/* Top Glowing Gradient Accent Line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#142B4A] via-[#2563EB] to-[#38BDF8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#10364E] via-[#1C6FA5] to-[#4FA2D8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#142B4A] to-[#2563EB] text-white flex items-center justify-center shadow-sm shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#10364E] to-[#1C6FA5] text-white flex items-center justify-center shadow-sm shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#2563EB] bg-[#EFF6FF] px-2.5 py-1 rounded-full border border-blue-100">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1C6FA5] bg-[#F4F8FB] px-2.5 py-1 rounded-full border border-blue-100">
                       {seg.highlight}
                     </span>
                   </div>
 
-                  <h3 className="text-sm font-extrabold text-[#142B4A] group-hover:text-[#2563EB] transition-colors">
+                  <h3 className="text-sm font-extrabold text-[#10364E] group-hover:text-[#1C6FA5] transition-colors">
                     {seg.title}
                   </h3>
 
@@ -117,7 +117,7 @@ export default function WhoWeHelp({ onOpenContact }) {
                 <div className="mt-4 pt-3 border-t border-slate-100">
                   <button
                     onClick={() => onOpenContact(seg.title)}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2563EB] group-hover:text-[#142B4A] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1C6FA5] group-hover:text-[#10364E] transition-colors"
                   >
                     <span>Get Advisory</span>
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />

@@ -1,6 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import { RouterProvider, useRouter } from './lib/router';
+import { ThemeProvider } from './lib/theme';
 import HomePage from './pages/HomePage';
+import ChatBot from './components/ChatBot';
 
 // Code-split separate pages for optimal performance & Core Web Vitals
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -125,8 +127,11 @@ function RouteSwitch() {
 
 export default function App() {
   return (
-    <RouterProvider>
-      <RouteSwitch />
-    </RouterProvider>
+    <ThemeProvider>
+      <RouterProvider>
+        <RouteSwitch />
+        <ChatBot />
+      </RouterProvider>
+    </ThemeProvider>
   );
 }

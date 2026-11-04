@@ -1,21 +1,41 @@
+const themeBlue = {
+  50: '#F4F8FB',
+  100: '#E3EFF8',
+  200: '#C1DEF0',
+  300: '#92C6E7',
+  400: '#4FA2D8',
+  500: '#2686C5',
+  600: '#1C6FA5', // Theme colour
+  700: '#175B87',
+  800: '#13496C',
+  900: '#113A55',
+  950: '#0C2332',
+};
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: ['selector', '[data-theme="dark"]', '.dark'],
   theme: {
     extend: {
       colors: {
+        // Theme scale built around #1C6FA5 (600). Overriding blue/sky/indigo keeps
+        // every `text-blue-*`, `bg-sky-*`, `to-indigo-*` utility on-theme.
+        blue: themeBlue,
+        sky: themeBlue,
+        indigo: themeBlue,
         primary: {
-          DEFAULT: '#142B4A',
-          dark: '#0C1C32',
-          light: '#1E3E6B',
+          DEFAULT: '#10364E',
+          dark: '#0C2332',
+          light: '#174E72',
         },
         secondary: {
-          DEFAULT: '#2563EB',
-          dark: '#1D4ED8',
-          light: '#3B82F6',
+          DEFAULT: '#1C6FA5',
+          dark: '#175B87',
+          light: '#2686C5',
         },
         accent: {
           DEFAULT: '#F59E0B',
@@ -25,28 +45,28 @@ export default {
         darkText: '#263445',
         sectionBg: '#F5F7FA',
         brand: {
-          DEFAULT: '#142B4A',
-          950: '#091524',
-          900: '#142B4A', // Core Primary Navy Blue
-          850: '#193357',
-          800: '#1E3E6B',
-          700: '#23497E',
-          600: '#2563EB', // Secondary Blue
-          500: '#3B82F6',
-          400: '#60A5FA',
-          300: '#93C5FD',
-          200: '#BFDBFE',
-          100: '#DBEAFE',
-          50: '#EFF6FF',
+          DEFAULT: '#10364E',
+          950: '#091924',
+          900: '#10364E', // Core Primary Navy Blue
+          850: '#13405D',
+          800: '#174E72',
+          700: '#1B5C86',
+          600: '#1C6FA5', // Secondary Blue
+          500: '#2686C5',
+          400: '#4FA2D8',
+          300: '#92C6E7',
+          200: '#C1DEF0',
+          100: '#E3EFF8',
+          50: '#F4F8FB',
         },
         navy: {
-          950: '#091524',
-          900: '#142B4A',
-          850: '#193357',
-          800: '#1E3E6B',
-          700: '#23497E',
-          600: '#2563EB',
-          500: '#3B82F6',
+          950: '#091924',
+          900: '#10364E',
+          850: '#13405D',
+          800: '#174E72',
+          700: '#1B5C86',
+          600: '#1C6FA5',
+          500: '#2686C5',
         },
         surface: {
           50: '#FFFFFF',
@@ -60,9 +80,9 @@ export default {
         script: ['"Caveat"', 'cursive'],
       },
       boxShadow: {
-        'soft': '0 4px 20px -2px rgba(5, 20, 39, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
-        'card': '0 10px 30px -5px rgba(5, 20, 39, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.03)',
-        'hover': '0 20px 40px -8px rgba(5, 20, 39, 0.16), 0 8px 16px -4px rgba(0, 0, 0, 0.06)',
+        'soft': '0 4px 20px -2px rgba(9, 25, 35, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
+        'card': '0 10px 30px -5px rgba(9, 25, 35, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.03)',
+        'hover': '0 20px 40px -8px rgba(9, 25, 35, 0.16), 0 8px 16px -4px rgba(0, 0, 0, 0.06)',
       }
     },
   },

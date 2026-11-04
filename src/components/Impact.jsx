@@ -4,7 +4,7 @@ import { IMPACT_STATS } from '../data/mockData';
 
 export default function Impact() {
   return (
-    <section className="relative py-16 lg:py-20 bg-gradient-to-r from-[#051427] via-[#092244] to-[#0c2e5d] text-white overflow-hidden border-y border-blue-900/40">
+    <section className="relative py-16 lg:py-20 bg-gradient-to-r from-[#091923] via-[#0D2C40] to-[#123C57] text-white overflow-hidden border-y border-blue-900/40">
       {/* Decorative Neo Mesh & Glow Orbs */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-96 h-96 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
@@ -36,7 +36,7 @@ export default function Impact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="p-5 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-300 flex flex-col justify-between group shadow-lg"
+                className="p-5 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-blue-400/50 hover:bg-white/10 transition-all duration-300 flex flex-col justify-between group shadow-lg hover:shadow-[0_0_16px_rgba(79,162,216,0.14)]"
               >
                 <div className="w-8 h-1 bg-gradient-to-r from-blue-400 to-sky-300 rounded-full mb-4 group-hover:w-12 transition-all duration-300" />
                 <span className="text-3xl sm:text-4xl font-black text-white tracking-tight group-hover:text-sky-300 transition-colors">

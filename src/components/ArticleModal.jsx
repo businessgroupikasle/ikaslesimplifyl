@@ -80,7 +80,7 @@ export default function ArticleModal({ article, isOpen, onClose, onOpenContact }
                   onClose();
                   onOpenContact();
                 }}
-                className="w-full sm:flex-1 py-3 px-6 rounded-full bg-navy-900 hover:bg-[#0a264a] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md flex items-center justify-center gap-2 group"
+                className="w-full sm:flex-1 py-3 px-6 rounded-full bg-navy-900 hover:bg-[#0E3046] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md flex items-center justify-center gap-2 group"
               >
                 <span>Consult Our Specialist</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />

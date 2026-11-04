@@ -32,7 +32,7 @@ const PROCESS_DATA = [
       'Transparent Fee & Timeline Estimate'
     ],
     accent: 'from-blue-600 to-indigo-600',
-    glow: 'rgba(37, 99, 235, 0.15)'
+    glow: 'rgba(28, 111, 165, 0.15)'
   },
   {
     step: '02',
@@ -47,8 +47,8 @@ const PROCESS_DATA = [
       'Automated Document Pre-Screening',
       'Missing Document Alerts & Guidance'
     ],
-    accent: 'from-indigo-600 to-violet-600',
-    glow: 'rgba(79, 70, 229, 0.15)'
+    accent: 'from-blue-600 to-blue-800',
+    glow: 'rgba(28, 111, 165, 0.15)'
   },
   {
     step: '03',
@@ -80,7 +80,7 @@ const PROCESS_DATA = [
       'Full Statutory Norms Compliance'
     ],
     accent: 'from-blue-700 to-navy-900',
-    glow: 'rgba(5, 20, 39, 0.15)'
+    glow: 'rgba(9, 25, 35, 0.15)'
   },
   {
     step: '05',
@@ -180,7 +180,7 @@ export default function Process({ onOpenContact }) {
 
             <button
               onClick={onOpenContact}
-              className="btn-shimmer inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#142B4A] hover:bg-[#1E3E6B] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 group"
+              className="btn-shimmer inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#10364E] hover:bg-[#174E72] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 group"
             >
               <span>Get Started Now</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -365,7 +365,7 @@ export default function Process({ onOpenContact }) {
                         setActiveStep((prev) => (prev + 1) % PROCESS_DATA.length);
                         setIsAutoPlaying(false);
                       }}
-                      className="px-3.5 py-1.5 rounded-lg bg-navy-900 hover:bg-[#0c264a] text-xs font-bold text-white transition-colors flex items-center gap-1"
+                      className="px-3.5 py-1.5 rounded-lg bg-navy-900 hover:bg-[#0F3147] text-xs font-bold text-white transition-colors flex items-center gap-1"
                     >
                       <span>Next</span>
                       <ChevronRight className="w-3.5 h-3.5" />

@@ -24,7 +24,7 @@ export default function About({ onOpenContact }) {
   ];
 
   return (
-    <section id="about" className="py-16 lg:py-24 bg-white border-b border-slate-100">
+    <section id="about" className="py-10 lg:py-14 bg-white border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -48,13 +48,13 @@ export default function About({ onOpenContact }) {
                   decoding="async"
                   className="w-full h-[390px] sm:h-[470px] object-cover hover:scale-104 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#142B4A]/80 via-[#142B4A]/20 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#10364E]/80 via-[#10364E]/20 to-transparent pointer-events-none" />
                 
                 {/* Overlay Badge */}
-                <div className="absolute bottom-5 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_10px_25px_rgba(20,43,74,0.12)]">
+                <div className="absolute bottom-5 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_10px_25px_rgba(16,54,78,0.12)]">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
-                    <p className="text-xs font-extrabold text-[#142B4A] uppercase tracking-wider">
+                    <span className="w-2 h-2 rounded-full bg-[#1C6FA5]" />
+                    <p className="text-xs font-extrabold text-[#10364E] uppercase tracking-wider">
                       Corporate Advisory & Practice
                     </p>
                   </div>
@@ -75,14 +75,14 @@ export default function About({ onOpenContact }) {
             className="lg:col-span-7 space-y-6"
           >
             <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] border border-[#DBEAFE]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-                <span className="text-xs font-bold text-[#2563EB] tracking-wider uppercase">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
+                <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
                   ABOUT COMPANY
                 </span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#142B4A] tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#10364E] tracking-tight leading-tight">
                 Your Trusted Partner for Business Growth & Compliance
               </h2>
 
@@ -98,12 +98,12 @@ export default function About({ onOpenContact }) {
                 return (
                   <div
                     key={idx}
-                    className="group relative p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(20,43,74,0.04)] hover:shadow-[0_12px_28px_rgba(37,99,235,0.08)] hover:border-blue-300 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                    className="group relative p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(16,54,78,0.04)] hover:-translate-y-1 glass-hover transition-all duration-300 overflow-hidden"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#142B4A] to-[#2563EB] flex items-center justify-center text-white mb-3.5 shadow-sm shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#10364E] to-[#1C6FA5] flex items-center justify-center text-white mb-3.5 shadow-sm shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="text-sm font-extrabold text-[#142B4A] group-hover:text-[#2563EB] transition-colors">
+                    <h3 className="text-sm font-extrabold text-[#10364E] group-hover:text-[#1C6FA5] transition-colors">
                       {pillar.title}
                     </h3>
                     <p className="text-xs text-slate-500 mt-1.5 leading-relaxed font-normal">
@@ -121,26 +121,26 @@ export default function About({ onOpenContact }) {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#F5F7FA] border border-slate-200/70">
-                  <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0" />
-                  <span className="text-xs font-semibold text-[#142B4A]">
+                  <CheckCircle2 className="w-4 h-4 text-[#1C6FA5] shrink-0" />
+                  <span className="text-xs font-semibold text-[#10364E]">
                     Transparent fee structure with zero ambiguity
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#F5F7FA] border border-slate-200/70">
-                  <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0" />
-                  <span className="text-xs font-semibold text-[#142B4A]">
+                  <CheckCircle2 className="w-4 h-4 text-[#1C6FA5] shrink-0" />
+                  <span className="text-xs font-semibold text-[#10364E]">
                     Dedicated professional assigned to your filing
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#F5F7FA] border border-slate-200/70">
-                  <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0" />
-                  <span className="text-xs font-semibold text-[#142B4A]">
+                  <CheckCircle2 className="w-4 h-4 text-[#1C6FA5] shrink-0" />
+                  <span className="text-xs font-semibold text-[#10364E]">
                     End-to-end guidance from start to completion
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#F5F7FA] border border-slate-200/70">
-                  <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0" />
-                  <span className="text-xs font-semibold text-[#142B4A]">
+                  <CheckCircle2 className="w-4 h-4 text-[#1C6FA5] shrink-0" />
+                  <span className="text-xs font-semibold text-[#10364E]">
                     Confidential and encrypted document handling
                   </span>
                 </div>
@@ -151,7 +151,7 @@ export default function About({ onOpenContact }) {
             <div className="pt-4 flex items-center gap-4">
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#142B4A] hover:bg-[#1E3E6B] text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm group"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#10364E] hover:bg-[#174E72] text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm group"
               >
                 <span>Know More About Us</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
@@ -159,7 +159,7 @@ export default function About({ onOpenContact }) {
 
               <button
                 onClick={onOpenContact}
-                className="text-xs font-bold text-[#2563EB] hover:text-[#142B4A] transition-colors"
+                className="text-xs font-bold text-[#1C6FA5] hover:text-[#10364E] transition-colors"
               >
                 Schedule a Consultation →
               </button>

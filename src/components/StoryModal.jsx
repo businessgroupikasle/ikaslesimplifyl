@@ -32,7 +32,7 @@ export default function StoryModal({ isOpen, onClose, onOpenContact }) {
               alt="Simplifyl Corporate Headquarters Reception and Office"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#051427]/90 via-[#051427]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#091923]/90 via-[#091923]/40 to-transparent" />
             <div className="absolute bottom-4 left-6 right-6 text-white">
               <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-300">
                 OUR JOURNEY & VISION
@@ -79,7 +79,7 @@ export default function StoryModal({ isOpen, onClose, onOpenContact }) {
                   onClose();
                   onOpenContact();
                 }}
-                className="w-full sm:flex-1 py-3 px-6 rounded-full bg-navy-900 hover:bg-[#0a264a] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md flex items-center justify-center gap-2 group"
+                className="w-full sm:flex-1 py-3 px-6 rounded-full bg-navy-900 hover:bg-[#0E3046] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md flex items-center justify-center gap-2 group"
               >
                 <span>Partner with Us</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />

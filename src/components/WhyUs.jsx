@@ -53,19 +53,19 @@ export default function WhyUs({ onOpenContact }) {
   ];
 
   return (
-    <section id="why-us" className="py-16 lg:py-24 bg-[#F5F7FA] border-b border-slate-200/80">
+    <section id="why-us" className="py-10 lg:py-14 bg-[#F5F7FA] border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] border border-[#DBEAFE] mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-            <span className="text-xs font-bold text-[#2563EB] tracking-wider uppercase">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
+            <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
               THE SIMPLIFYL ADVANTAGE
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#142B4A] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] tracking-tight">
             Why Businesses Choose Us
           </h2>
 
@@ -96,22 +96,22 @@ export default function WhyUs({ onOpenContact }) {
                   decoding="async"
                   className="w-full h-[400px] sm:h-[480px] object-cover hover:scale-104 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#142B4A]/80 via-[#142B4A]/20 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#10364E]/80 via-[#10364E]/20 to-transparent pointer-events-none" />
 
                 {/* Floating Frosted Glass Overlay Badge with Perpetual Levitation */}
                 <motion.div
                   animate={{ y: [0, -6, 0] }}
                   transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute bottom-5 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_10px_25px_rgba(20,43,74,0.12)]"
+                  className="absolute bottom-5 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_10px_25px_rgba(16,54,78,0.12)]"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#142B4A] to-[#2563EB] flex items-center justify-center text-white shrink-0 shadow-sm shadow-blue-500/20">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#10364E] to-[#1C6FA5] flex items-center justify-center text-white shrink-0 shadow-sm shadow-blue-500/20">
                       <CheckCircle2 className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <div className="flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-pulse" />
-                        <h4 className="text-xs font-bold text-[#142B4A]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5] animate-pulse" />
+                        <h4 className="text-xs font-bold text-[#10364E]">
                           1-on-1 Specialist Advisory
                         </h4>
                       </div>
@@ -137,21 +137,21 @@ export default function WhyUs({ onOpenContact }) {
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: index * 0.06 }}
                   whileHover={{ y: -6, scale: 1.015, transition: { type: 'spring', stiffness: 350, damping: 20 } }}
-                  className="group relative p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(20,43,74,0.04)] hover:shadow-[0_20px_35px_-10px_rgba(37,99,235,0.18)] hover:border-blue-400 transition-all duration-300 overflow-hidden card-glow"
+                  className="group relative p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(16,54,78,0.04)] glass-hover transition-all duration-300 overflow-hidden card-glow"
                 >
                   {/* Subtle top accent line on hover */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#142B4A] via-[#2563EB] to-[#38BDF8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#10364E] via-[#1C6FA5] to-[#4FA2D8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-mono font-extrabold text-[#2563EB] bg-[#EFF6FF] px-2.5 py-1 rounded-full border border-blue-100 group-hover:bg-[#2563EB] group-hover:text-white transition-colors duration-300">
+                    <span className="text-[11px] font-mono font-extrabold text-[#1C6FA5] bg-[#F4F8FB] px-2.5 py-1 rounded-full border border-blue-100 group-hover:bg-[#1C6FA5] group-hover:text-white transition-colors duration-300">
                       Phase {item.id}
                     </span>
-                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#142B4A] to-[#2563EB] text-white flex items-center justify-center shadow-sm shadow-blue-500/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#10364E] to-[#1C6FA5] text-white flex items-center justify-center shadow-sm shadow-blue-500/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="text-sm font-extrabold text-[#142B4A] group-hover:text-[#2563EB] transition-colors">
+                  <h3 className="text-sm font-extrabold text-[#10364E] group-hover:text-[#1C6FA5] transition-colors">
                     {item.title}
                   </h3>
                   

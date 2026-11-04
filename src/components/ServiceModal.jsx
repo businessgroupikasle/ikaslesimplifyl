@@ -15,8 +15,8 @@ export default function ServiceModal({ service, isOpen, onClose, onSelectForInqu
           transition={{ duration: 0.25 }}
           className="bg-white rounded-3xl shadow-2xl max-w-xl w-full overflow-hidden border border-slate-100 relative"
         >
-          {/* Header - Theme #051427 */}
-          <div className="bg-[#051427] text-white p-6 sm:p-8 relative">
+          {/* Header - Theme #091923 */}
+          <div className="bg-[#091923] text-white p-6 sm:p-8 relative">
             <button
               onClick={onClose}
               className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
@@ -69,7 +69,7 @@ export default function ServiceModal({ service, isOpen, onClose, onSelectForInqu
                   onClose();
                   onSelectForInquiry(service.title);
                 }}
-                className="w-full sm:flex-1 py-3 px-6 rounded-full bg-navy-900 hover:bg-[#0a264a] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md flex items-center justify-center gap-2 group"
+                className="w-full sm:flex-1 py-3 px-6 rounded-full bg-navy-900 hover:bg-[#0E3046] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md flex items-center justify-center gap-2 group"
               >
                 <span>Get Started with {service.title}</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />

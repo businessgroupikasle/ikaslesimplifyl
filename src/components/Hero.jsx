@@ -62,26 +62,26 @@ export default function Hero({ onOpenContact, onExploreServices }) {
             {/* Animated Pill Badge */}
             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50/80 border border-blue-200/80 shadow-xs">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2563EB] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2563EB]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1C6FA5] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1C6FA5]" />
               </span>
-              <span className="text-xs font-extrabold text-[#2563EB] tracking-wider uppercase">
+              <span className="text-xs font-extrabold text-[#1C6FA5] tracking-wider uppercase">
                 BUSINESS REGISTRATION • TAX • COMPLIANCE
               </span>
             </div>
 
             {/* Main H1 with multi-tone gradient highlight & Typewriter Effect */}
-            <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[#142B4A] tracking-tight leading-[1.32] sm:leading-[1.28] py-1">
+            <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[#10364E] tracking-tight leading-[1.32] sm:leading-[1.28] py-1">
               <span className="block mb-2 sm:mb-3">
                 Simplifying Business Registrations,
               </span>
               <span className="inline-flex items-center flex-wrap gap-x-2.5 gap-y-1 mr-3 py-1">
-                <span className="bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#1D4ED8] bg-clip-text text-transparent underline decoration-[#2563EB]/30 underline-offset-[10px] pb-1">
+                <span className="bg-gradient-to-r from-[#1C6FA5] via-[#2686C5] to-[#175B87] bg-clip-text text-transparent underline decoration-[#1C6FA5]/30 underline-offset-[10px] pb-1">
                   {currentText || '\u00A0'}
                 </span>
-                <span className="inline-block w-[3.5px] h-7 sm:h-9 lg:h-10 bg-[#2563EB] animate-cursor rounded-full shrink-0 align-middle" />
+                <span className="inline-block w-[3.5px] h-7 sm:h-9 lg:h-10 bg-[#1C6FA5] animate-cursor rounded-full shrink-0 align-middle" />
               </span>
-              <span className="inline-block text-[#142B4A]">
+              <span className="inline-block text-[#10364E]">
                 & Legal Compliance
               </span>
             </h1>
@@ -95,7 +95,7 @@ export default function Hero({ onOpenContact, onExploreServices }) {
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <button
                 onClick={onOpenContact}
-                className="btn-shimmer inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#142B4A] via-[#1E3E6B] to-[#142B4A] hover:from-[#1E3E6B] hover:to-[#2563EB] text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-lg shadow-navy-950/20 hover:shadow-xl hover:shadow-blue-600/25 active:scale-95 group"
+                className="btn-shimmer inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#10364E] via-[#174E72] to-[#10364E] hover:from-[#174E72] hover:to-[#1C6FA5] text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-lg shadow-navy-950/20 hover:shadow-xl hover:shadow-blue-600/25 active:scale-95 group"
               >
                 <span>Get Started</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -103,9 +103,9 @@ export default function Hero({ onOpenContact, onExploreServices }) {
 
               <button
                 onClick={onOpenContact}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 text-[#142B4A] border border-slate-300/90 font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm hover:border-[#2563EB]/60 hover:text-[#2563EB]"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 text-[#10364E] border border-slate-300/90 font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm hover:border-[#1C6FA5]/60 hover:text-[#1C6FA5]"
               >
-                <MessageSquare className="w-4 h-4 text-[#2563EB]" />
+                <MessageSquare className="w-4 h-4 text-[#1C6FA5]" />
                 <span>Talk to an Expert</span>
               </button>
             </div>
@@ -113,26 +113,26 @@ export default function Hero({ onOpenContact, onExploreServices }) {
             {/* Supporting Highlights */}
             <div className="pt-4 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-full bg-[#EFF6FF] flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#2563EB]" />
+                <div className="w-5 h-5 rounded-full bg-[#F4F8FB] flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5]" />
                 </div>
-                <span className="text-xs font-semibold text-[#142B4A]">
+                <span className="text-xs font-semibold text-[#10364E]">
                   Business Registration Support
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-full bg-[#EFF6FF] flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#2563EB]" />
+                <div className="w-5 h-5 rounded-full bg-[#F4F8FB] flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5]" />
                 </div>
-                <span className="text-xs font-semibold text-[#142B4A]">
+                <span className="text-xs font-semibold text-[#10364E]">
                   GST Filing Assistance
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-full bg-[#EFF6FF] flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#2563EB]" />
+                <div className="w-5 h-5 rounded-full bg-[#F4F8FB] flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5]" />
                 </div>
-                <span className="text-xs font-semibold text-[#142B4A]">
+                <span className="text-xs font-semibold text-[#10364E]">
                   Trademark & Compliance
                 </span>
               </div>
@@ -160,7 +160,7 @@ export default function Hero({ onOpenContact, onExploreServices }) {
                     fetchPriority="high"
                     className="w-full h-[410px] sm:h-[490px] object-cover object-top hover:scale-102 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#142B4A]/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#10364E]/60 via-transparent to-transparent pointer-events-none" />
                 </div>
               </div>
 
@@ -177,16 +177,16 @@ export default function Hero({ onOpenContact, onExploreServices }) {
                   x: { duration: 0.5, delay: 0.3 },
                   y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut' }
                 }}
-                className="absolute -bottom-6 -left-4 sm:-left-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_12px_30px_rgba(20,43,74,0.12)] flex items-center gap-3.5 z-20 max-w-[270px] hover:shadow-xl transition-shadow"
+                className="absolute -bottom-6 -left-4 sm:-left-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_12px_30px_rgba(16,54,78,0.12)] flex items-center gap-3.5 z-20 max-w-[270px] hover:shadow-xl transition-shadow"
               >
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#142B4A] to-[#2563EB] flex items-center justify-center text-white shrink-0 shadow-sm shadow-blue-500/25">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#10364E] to-[#1C6FA5] flex items-center justify-center text-white shrink-0 shadow-sm shadow-blue-500/25">
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-[#142B4A]">Company Registration</p>
+                  <p className="text-xs font-bold text-[#10364E]">Company Registration</p>
                   <p className="text-[11px] text-slate-500 font-medium">Pvt Ltd, LLP, MSME & OPC</p>
-                  <div className="mt-1 flex items-center gap-1.5 text-[10px] font-bold text-[#2563EB]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+                  <div className="mt-1 flex items-center gap-1.5 text-[10px] font-bold text-[#1C6FA5]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
                     <span>MCA Digital Portal</span>
                   </div>
                 </div>

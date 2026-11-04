@@ -1,10 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, ChevronDown, FileText, Building2, ShieldCheck, FileCheck2 } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown, FileText, Building2, ShieldCheck, FileCheck2, Phone, Moon, Sun } from 'lucide-react';
 import Logo from './Logo';
 import { useRouter, Link } from '../lib/router';
+import { useTheme } from '../lib/theme';
+
+function ThemeToggle({ className = '' }) {
+  const { theme, toggle } = useTheme();
+  const dark = theme === 'dark';
+
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
+      title={dark ? 'Switch to light theme' : 'Switch to dark theme'}
+      className={`p-2 rounded-lg text-slate-700 hover:text-[#10364E] hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800 transition-colors focus:outline-none flex items-center justify-center ${className}`}
+    >
+      {dark ? (
+        <Sun className="w-5 h-5 text-amber-400" />
+      ) : (
+        <Moon className="w-5 h-5 text-slate-700" />
+      )}
+    </button>
+  );
+}
 
 export default function Navbar({ onOpenContact }) {
-  const { path, navigate } = useRouter();
+  const { path } = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -31,24 +53,18 @@ export default function Navbar({ onOpenContact }) {
 
   const isHome = path === '/' || path === '/index.html';
 
-  const handleLinkClick = (e, targetHref) => {
-    setMobileMenuOpen(false);
-    setServicesDropdownOpen(false);
-
-    if (targetHref.startsWith('#')) {
-      if (isHome) {
-        e.preventDefault();
-        const element = document.getElementById(targetHref.substring(1));
-        if (element) {
-          const navOffset = 80;
-          const pos = element.getBoundingClientRect().top + window.pageYOffset - navOffset;
-          window.scrollTo({ top: pos, behavior: 'smooth' });
-        }
-      } else {
-        e.preventDefault();
-        navigate(`/${targetHref}`);
-      }
+  const isLinkActive = (href) => {
+    if (href === '/') return isHome;
+    if (href === '/services') {
+      return (
+        path.startsWith('/services') ||
+        path === '/gst-filing' ||
+        path === '/business-registration' ||
+        path === '/trademark-registration' ||
+        path === '/compliance-support'
+      );
     }
+    return path === href;
   };
 
   const serviceItems = [
@@ -82,12 +98,12 @@ export default function Navbar({ onOpenContact }) {
     <header
       className={`sticky top-0 z-50 transition-all duration-200 ${
         isScrolled
-          ? 'bg-white shadow-[0_2px_12px_rgba(20,43,74,0.06)] border-b border-slate-200/80 py-3'
-          : 'bg-white border-b border-slate-100 py-4 sm:py-5'
+          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-[0_2px_12px_rgba(16,54,78,0.06)] border-b border-slate-200/80 dark:border-slate-800 py-3'
+          : 'bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 py-3.5 sm:py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-4">
           
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -95,56 +111,72 @@ export default function Navbar({ onOpenContact }) {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8" aria-label="Main navigation">
             <Link
               to="/"
-              className={`text-sm font-semibold transition-colors duration-150 ${
-                isHome ? 'text-[#142B4A]' : 'text-slate-600 hover:text-[#142B4A]'
+              className={`relative text-sm font-semibold transition-colors duration-150 py-1 ${
+                isLinkActive('/')
+                  ? 'text-[#10364E] dark:text-blue-400 font-bold'
+                  : 'text-slate-600 hover:text-[#10364E] dark:text-slate-300 dark:hover:text-white'
               }`}
             >
-              Home
+              <span>Home</span>
+              {isLinkActive('/') && (
+                <span className="absolute inset-x-0 -bottom-2 h-0.5 rounded-full bg-[#1C6FA5]" />
+              )}
             </Link>
 
             <Link
               to="/about"
-              className={`text-sm font-semibold transition-colors duration-150 ${
-                path === '/about' ? 'text-[#142B4A]' : 'text-slate-600 hover:text-[#142B4A]'
+              className={`relative text-sm font-semibold transition-colors duration-150 py-1 ${
+                isLinkActive('/about')
+                  ? 'text-[#10364E] dark:text-blue-400 font-bold'
+                  : 'text-slate-600 hover:text-[#10364E] dark:text-slate-300 dark:hover:text-white'
               }`}
             >
-              About Us
+              <span>About Us</span>
+              {isLinkActive('/about') && (
+                <span className="absolute inset-x-0 -bottom-2 h-0.5 rounded-full bg-[#1C6FA5]" />
+              )}
             </Link>
 
             {/* Services Dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                type="button"
-                onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
-                onMouseEnter={() => setServicesDropdownOpen(true)}
-                className={`inline-flex items-center gap-1.5 text-sm font-semibold transition-colors duration-150 py-1 ${
-                  path.startsWith('/services') || path === '/gst-filing' || path === '/business-registration' || path === '/trademark-registration' || path === '/compliance-support'
-                    ? 'text-[#2563EB]'
-                    : 'text-slate-600 hover:text-[#142B4A]'
+            <div
+              className="relative"
+              ref={dropdownRef}
+              onMouseEnter={() => setServicesDropdownOpen(true)}
+              onMouseLeave={() => setServicesDropdownOpen(false)}
+            >
+              <Link
+                to="/services"
+                onClick={() => setServicesDropdownOpen(false)}
+                className={`relative inline-flex items-center gap-1.5 text-sm font-semibold transition-colors duration-150 py-1 ${
+                  isLinkActive('/services')
+                    ? 'text-[#1C6FA5] dark:text-blue-400 font-bold'
+                    : 'text-slate-600 hover:text-[#10364E] dark:text-slate-300 dark:hover:text-white'
                 }`}
                 aria-expanded={servicesDropdownOpen}
               >
                 <span>Services</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180 text-[#2563EB]' : 'text-slate-400'}`} />
-              </button>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180 text-[#1C6FA5]' : 'text-slate-400'}`} />
+                {isLinkActive('/services') && (
+                  <span className="absolute inset-x-0 -bottom-2 h-0.5 rounded-full bg-[#1C6FA5]" />
+                )}
+              </Link>
 
               {/* Dropdown Menu */}
               {servicesDropdownOpen && (
                 <div
-                  onMouseLeave={() => setServicesDropdownOpen(false)}
-                  className="absolute left-0 mt-2 w-80 rounded-xl bg-white border border-slate-200 shadow-xl p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                  className="absolute left-0 mt-2 w-80 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
                 >
-                  <div className="p-2 border-b border-slate-100 flex items-center justify-between">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                  <div className="p-2 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                       Our Core Practice Areas
                     </span>
                     <Link
                       to="/services"
                       onClick={() => setServicesDropdownOpen(false)}
-                      className="text-xs font-semibold text-[#2563EB] hover:underline"
+                      className="text-xs font-semibold text-[#1C6FA5] dark:text-blue-400 hover:underline"
                     >
                       All Services →
                     </Link>
@@ -157,16 +189,16 @@ export default function Navbar({ onOpenContact }) {
                           key={item.href}
                           to={item.href}
                           onClick={() => setServicesDropdownOpen(false)}
-                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-[#F5F7FA] transition-colors group"
+                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-[#F5F7FA] dark:hover:bg-slate-800 transition-colors group"
                         >
-                          <div className="w-8 h-8 rounded-lg bg-[#EFF6FF] border border-[#DBEAFE] flex items-center justify-center text-[#2563EB] shrink-0 mt-0.5 group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
+                          <div className="w-8 h-8 rounded-lg bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-blue-400 shrink-0 mt-0.5 group-hover:bg-[#1C6FA5] group-hover:text-white transition-colors">
                             <Icon className="w-4 h-4" />
                           </div>
                           <div>
-                            <p className="text-xs font-bold text-[#142B4A] group-hover:text-[#2563EB] transition-colors">
+                            <p className="text-xs font-bold text-[#10364E] dark:text-white group-hover:text-[#1C6FA5] dark:group-hover:text-blue-400 transition-colors">
                               {item.name}
                             </p>
-                            <p className="text-[11px] text-slate-500 leading-tight mt-0.5 line-clamp-1">
+                            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5 line-clamp-1">
                               {item.desc}
                             </p>
                           </div>
@@ -179,62 +211,65 @@ export default function Navbar({ onOpenContact }) {
             </div>
 
             <Link
-              to="/tools"
-              className={`relative text-sm font-semibold transition-colors duration-150 ${
-                path === '/tools' ? 'text-[#2563EB]' : 'text-slate-600 hover:text-[#142B4A]'
-              }`}
-            >
-              Toolkit
-              <span className="absolute -top-2.5 -right-6 px-1.5 py-px rounded-full bg-amber-400 text-[8px] font-extrabold uppercase tracking-wider text-[#142B4A]">
-                Free
-              </span>
-            </Link>
-
-            <Link
-              to="/compliance-calendar"
-              className={`text-sm font-semibold transition-colors duration-150 pl-3 ${
-                path === '/compliance-calendar' ? 'text-[#2563EB]' : 'text-slate-600 hover:text-[#142B4A]'
-              }`}
-            >
-              Calendar
-            </Link>
-
-            <Link
               to="/faq"
-              className={`text-sm font-semibold transition-colors duration-150 ${
-                path === '/faq' ? 'text-[#142B4A]' : 'text-slate-600 hover:text-[#142B4A]'
+              className={`relative text-sm font-semibold transition-colors duration-150 py-1 ${
+                isLinkActive('/faq')
+                  ? 'text-[#10364E] dark:text-blue-400 font-bold'
+                  : 'text-slate-600 hover:text-[#10364E] dark:text-slate-300 dark:hover:text-white'
               }`}
             >
-              FAQ
+              <span>FAQ</span>
+              {isLinkActive('/faq') && (
+                <span className="absolute inset-x-0 -bottom-2 h-0.5 rounded-full bg-[#1C6FA5]" />
+              )}
             </Link>
 
             <Link
               to="/contact"
-              className={`text-sm font-semibold transition-colors duration-150 ${
-                path === '/contact' ? 'text-[#142B4A]' : 'text-slate-600 hover:text-[#142B4A]'
+              className={`relative text-sm font-semibold transition-colors duration-150 py-1 ${
+                isLinkActive('/contact')
+                  ? 'text-[#10364E] dark:text-blue-400 font-bold'
+                  : 'text-slate-600 hover:text-[#10364E] dark:text-slate-300 dark:hover:text-white'
               }`}
             >
-              Contact
+              <span>Contact</span>
+              {isLinkActive('/contact') && (
+                <span className="absolute inset-x-0 -bottom-2 h-0.5 rounded-full bg-[#1C6FA5]" />
+              )}
             </Link>
           </nav>
 
-          {/* Right Action: Get Free Consultation CTA */}
-          <div className="hidden lg:flex items-center">
-            <button
-              onClick={onOpenContact}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#142B4A] hover:bg-[#1E3E6B] text-white text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-sm hover:shadow active:scale-95 group"
+          {/* Right Header Actions: Phone Number -> Free Consultation Button -> Light/Dark Mode Toggle (Far Right) */}
+          <div className="hidden lg:flex items-center gap-4 xl:gap-5">
+            {/* Phone Number */}
+            <a
+              href="tel:+917845132962"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-[#1C6FA5] dark:text-slate-300 dark:hover:text-blue-400 transition-colors whitespace-nowrap"
             >
-              <span>Get Free Consultation</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+              <Phone className="w-4 h-4 text-slate-700 dark:text-slate-300" />
+              <span>+91 78451 32962</span>
+            </a>
+
+            {/* Free Consultation CTA Button */}
+            <button
+              type="button"
+              onClick={onOpenContact}
+              className="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#1C6FA5] hover:bg-[#175B87] text-white text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm hover:shadow active:scale-95 whitespace-nowrap"
+            >
+              <span>Free consultation</span>
             </button>
+
+            {/* Light/Dark Mode Toggle (Positioned to the far right of the header, after the Free Consultation button) */}
+            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center">
+          {/* Mobile Right Controls: Theme Toggle & Hamburger Menu Button */}
+          <div className="flex lg:hidden items-center gap-2">
+            <ThemeToggle />
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-700 hover:text-[#142B4A] hover:bg-slate-100 transition-colors focus:outline-none"
+              className="p-2 rounded-lg text-slate-700 hover:text-[#10364E] hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800 transition-colors focus:outline-none"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -246,12 +281,14 @@ export default function Navbar({ onOpenContact }) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute left-0 right-0 top-full bg-white border-b border-slate-200 shadow-xl py-5 px-6 z-50">
+        <div className="lg:hidden absolute left-0 right-0 top-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-xl py-5 px-6 z-50">
           <nav className="flex flex-col space-y-3">
             <Link
               to="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-bold text-[#142B4A] py-1.5"
+              className={`text-sm font-bold py-1.5 ${
+                isLinkActive('/') ? 'text-[#1C6FA5]' : 'text-[#10364E] dark:text-white'
+              }`}
             >
               Home
             </Link>
@@ -259,23 +296,29 @@ export default function Navbar({ onOpenContact }) {
             <Link
               to="/about"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-semibold text-slate-700 py-1.5"
+              className={`text-sm font-semibold py-1.5 ${
+                isLinkActive('/about') ? 'text-[#1C6FA5]' : 'text-slate-700 dark:text-slate-300'
+              }`}
             >
               About Us
             </Link>
 
             {/* Mobile Services Accordion */}
             <div className="py-1">
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+              <Link
+                to="/services"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-sm font-bold text-[#10364E] dark:text-white hover:text-[#1C6FA5] py-1 mb-1"
+              >
                 Services
-              </p>
-              <div className="pl-2 space-y-2 border-l-2 border-slate-100">
+              </Link>
+              <div className="pl-2 space-y-2 border-l-2 border-slate-100 dark:border-slate-800">
                 {serviceItems.map((item) => (
                   <Link
                     key={item.href}
                     to={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xs font-semibold text-slate-700 hover:text-[#2563EB] py-1"
+                    className="block text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-[#1C6FA5] py-1"
                   >
                     {item.name}
                   </Link>
@@ -283,7 +326,7 @@ export default function Navbar({ onOpenContact }) {
                 <Link
                   to="/services"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block text-xs font-bold text-[#2563EB] py-1"
+                  className="block text-xs font-bold text-[#1C6FA5] py-1"
                 >
                   View All Services →
                 </Link>
@@ -291,28 +334,11 @@ export default function Navbar({ onOpenContact }) {
             </div>
 
             <Link
-              to="/tools"
-              onClick={() => setMobileMenuOpen(false)}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 py-1.5"
-            >
-              Business Toolkit
-              <span className="px-1.5 py-px rounded-full bg-amber-400 text-[9px] font-extrabold uppercase tracking-wider text-[#142B4A]">
-                Free
-              </span>
-            </Link>
-
-            <Link
-              to="/compliance-calendar"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-semibold text-slate-700 py-1.5"
-            >
-              Compliance Calendar
-            </Link>
-
-            <Link
               to="/faq"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-semibold text-slate-700 py-1.5"
+              className={`text-sm font-semibold py-1.5 ${
+                isLinkActive('/faq') ? 'text-[#1C6FA5]' : 'text-slate-700 dark:text-slate-300'
+              }`}
             >
               FAQ
             </Link>
@@ -320,20 +346,30 @@ export default function Navbar({ onOpenContact }) {
             <Link
               to="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-semibold text-slate-700 py-1.5"
+              className={`text-sm font-semibold py-1.5 ${
+                isLinkActive('/contact') ? 'text-[#1C6FA5]' : 'text-slate-700 dark:text-slate-300'
+              }`}
             >
               Contact
             </Link>
 
-            <div className="pt-3 border-t border-slate-100">
+            <div className="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2.5">
+              <a
+                href="tel:+917845132962"
+                className="flex items-center justify-center gap-2 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-[#1C6FA5] transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#1C6FA5]" />
+                <span>+91 78451 32962</span>
+              </a>
               <button
+                type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onOpenContact();
+                  if (onOpenContact) onOpenContact();
                 }}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#142B4A] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#1E3E6B] transition-colors shadow-sm"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#1C6FA5] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#175B87] transition-colors shadow-sm"
               >
-                <span>Get Free Consultation</span>
+                <span>Free consultation</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

@@ -126,9 +126,9 @@ export default function ComplianceCalendarPage() {
 
       <main className="flex-grow">
         {/* Hero */}
-        <section className="relative bg-[#142B4A] text-white overflow-hidden">
+        <section className="relative bg-[#10364E] text-white overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:22px_22px] pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] bg-[#2563EB] rounded-full blur-[120px] opacity-40 pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] bg-[#1C6FA5] rounded-full blur-[120px] opacity-40 pointer-events-none" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <motion.div
@@ -142,7 +142,7 @@ export default function ComplianceCalendarPage() {
               </span>
               <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.1]">
                 Your Compliance Calendar,{' '}
-                <span className="bg-gradient-to-r from-amber-300 to-orange-300 bg-clip-text text-transparent">always one step ahead.</span>
+                <span className="bg-gradient-to-r from-sky-300 to-blue-300 bg-clip-text text-transparent">always one step ahead.</span>
               </h1>
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl">
                 Every recurring GST, Income Tax, TDS, ROC and LLP deadline in one interactive view. Filter by what applies to you and plan your month.
@@ -178,10 +178,10 @@ export default function ComplianceCalendarPage() {
 
         {/* Breadcrumb */}
         <div className="bg-[#F5F7FA] border-b border-slate-200/80 py-3">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center text-xs text-slate-500">
-            <Link to="/" className="hover:text-[#142B4A]">Home</Link>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end text-xs text-slate-500">
+            <Link to="/" className="hover:text-[#10364E]">Home</Link>
             <span className="mx-2">/</span>
-            <span className="text-[#142B4A] font-semibold">Compliance Calendar</span>
+            <span className="text-[#10364E] font-semibold">Compliance Calendar</span>
           </div>
         </div>
 
@@ -202,7 +202,7 @@ export default function ComplianceCalendarPage() {
                       onClick={() => toggleCat(id)}
                       aria-pressed={on}
                       className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-full border text-xs font-bold transition-all ${
-                        on ? 'bg-[#142B4A] border-[#142B4A] text-white shadow-sm' : 'bg-white border-slate-200 text-slate-400 hover:text-slate-600'
+                        on ? 'bg-[#10364E] border-[#10364E] text-white shadow-sm' : 'bg-white border-slate-200 text-slate-400 hover:text-slate-600'
                       }`}
                     >
                       <span className={`w-2 h-2 rounded-full ${on ? c.dot : 'bg-slate-300'}`} />
@@ -233,16 +233,16 @@ export default function ComplianceCalendarPage() {
                       className="group flex flex-col items-center justify-end h-full gap-1.5"
                       aria-label={`${MONTH_NAMES[m]}: ${count} deadlines`}
                     >
-                      <span className={`text-[10px] font-bold tabular-nums ${active ? 'text-[#2563EB]' : 'text-slate-400'}`}>{count}</span>
+                      <span className={`text-[10px] font-bold tabular-nums ${active ? 'text-[#1C6FA5]' : 'text-slate-400'}`}>{count}</span>
                       <motion.span
                         initial={{ height: 0 }}
                         animate={{ height: `${(count / maxCount) * 100}%` }}
                         transition={{ type: 'spring', stiffness: 120, damping: 18, delay: m * 0.02 }}
                         className={`w-full rounded-md min-h-[4px] transition-colors ${
-                          active ? 'bg-gradient-to-t from-[#142B4A] to-[#2563EB]' : 'bg-slate-300 group-hover:bg-blue-300'
+                          active ? 'bg-gradient-to-t from-[#10364E] to-[#1C6FA5]' : 'bg-slate-300 group-hover:bg-blue-300'
                         }`}
                       />
-                      <span className={`text-[10px] font-bold ${active ? 'text-[#142B4A]' : 'text-slate-400'}`}>{MONTH_NAMES[m].slice(0, 3)}</span>
+                      <span className={`text-[10px] font-bold ${active ? 'text-[#10364E]' : 'text-slate-400'}`}>{MONTH_NAMES[m].slice(0, 3)}</span>
                     </button>
                   );
                 })}
@@ -253,7 +253,7 @@ export default function ComplianceCalendarPage() {
               {/* Month grid */}
               <div className="lg:col-span-7 rounded-3xl border border-slate-200 shadow-card overflow-hidden">
                 <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-white">
-                  <button type="button" onClick={() => shiftMonth(-1)} className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center hover:border-[#2563EB] hover:text-[#2563EB]" aria-label="Previous month">
+                  <button type="button" onClick={() => shiftMonth(-1)} className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center hover:border-[#1C6FA5] hover:text-[#1C6FA5]" aria-label="Previous month">
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <AnimatePresence mode="wait">
@@ -263,12 +263,12 @@ export default function ComplianceCalendarPage() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 6 }}
                       transition={{ duration: 0.18 }}
-                      className="text-lg font-extrabold text-[#142B4A]"
+                      className="text-lg font-extrabold text-[#10364E]"
                     >
                       {MONTH_NAMES[view.m]} {view.y}
                     </motion.h2>
                   </AnimatePresence>
-                  <button type="button" onClick={() => shiftMonth(1)} className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center hover:border-[#2563EB] hover:text-[#2563EB]" aria-label="Next month">
+                  <button type="button" onClick={() => shiftMonth(1)} className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center hover:border-[#1C6FA5] hover:text-[#1C6FA5]" aria-label="Next month">
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -295,11 +295,11 @@ export default function ComplianceCalendarPage() {
                           onClick={() => setSelectedDay(selected ? null : day)}
                           className={`relative aspect-square rounded-xl flex flex-col items-center justify-center gap-1 text-sm font-bold transition-all ${
                             selected
-                              ? 'bg-[#142B4A] text-white shadow-lg scale-105 z-10'
+                              ? 'bg-[#10364E] text-white shadow-lg scale-105 z-10'
                               : items.length
-                                ? `bg-blue-50/70 hover:bg-blue-100 text-[#142B4A] ${past ? 'opacity-50' : ''}`
+                                ? `bg-blue-50/70 hover:bg-blue-100 text-[#10364E] ${past ? 'opacity-50' : ''}`
                                 : 'text-slate-400 cursor-default'
-                          } ${isToday(day) && !selected ? 'ring-2 ring-[#2563EB] ring-offset-2' : ''}`}
+                          } ${isToday(day) && !selected ? 'ring-2 ring-[#1C6FA5] ring-offset-2' : ''}`}
                         >
                           <span>{day}</span>
                           {items.length > 0 && (
@@ -319,14 +319,14 @@ export default function ComplianceCalendarPage() {
               {/* Agenda */}
               <div className="lg:col-span-5">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-base font-extrabold text-[#142B4A]">
+                  <h3 className="text-base font-extrabold text-[#10364E]">
                     {selectedDay
                       ? `${selectedDay} ${MONTH_NAMES[view.m]}`
                       : `All of ${MONTH_NAMES[view.m]}`}
                     <span className="ml-2 text-xs font-bold text-slate-400">{agenda.length} due</span>
                   </h3>
                   {selectedDay && (
-                    <button type="button" onClick={() => setSelectedDay(null)} className="inline-flex items-center gap-1 text-xs font-bold text-[#2563EB] hover:underline">
+                    <button type="button" onClick={() => setSelectedDay(null)} className="inline-flex items-center gap-1 text-xs font-bold text-[#1C6FA5] hover:underline">
                       <X className="w-3.5 h-3.5" /> Whole month
                     </button>
                   )}
@@ -349,18 +349,18 @@ export default function ComplianceCalendarPage() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -16 }}
                           transition={{ duration: 0.2, delay: i * 0.02 }}
-                          className="relative flex gap-4 p-4 rounded-2xl bg-white border border-slate-200 hover:border-blue-200 hover:shadow-soft transition-all"
+                          className="relative flex gap-4 p-4 rounded-2xl bg-white border border-slate-200 glass-hover transition-all"
                         >
                           <div className={`absolute left-0 top-4 bottom-4 w-1 rounded-r-full bg-gradient-to-b ${CATEGORIES[d.category].bar}`} />
                           <div className="w-14 shrink-0 text-center">
-                            <p className="text-2xl font-extrabold text-[#142B4A] leading-none">{d.date.getDate()}</p>
+                            <p className="text-2xl font-extrabold text-[#10364E] leading-none">{d.date.getDate()}</p>
                             <p className="text-[10px] font-bold uppercase text-slate-400 mt-1">
                               {d.date.toLocaleDateString('en-IN', { weekday: 'short' })}
                             </p>
                           </div>
                           <div className="min-w-0 flex-1">
                             <div className="flex flex-wrap items-center gap-2">
-                              <p className="text-sm font-extrabold text-[#142B4A]">{d.title}</p>
+                              <p className="text-sm font-extrabold text-[#10364E]">{d.title}</p>
                             </div>
                             <p className="text-[11px] font-semibold text-slate-500 mt-0.5">{d.form}</p>
                             <p className="text-xs text-slate-600 mt-2 leading-relaxed">{d.desc}</p>
@@ -397,11 +397,11 @@ export default function ComplianceCalendarPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="rounded-3xl border border-slate-200 bg-gradient-to-r from-[#F5F7FA] via-white to-blue-50 p-8 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#142B4A] text-white flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-[#10364E] text-white flex items-center justify-center shrink-0">
                   <BellRing className="w-6 h-6" />
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-[#142B4A]">Tired of tracking dates yourself?</h2>
+                  <h2 className="text-xl sm:text-2xl font-extrabold text-[#10364E]">Tired of tracking dates yourself?</h2>
                   <p className="text-sm text-slate-600 mt-1 max-w-xl">
                     Our compliance retainer covers every filing on this calendar, with reminders, preparation and on-time submission.
                   </p>
@@ -411,13 +411,13 @@ export default function ComplianceCalendarPage() {
                 <button
                   type="button"
                   onClick={() => setIsContactOpen(true)}
-                  className="btn-shimmer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#142B4A] hover:bg-[#1E3E6B] text-white font-bold text-xs uppercase tracking-wider"
+                  className="btn-shimmer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#10364E] hover:bg-[#174E72] text-white font-bold text-xs uppercase tracking-wider"
                 >
                   Get a Compliance Plan <ArrowRight className="w-4 h-4" />
                 </button>
                 <Link
                   to="/tools#late-fee"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-slate-300 text-[#142B4A] font-bold text-xs uppercase tracking-wider hover:border-[#2563EB] hover:text-[#2563EB]"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-slate-300 text-[#10364E] font-bold text-xs uppercase tracking-wider hover:border-[#1C6FA5] hover:text-[#1C6FA5]"
                 >
                   Estimate a late fee
                 </Link>

@@ -20,9 +20,9 @@ export default function ComplianceRadar({ onOpenContact }) {
   });
 
   return (
-    <section id="compliance-radar" className="relative py-20 lg:py-28 bg-[#142B4A] text-white overflow-hidden">
+    <section id="compliance-radar" className="relative py-20 lg:py-28 bg-[#10364E] text-white overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
-      <div className="absolute -top-32 right-0 w-[520px] h-[520px] bg-[#2563EB] rounded-full blur-[140px] opacity-30 pointer-events-none" />
+      <div className="absolute -top-32 right-0 w-[520px] h-[520px] bg-[#1C6FA5] rounded-full blur-[140px] opacity-30 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Radar visual */}
@@ -48,7 +48,7 @@ export default function ComplianceRadar({ onOpenContact }) {
           {/* sweep */}
           <motion.div
             className="absolute inset-0 rounded-full"
-            style={{ background: 'conic-gradient(from 0deg, rgba(56,189,248,0.38), rgba(56,189,248,0) 22%, transparent 100%)' }}
+            style={{ background: 'conic-gradient(from 0deg, rgba(79,162,216,0.38), rgba(79,162,216,0) 22%, transparent 100%)' }}
             animate={{ rotate: 360 }}
             transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
           />
@@ -58,7 +58,7 @@ export default function ComplianceRadar({ onOpenContact }) {
           <span className="absolute left-1/2 -translate-x-1/2 top-[26%] text-[9px] font-bold uppercase tracking-wider text-sky-300/50">2 weeks</span>
 
           {/* centre */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white text-[#142B4A] flex flex-col items-center justify-center shadow-[0_0_40px_rgba(56,189,248,0.6)]">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white text-[#10364E] flex flex-col items-center justify-center shadow-[0_0_40px_rgba(79,162,216,0.6)]">
             <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Today</span>
             <span className="text-sm font-extrabold">{todayLabel}</span>
           </div>
@@ -83,9 +83,9 @@ export default function ComplianceRadar({ onOpenContact }) {
                 aria-label={`${b.title}, ${b.days} days left`}
               >
                 <span className={`absolute inset-0 rounded-full ${CATEGORIES[b.category].dot} animate-ping opacity-60`} />
-                <span className={`relative block w-3.5 h-3.5 rounded-full ring-4 ring-[#142B4A] ${CATEGORIES[b.category].dot} ${isHover ? 'scale-150' : ''} transition-transform`} />
+                <span className={`relative block w-3.5 h-3.5 rounded-full ring-4 ring-[#10364E] ${CATEGORIES[b.category].dot} ${isHover ? 'scale-150' : ''} transition-transform`} />
                 {isHover && (
-                  <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 whitespace-nowrap px-3 py-2 rounded-xl bg-white text-[#142B4A] text-xs font-bold shadow-xl">
+                  <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 whitespace-nowrap px-3 py-2 rounded-xl bg-white text-[#10364E] text-xs font-bold shadow-xl">
                     {b.form} · {b.days === 0 ? 'today' : `${b.days}d`}
                   </span>
                 )}
@@ -140,7 +140,7 @@ export default function ComplianceRadar({ onOpenContact }) {
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <Link
               to="/compliance-calendar"
-              className="btn-shimmer inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-[#142B4A] font-bold text-xs uppercase tracking-wider hover:bg-slate-100"
+              className="btn-shimmer inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white text-[#10364E] font-bold text-xs uppercase tracking-wider hover:bg-slate-100"
             >
               Full Compliance Calendar <ArrowRight className="w-4 h-4" />
             </Link>

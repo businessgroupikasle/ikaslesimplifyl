@@ -70,7 +70,7 @@ export default function NotFoundPage() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-navy-900 hover:bg-[#0c264a] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-navy-900 hover:bg-[#0F3147] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Return to Homepage</span>
@@ -86,7 +86,7 @@ export default function NotFoundPage() {
 
             {/* Quick Links Card */}
             <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 shadow-sm text-left">
-              <h3 className="text-sm font-bold text-[#142B4A] uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-bold text-[#10364E] uppercase tracking-wider mb-4">
                 Popular Practice Areas
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -94,24 +94,24 @@ export default function NotFoundPage() {
                   to="/gst-filing"
                   className="p-3 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 transition-colors group flex items-center gap-2.5"
                 >
-                  <FileText className="w-4 h-4 text-[#2563EB] group-hover:scale-105 transition-transform" />
-                  <span className="text-xs font-semibold text-[#142B4A]">GST Filing</span>
+                  <FileText className="w-4 h-4 text-[#1C6FA5] group-hover:scale-105 transition-transform" />
+                  <span className="text-xs font-semibold text-[#10364E]">GST Filing</span>
                 </Link>
 
                 <Link
                   to="/business-registration"
                   className="p-3 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 transition-colors group flex items-center gap-2.5"
                 >
-                  <Building2 className="w-4 h-4 text-[#2563EB] group-hover:scale-105 transition-transform" />
-                  <span className="text-xs font-semibold text-[#142B4A]">Company Setup</span>
+                  <Building2 className="w-4 h-4 text-[#1C6FA5] group-hover:scale-105 transition-transform" />
+                  <span className="text-xs font-semibold text-[#10364E]">Company Setup</span>
                 </Link>
 
                 <Link
                   to="/trademark-registration"
                   className="p-3 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 transition-colors group flex items-center gap-2.5"
                 >
-                  <ShieldCheck className="w-4 h-4 text-[#2563EB] group-hover:scale-105 transition-transform" />
-                  <span className="text-xs font-semibold text-[#142B4A]">Trademark Care</span>
+                  <ShieldCheck className="w-4 h-4 text-[#1C6FA5] group-hover:scale-105 transition-transform" />
+                  <span className="text-xs font-semibold text-[#10364E]">Trademark Care</span>
                 </Link>
               </div>
             </div>
@@ -120,7 +120,7 @@ export default function NotFoundPage() {
         </main>
 
         {/* Footer */}
-        <footer className="bg-[#142B4A] text-white border-t border-slate-800 py-6">
+        <footer className="bg-[#10364E] text-white border-t border-slate-800 py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
             <p>© 2025 Simplifyl Compliance Solutions. All rights reserved.</p>
             <div className="flex flex-wrap gap-4 text-xs">

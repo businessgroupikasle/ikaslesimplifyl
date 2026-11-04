@@ -20,8 +20,8 @@
     <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large" />
 
     <!-- Theme & Color Definitions -->
-    <meta name="theme-color" content="#142B4A" />
-    <meta name="msapplication-TileColor" content="#142B4A" />
+    <meta name="theme-color" content="#1C6FA5" />
+    <meta name="msapplication-TileColor" content="#1C6FA5" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
 
     <!-- Favicon & PWA Identity Icons -->
@@ -81,7 +81,7 @@
           },
           "image": "https://simplifyl.com/og-image.png",
           "description": "Simplifyl Compliance Solutions is an end-to-end legal and tax compliance provider in India, offering expert GST filing, company registrations, trademark filing, and secretarial compliance.",
-          "email": "business@ikasle.in",
+          "email": "businessgroupikasle@gmail.com",
           "telephone": "+91 78451 32962",
           "address": {
             "@type": "PostalAddress",
@@ -102,7 +102,7 @@
               "@type": "ContactPoint",
               "telephone": "+91 78451 32962",
               "contactType": "customer service",
-              "email": "business@ikasle.in",
+              "email": "businessgroupikasle@gmail.com",
               "availableLanguage": ["English", "Tamil", "Hindi"],
               "areaServed": "IN"
             }
@@ -229,6 +229,25 @@
         }
       ]
     }
+    </script>
+    <!-- Theme: apply saved / system theme before first paint to avoid flash -->
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('simplifyl-theme');
+          var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (dark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
     </script>
   </head>
   <body class="bg-white text-navy-900 antialiased font-sans selection:bg-blue-100 selection:text-navy-900">

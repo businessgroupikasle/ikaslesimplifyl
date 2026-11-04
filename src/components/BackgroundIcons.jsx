@@ -22,7 +22,7 @@ export default function BackgroundIcons() {
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute top-28 left-[2%] xl:left-[4%] 2xl:left-[7%] hidden md:flex items-center gap-3 p-3.5 pr-5 rounded-2xl bg-white/75 backdrop-blur-md border border-blue-200/80 shadow-[0_10px_30px_rgba(5,20,39,0.06)] select-none opacity-80 hover:opacity-100 transition-opacity"
+        className="absolute top-28 left-[2%] xl:left-[4%] 2xl:left-[7%] hidden md:flex items-center gap-3 p-3.5 pr-5 rounded-2xl bg-white/75 backdrop-blur-md border border-blue-200/80 shadow-[0_10px_30px_rgba(9,25,35,0.06)] select-none opacity-80 hover:opacity-100 transition-opacity"
       >
         <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-navy-900 to-blue-700 text-white flex flex-col items-center justify-center shadow-md">
           <span className="text-[10px] font-black tracking-tighter leading-none">GST</span>
@@ -51,7 +51,7 @@ export default function BackgroundIcons() {
           ease: 'easeInOut',
           delay: 0.8,
         }}
-        className="absolute top-36 right-[2%] xl:right-[3%] 2xl:right-[6%] hidden lg:flex items-center gap-3 p-3.5 pr-4 rounded-2xl bg-white/75 backdrop-blur-md border border-blue-200/80 shadow-[0_10px_30px_rgba(5,20,39,0.06)] select-none opacity-80"
+        className="absolute top-36 right-[2%] xl:right-[3%] 2xl:right-[6%] hidden lg:flex items-center gap-3 p-3.5 pr-4 rounded-2xl bg-white/75 backdrop-blur-md border border-blue-200/80 shadow-[0_10px_30px_rgba(9,25,35,0.06)] select-none opacity-80"
       >
         <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-navy-900 shadow-sm">
           <Building2 className="w-5 h-5 text-navy-900" />
@@ -78,9 +78,9 @@ export default function BackgroundIcons() {
           ease: 'easeInOut',
           delay: 1.5,
         }}
-        className="absolute top-[38%] left-[1%] xl:left-[3%] 2xl:left-[6%] hidden xl:flex flex-col items-center p-4 rounded-3xl bg-white/70 backdrop-blur-md border border-blue-200/70 shadow-[0_12px_36px_rgba(5,20,39,0.05)] select-none opacity-75"
+        className="absolute top-[38%] left-[1%] xl:left-[3%] 2xl:left-[6%] hidden xl:flex flex-col items-center p-4 rounded-3xl bg-white/70 backdrop-blur-md border border-blue-200/70 shadow-[0_12px_36px_rgba(9,25,35,0.05)] select-none opacity-75"
       >
-        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#051427] to-blue-600 flex items-center justify-center text-white mb-2 shadow-sm">
+        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#091923] to-blue-600 flex items-center justify-center text-white mb-2 shadow-sm">
           <Receipt className="w-6 h-6 text-sky-200" />
         </div>
         <span className="text-xs font-black text-navy-900 uppercase tracking-widest">
@@ -103,7 +103,7 @@ export default function BackgroundIcons() {
           ease: 'easeInOut',
           delay: 2,
         }}
-        className="absolute top-[42%] right-[1%] xl:right-[3%] 2xl:right-[5%] hidden xl:flex items-center gap-3 p-3.5 pr-4 rounded-2xl bg-white/75 backdrop-blur-md border border-blue-200/80 shadow-[0_10px_30px_rgba(5,20,39,0.06)] select-none opacity-80"
+        className="absolute top-[42%] right-[1%] xl:right-[3%] 2xl:right-[5%] hidden xl:flex items-center gap-3 p-3.5 pr-4 rounded-2xl bg-white/75 backdrop-blur-md border border-blue-200/80 shadow-[0_10px_30px_rgba(9,25,35,0.06)] select-none opacity-80"
       >
         <div className="w-11 h-11 rounded-xl bg-blue-100/70 border border-blue-200 flex items-center justify-center text-navy-900 shadow-sm">
           <ShieldCheck className="w-6 h-6 text-navy-900" />
@@ -130,7 +130,7 @@ export default function BackgroundIcons() {
           ease: 'easeInOut',
           delay: 0.5,
         }}
-        className="absolute top-[58%] left-[2%] xl:left-[4%] 2xl:left-[7%] hidden xl:flex items-center gap-3 p-3 rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_28px_rgba(5,20,39,0.04)] select-none opacity-75"
+        className="absolute top-[58%] left-[2%] xl:left-[4%] 2xl:left-[7%] hidden xl:flex items-center gap-3 p-3 rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_28px_rgba(9,25,35,0.04)] select-none opacity-75"
       >
         <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-navy-900">
           <Landmark className="w-5 h-5 text-navy-900" />
@@ -157,7 +157,7 @@ export default function BackgroundIcons() {
           ease: 'easeInOut',
           delay: 1.2,
         }}
-        className="absolute top-[68%] right-[2%] xl:right-[4%] 2xl:right-[6%] hidden xl:flex items-center gap-3 p-3.5 pr-4 rounded-2xl bg-white/75 backdrop-blur-md border border-blue-200/80 shadow-[0_10px_30px_rgba(5,20,39,0.05)] select-none opacity-80"
+        className="absolute top-[68%] right-[2%] xl:right-[4%] 2xl:right-[6%] hidden xl:flex items-center gap-3 p-3.5 pr-4 rounded-2xl bg-white/75 backdrop-blur-md border border-blue-200/80 shadow-[0_10px_30px_rgba(9,25,35,0.05)] select-none opacity-80"
       >
         <div className="w-11 h-11 rounded-xl bg-navy-900 text-white flex items-center justify-center shadow-sm">
           <Stamp className="w-5 h-5 text-sky-300" />
@@ -184,7 +184,7 @@ export default function BackgroundIcons() {
           ease: 'easeInOut',
           delay: 2.2,
         }}
-        className="absolute top-[82%] left-[2%] xl:left-[4%] 2xl:left-[6%] hidden xl:flex items-center gap-3 p-3.5 pr-4 rounded-2xl bg-white/70 backdrop-blur-md border border-blue-200/70 shadow-[0_8px_28px_rgba(5,20,39,0.04)] select-none opacity-75"
+        className="absolute top-[82%] left-[2%] xl:left-[4%] 2xl:left-[6%] hidden xl:flex items-center gap-3 p-3.5 pr-4 rounded-2xl bg-white/70 backdrop-blur-md border border-blue-200/70 shadow-[0_8px_28px_rgba(9,25,35,0.04)] select-none opacity-75"
       >
         <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-navy-900">
           <Scale className="w-5 h-5 text-navy-900" />

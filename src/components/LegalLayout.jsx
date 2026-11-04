@@ -18,7 +18,7 @@ export default function LegalLayout({
   children,
 }) {
   return (
-    <div className="min-h-screen bg-white text-[#263445] flex flex-col font-sans selection:bg-blue-100 selection:text-[#142B4A]">
+    <div className="min-h-screen bg-white text-[#263445] flex flex-col font-sans selection:bg-blue-100 selection:text-[#10364E]">
       
       {/* Top Header */}
       <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
@@ -32,14 +32,14 @@ export default function LegalLayout({
           <div className="flex items-center gap-3">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 hover:border-blue-400 bg-white text-xs font-semibold text-[#142B4A] hover:text-[#2563EB] transition-all shadow-xs"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 hover:border-blue-400 bg-white text-xs font-semibold text-[#10364E] hover:text-[#1C6FA5] transition-all shadow-xs"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Home</span>
             </Link>
             <Link
               to="/contact"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#142B4A] hover:bg-[#1E3E6B] text-white text-xs font-semibold transition-all shadow-sm"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#10364E] hover:bg-[#174E72] text-white text-xs font-semibold transition-all shadow-sm"
             >
               <span>Contact Us</span>
             </Link>
@@ -48,7 +48,7 @@ export default function LegalLayout({
       </header>
 
       {/* Hero Banner with Semantic Heading & Breadcrumbs */}
-      <section className="bg-[#142B4A] text-white py-12 lg:py-16 relative overflow-hidden">
+      <section className="bg-[#10364E] text-white py-12 lg:py-16 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-blue-200/80 mb-4">
@@ -106,7 +106,7 @@ export default function LegalLayout({
         </nav>
 
         {/* Legal Text Article */}
-        <article className="prose prose-slate max-w-none bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-slate-200/80 shadow-[0_4px_25px_rgba(5,20,39,0.03)] text-slate-700 leading-relaxed space-y-6">
+        <article className="prose prose-slate max-w-none bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-slate-200/80 shadow-[0_4px_25px_rgba(9,25,35,0.03)] text-slate-700 leading-relaxed space-y-6">
           {children}
         </article>
 
@@ -123,7 +123,7 @@ export default function LegalLayout({
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="mailto:support@simplifyl.com"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-navy-900 hover:bg-[#0c264a] text-white text-xs font-semibold transition-colors shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-navy-900 hover:bg-[#0F3147] text-white text-xs font-semibold transition-colors shadow-sm"
             >
               <Mail className="w-3.5 h-3.5" />
               <span>support@simplifyl.com</span>
@@ -140,7 +140,7 @@ export default function LegalLayout({
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#051427] text-white border-t border-blue-900/40 py-8">
+      <footer className="bg-[#091923] text-white border-t border-blue-900/40 py-8">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>© 2025 Simplifyl Compliance Solutions. All rights reserved.</p>
           <div className="flex flex-wrap gap-4 text-xs">

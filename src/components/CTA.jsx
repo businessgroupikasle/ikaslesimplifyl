@@ -5,27 +5,27 @@ import { Link } from '../lib/router';
 
 export default function CTA({ onOpenContact }) {
   return (
-    <section className="py-14 sm:py-20 bg-white">
+    <section className="py-10 sm:py-14 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Full-width corporate banner in Primary Navy #142B4A */}
+        {/* Full-width corporate banner in Primary Navy #10364E */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative rounded-3xl bg-[#142B4A] text-white p-8 sm:p-12 lg:p-16 overflow-hidden shadow-2xl border border-slate-800"
+          className="relative rounded-3xl bg-[#10364E] text-white p-8 sm:p-12 lg:p-16 overflow-hidden shadow-2xl border border-slate-800"
         >
           {/* Subtle animated background ambient glow */}
           <motion.div
             animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.35, 0.2] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-[#2563EB] rounded-full blur-3xl pointer-events-none"
+            className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-[#1C6FA5] rounded-full blur-3xl pointer-events-none"
           />
           <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
             transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-            className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-[#38BDF8] rounded-full blur-3xl pointer-events-none"
+            className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-[#4FA2D8] rounded-full blur-3xl pointer-events-none"
           />
 
           <div className="relative z-10 max-w-3xl space-y-6">
@@ -46,7 +46,7 @@ export default function CTA({ onOpenContact }) {
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <button
                 onClick={onOpenContact}
-                className="btn-shimmer inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-white hover:bg-slate-100 text-[#142B4A] font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95 group"
+                className="btn-shimmer inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-white hover:bg-slate-100 text-[#10364E] font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95 group"
               >
                 <span>Get Free Consultation</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
