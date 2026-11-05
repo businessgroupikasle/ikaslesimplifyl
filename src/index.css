@@ -14,6 +14,34 @@
     overflow-x: hidden;
   }
 
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .text-center,
+  .text-center p,
+  p.text-center {
+    text-align: center;
+  }
+
+  p.text-left {
+    text-align: left;
+  }
+
+  p.text-right {
+    text-align: right;
+  }
+
+  p.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  button p, [role="button"] p {
+    text-align: inherit;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     color: #10364E;
   }
