@@ -267,7 +267,6 @@ function InChatLeadForm({ defaultService = 'GST Filing', onSubmitSuccess }) {
 export default function ChatBot() {
   const { path, navigate } = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const [unreadPrompt, setUnreadPrompt] = useState(true);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(() => {
@@ -479,44 +478,10 @@ export default function ChatBot() {
     <>
       {/* Floating Launcher Button */}
       <div className="fixed bottom-6 right-6 z-50 select-none">
-        <AnimatePresence>
-          {!isOpen && unreadPrompt && (
-            <motion.div
-              initial={{ opacity: 0, y: 10, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.9 }}
-              onClick={() => {
-                setIsOpen(true);
-                setUnreadPrompt(false);
-              }}
-              className="absolute -top-14 right-0 mb-2 cursor-pointer whitespace-nowrap rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl px-4 py-2.5 text-xs font-semibold text-[#10364E] dark:text-slate-200 flex items-center gap-2 hover:border-[#1C6FA5] transition-colors"
-            >
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1C6FA5] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1C6FA5]"></span>
-              </span>
-              <span>Need help with GST, Pvt Ltd or Trademarks? Ask us!</span>
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setUnreadPrompt(false);
-                }}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-white ml-1"
-                aria-label="Dismiss greeting"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => {
-            setIsOpen(!isOpen);
-            setUnreadPrompt(false);
-          }}
+          onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Close Simplifyl chat assistant' : 'Open Simplifyl chat assistant'}
           className="relative w-14 h-14 rounded-full bg-gradient-to-r from-[#10364E] to-[#1C6FA5] text-white flex items-center justify-center shadow-xl shadow-blue-900/25 border-2 border-white dark:border-slate-800 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all"
         >
