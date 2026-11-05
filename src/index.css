@@ -77,6 +77,16 @@
   background: #10364E;
 }
 
+html.dark ::-webkit-scrollbar-track, [data-theme='dark'] ::-webkit-scrollbar-track {
+  background: #091822;
+}
+html.dark ::-webkit-scrollbar-thumb, [data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+}
+html.dark ::-webkit-scrollbar-thumb:hover, [data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: #2686C5;
+}
+
 /* Script annotation styles */
 .font-script {
   font-family: 'Caveat', cursive;
@@ -95,10 +105,21 @@
   transition: all 0.25s ease-in-out;
 }
 
+html.dark .corporate-card, [data-theme='dark'] .corporate-card {
+  background: #0f1d2a;
+  border-color: #1e293b;
+  color: #cbd5e1;
+}
+
 .corporate-card:hover {
   border-color: #C1DEF0;
   box-shadow: 0 10px 25px -5px rgba(16, 54, 78, 0.08), 0 8px 10px -6px rgba(16, 54, 78, 0.04);
   transform: translateY(-2px);
+}
+
+html.dark .corporate-card:hover, [data-theme='dark'] .corporate-card:hover {
+  border-color: #1C6FA5;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
 }
 
 /* Corporate Badges */
@@ -139,10 +160,19 @@
   box-shadow: 0 2px 8px rgba(16, 54, 78, 0.04);
   transition: all 0.25s ease-in-out;
 }
+html.dark .neo-card, [data-theme='dark'] .neo-card {
+  background: #0f1d2a;
+  border-color: #1e293b;
+  color: #cbd5e1;
+}
 .neo-card:hover {
   border-color: #C1DEF0;
   box-shadow: 0 12px 24px -4px rgba(16, 54, 78, 0.08);
   transform: translateY(-3px);
+}
+html.dark .neo-card:hover, [data-theme='dark'] .neo-card:hover {
+  border-color: #1C6FA5;
+  box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.4);
 }
 
 .neo-badge {

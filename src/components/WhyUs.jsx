@@ -53,23 +53,23 @@ export default function WhyUs({ onOpenContact }) {
   ];
 
   return (
-    <section id="why-us" className="py-10 lg:py-14 bg-[#F5F7FA] border-b border-slate-200/80">
+    <section id="why-us" className="py-10 lg:py-14 bg-[#F5F7FA] dark:bg-[#0C2332] border-b border-slate-200/80 dark:border-slate-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] dark:bg-blue-950/60 border border-[#E3EFF8] dark:border-blue-800/60 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
-            <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
+            <span className="text-xs font-bold text-[#1C6FA5] dark:text-blue-300 tracking-wider uppercase">
               THE SIMPLIFYL ADVANTAGE
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] dark:text-white tracking-tight">
             Why Businesses Choose Us
           </h2>
 
-          <p className="mt-3 text-base text-slate-600 leading-relaxed font-normal">
+          <p className="mt-3 text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
             We focus on precision, prompt communication, and complete transparency to provide dependable corporate compliance services.
           </p>
         </div>
@@ -85,8 +85,8 @@ export default function WhyUs({ onOpenContact }) {
             transition={{ duration: 0.5 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative rounded-3xl p-2.5 bg-gradient-to-tr from-slate-200 via-blue-100/70 to-indigo-100 shadow-xl">
-              <div className="relative rounded-2xl overflow-hidden bg-white shadow-inner">
+            <div className="relative rounded-3xl p-2.5 bg-gradient-to-tr from-slate-200 via-blue-100/70 to-indigo-100 dark:from-slate-800 dark:via-blue-950/40 dark:to-slate-800 shadow-xl">
+              <div className="relative rounded-2xl overflow-hidden bg-white dark:bg-slate-900 shadow-inner">
                 <img
                   src={meetingImg}
                   alt="Simplifyl Specialist Explaining Compliance Roadmap"
@@ -102,7 +102,7 @@ export default function WhyUs({ onOpenContact }) {
                 <motion.div
                   animate={{ y: [0, -6, 0] }}
                   transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute bottom-5 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_10px_25px_rgba(16,54,78,0.12)]"
+                  className="absolute bottom-5 left-4 right-4 p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 shadow-[0_10px_25px_rgba(16,54,78,0.12)]"
                 >
                   <div className="flex items-center gap-3.5">
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#10364E] to-[#1C6FA5] flex items-center justify-center text-white shrink-0 shadow-sm shadow-blue-500/20">
@@ -111,11 +111,11 @@ export default function WhyUs({ onOpenContact }) {
                     <div>
                       <div className="flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5] animate-pulse" />
-                        <h4 className="text-xs font-bold text-[#10364E]">
+                        <h4 className="text-xs font-bold text-[#10364E] dark:text-white">
                           1-on-1 Specialist Advisory
                         </h4>
                       </div>
-                      <p className="text-[11px] text-slate-500 mt-0.5">
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                         Tailored compliance roadmap for your specific business structure
                       </p>
                     </div>
@@ -137,13 +137,13 @@ export default function WhyUs({ onOpenContact }) {
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: index * 0.06 }}
                   whileHover={{ y: -6, scale: 1.015, transition: { type: 'spring', stiffness: 350, damping: 20 } }}
-                  className="group relative p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(16,54,78,0.04)] glass-hover transition-all duration-300 overflow-hidden card-glow"
+                  className="group relative p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-[0_4px_16px_rgba(16,54,78,0.04)] dark:shadow-none glass-hover transition-all duration-300 overflow-hidden card-glow"
                 >
                   {/* Subtle top accent line on hover */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#10364E] via-[#1C6FA5] to-[#4FA2D8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-mono font-extrabold text-[#1C6FA5] bg-[#F4F8FB] px-2.5 py-1 rounded-full border border-blue-100 group-hover:bg-[#1C6FA5] group-hover:text-white transition-colors duration-300">
+                    <span className="text-[11px] font-mono font-extrabold text-[#1C6FA5] dark:text-blue-400 bg-[#F4F8FB] dark:bg-slate-800 px-2.5 py-1 rounded-full border border-blue-100 dark:border-slate-700 group-hover:bg-[#1C6FA5] group-hover:text-white transition-colors duration-300">
                       Phase {item.id}
                     </span>
                     <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#10364E] to-[#1C6FA5] text-white flex items-center justify-center shadow-sm shadow-blue-500/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
@@ -151,11 +151,11 @@ export default function WhyUs({ onOpenContact }) {
                     </div>
                   </div>
 
-                  <h3 className="text-sm font-extrabold text-[#10364E] group-hover:text-[#1C6FA5] transition-colors">
+                  <h3 className="text-sm font-extrabold text-[#10364E] dark:text-white group-hover:text-[#1C6FA5] dark:group-hover:text-blue-400 transition-colors">
                     {item.title}
                   </h3>
                   
-                  <p className="mt-1.5 text-xs text-slate-500 leading-relaxed font-normal">
+                  <p className="mt-1.5 text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-normal">
                     {item.desc}
                   </p>
                 </motion.div>

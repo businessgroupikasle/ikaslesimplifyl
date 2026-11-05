@@ -22,7 +22,7 @@ export default function AboutPage() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-[#263445] flex flex-col font-sans">
+    <div className="min-h-screen bg-white dark:bg-[#091822] text-[#263445] dark:text-slate-200 flex flex-col font-sans transition-colors duration-200">
       <SEOHead
         title="About Us | Simplifyl Business & Compliance Solutions"
         description="Learn about Simplifyl Compliance Solutions, our mission, vision, and core values. We provide dependable GST filing, company registrations, and statutory compliance assistance across India."
@@ -35,7 +35,7 @@ export default function AboutPage() {
       <main className="flex-grow">
         
         {/* Page Hero Banner */}
-        <section className="bg-[#10364E] text-white pt-8 pb-14 lg:pb-20">
+        <section className="bg-[#10364E] dark:bg-[#0C2332] text-white pt-8 pb-14 lg:pb-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumb items={[{ label: 'About Us' }]} />
             <div className="mt-9 lg:mt-12 max-w-3xl space-y-4">
@@ -53,27 +53,27 @@ export default function AboutPage() {
         </section>
 
         {/* Narrative & Photo Section */}
-        <section className="py-16 lg:py-20 bg-white">
+        <section className="py-16 lg:py-20 bg-white dark:bg-[#091822] transition-colors duration-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               
               <div className="lg:col-span-6 space-y-5">
-                <span className="text-xs font-bold text-[#1C6FA5] uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#1C6FA5] dark:text-blue-400 uppercase tracking-wider">
                   WHO WE ARE
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#10364E] tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#10364E] dark:text-white tracking-tight">
                   Demystifying Corporate Regulatory Frameworks
                 </h2>
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
                   Simplifyl was founded on a simple principle: regulatory compliance should not be an impediment to enterprise growth. While Indian statutory frameworks provide robust legal protections, the operational complexities of GST returns, ROC annual filings, and intellectual property registrations can distract founders from core business objectives.
                 </p>
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
                   Our consultancy operates as a strategic execution bridge between growing businesses and statutory requirements. We translate dense procedural directives into clear, actionable checklists, ensuring zero missed due dates and complete transparency at every stage.
                 </p>
                 <div className="pt-2">
                   <button
                     onClick={() => setIsContactOpen(true)}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#10364E] hover:bg-[#174E72] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#10364E] hover:bg-[#174E72] dark:bg-[#1C6FA5] dark:hover:bg-[#175B87] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
                   >
                     <span>Connect With Our Team</span>
                     <ArrowRight className="w-4 h-4" />
@@ -82,7 +82,7 @@ export default function AboutPage() {
               </div>
 
               <div className="lg:col-span-6">
-                <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-md">
+                <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md">
                   <img
                     src={receptionImg}
                     alt="Simplifyl Advisory Workspace"
@@ -98,44 +98,44 @@ export default function AboutPage() {
         </section>
 
         {/* Mission, Vision, and Values */}
-        <section className="py-16 bg-[#F5F7FA] border-t border-b border-slate-200/80">
+        <section className="py-16 bg-[#F5F7FA] dark:bg-[#0c1c28] border-t border-b border-slate-200/80 dark:border-slate-800 transition-colors duration-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#10364E]">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#10364E] dark:text-white">
                 Our Guiding Foundations
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2">
                 Core principles driving every document we draft and client relationship we build.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-6 rounded-xl bg-white border border-slate-200 shadow-xs">
-                <div className="w-10 h-10 rounded-lg bg-[#F4F8FB] border border-[#E3EFF8] flex items-center justify-center text-[#1C6FA5] mb-4">
+              <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                <div className="w-10 h-10 rounded-lg bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-blue-400 mb-4">
                   <Compass className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-bold text-[#10364E]">Our Mission</h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                <h3 className="text-base font-bold text-[#10364E] dark:text-white">Our Mission</h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                   To provide structured, dependable, and affordable business registration and statutory compliance advisory that empowers Indian enterprises to operate with confidence.
                 </p>
               </div>
 
-              <div className="p-6 rounded-xl bg-white border border-slate-200 shadow-xs">
-                <div className="w-10 h-10 rounded-lg bg-[#F4F8FB] border border-[#E3EFF8] flex items-center justify-center text-[#1C6FA5] mb-4">
+              <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                <div className="w-10 h-10 rounded-lg bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-blue-400 mb-4">
                   <Target className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-bold text-[#10364E]">Our Vision</h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                <h3 className="text-base font-bold text-[#10364E] dark:text-white">Our Vision</h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                   To be recognized as India's most client-centric and transparent business consultancy, distinguished by accuracy, responsiveness, and ethical practice.
                 </p>
               </div>
 
-              <div className="p-6 rounded-xl bg-white border border-slate-200 shadow-xs">
-                <div className="w-10 h-10 rounded-lg bg-[#F4F8FB] border border-[#E3EFF8] flex items-center justify-center text-[#1C6FA5] mb-4">
+              <div className="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+                <div className="w-10 h-10 rounded-lg bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-blue-400 mb-4">
                   <Shield className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-bold text-[#10364E]">Our Core Values</h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                <h3 className="text-base font-bold text-[#10364E] dark:text-white">Our Core Values</h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                   Uncompromising integrity, statutory accuracy, upfront fee transparency with zero hidden charges, and absolute confidentiality of all commercial documentation.
                 </p>
               </div>
@@ -144,54 +144,54 @@ export default function AboutPage() {
         </section>
 
         {/* Why Choose Simplifyl */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-white dark:bg-[#091822] transition-colors duration-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#10364E]">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#10364E] dark:text-white">
                 The Simplifyl Difference
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-2">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2">
                 What clients experience when partnering with our professional consultancy.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="p-5 rounded-xl bg-[#F5F7FA] border border-slate-200">
-                <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#1C6FA5] mb-3">
+              <div className="p-5 rounded-xl bg-[#F5F7FA] dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <div className="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-blue-400 mb-3">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
-                <h3 className="text-sm font-bold text-[#10364E]">Fee Clarity</h3>
-                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                <h3 className="text-sm font-bold text-[#10364E] dark:text-white">Fee Clarity</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
                   Government statutory fees and professional charges are clearly distinguished upfront with zero surprises.
                 </p>
               </div>
 
-              <div className="p-5 rounded-xl bg-[#F5F7FA] border border-slate-200">
-                <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#1C6FA5] mb-3">
+              <div className="p-5 rounded-xl bg-[#F5F7FA] dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <div className="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-blue-400 mb-3">
                   <Users className="w-4 h-4" />
                 </div>
-                <h3 className="text-sm font-bold text-[#10364E]">Dedicated Point of Contact</h3>
-                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                <h3 className="text-sm font-bold text-[#10364E] dark:text-white">Dedicated Point of Contact</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
                   You work directly with an assigned compliance professional familiar with your operational context.
                 </p>
               </div>
 
-              <div className="p-5 rounded-xl bg-[#F5F7FA] border border-slate-200">
-                <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#1C6FA5] mb-3">
+              <div className="p-5 rounded-xl bg-[#F5F7FA] dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <div className="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-blue-400 mb-3">
                   <Clock className="w-4 h-4" />
                 </div>
-                <h3 className="text-sm font-bold text-[#10364E]">Proactive Due Dates</h3>
-                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                <h3 className="text-sm font-bold text-[#10364E] dark:text-white">Proactive Due Dates</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
                   Automated intimation of GST return dates, annual ROC timelines, and Director KYC deadlines.
                 </p>
               </div>
 
-              <div className="p-5 rounded-xl bg-[#F5F7FA] border border-slate-200">
-                <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#1C6FA5] mb-3">
+              <div className="p-5 rounded-xl bg-[#F5F7FA] dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                <div className="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-blue-400 mb-3">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
-                <h3 className="text-sm font-bold text-[#10364E]">Encrypted Data Vault</h3>
-                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                <h3 className="text-sm font-bold text-[#10364E] dark:text-white">Encrypted Data Vault</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
                   All incorporation records, PAN details, and financial files are handled under strict confidentiality protocols.
                 </p>
               </div>

@@ -175,23 +175,23 @@ export default function ContactSection({ preselectedService = '' }) {
   };
 
   return (
-    <section id="contact" className="py-16 lg:py-24 bg-white border-b border-slate-100">
+    <section id="contact" className="py-16 lg:py-24 bg-white dark:bg-[#091822] border-b border-slate-100 dark:border-slate-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
-            <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
+            <span className="text-xs font-bold text-[#1C6FA5] dark:text-sky-400 tracking-wider uppercase">
               REACH OUR TEAM
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] dark:text-white tracking-tight">
             Consult With Our Specialists
           </h2>
 
-          <p className="mt-3 text-base text-slate-600 leading-relaxed font-normal">
+          <p className="mt-3 text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
             Share your requirements below. Our regulatory advisory team will review your details and respond with a clear roadmap.
           </p>
         </div>
@@ -202,7 +202,7 @@ export default function ContactSection({ preselectedService = '' }) {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Visual Workspace Image Card */}
-            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
+            <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm relative group bg-white dark:bg-slate-900">
               <div className="w-full aspect-[16/9] overflow-hidden relative">
                 <img
                   src={deskImg}
@@ -221,27 +221,27 @@ export default function ContactSection({ preselectedService = '' }) {
               </div>
             </div>
 
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#F5F7FA] border border-slate-200">
-              <h3 className="text-lg font-bold text-[#10364E] mb-1">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#F5F7FA] dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+              <h3 className="text-lg font-bold text-[#10364E] dark:text-white mb-1">
                 Direct Contact Channels
               </h3>
-              <p className="text-xs text-slate-500 mb-6">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
                 Reach us directly for urgent compliance or filing support.
               </p>
 
               <div className="space-y-4">
                 {/* Phone */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#1C6FA5] shrink-0">
+                  <div className="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-sky-400 shrink-0">
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
                       Phone Number
                     </span>
                     <a
                       href="tel:+917845132962"
-                      className="text-sm font-semibold text-[#10364E] hover:text-[#1C6FA5] transition-colors"
+                      className="text-sm font-semibold text-[#10364E] dark:text-white hover:text-[#1C6FA5] dark:hover:text-sky-400 transition-colors"
                     >
                       +91 78451 32962
                     </a>
@@ -250,18 +250,18 @@ export default function ContactSection({ preselectedService = '' }) {
 
                 {/* WhatsApp */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#1C6FA5] shrink-0">
+                  <div className="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-sky-400 shrink-0">
                     <MessageCircle className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
                       WhatsApp Business
                     </span>
                     <a
                       href="https://wa.me/917845132962"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-semibold text-[#10364E] hover:text-[#1C6FA5] transition-colors"
+                      className="text-sm font-semibold text-[#10364E] dark:text-white hover:text-[#1C6FA5] dark:hover:text-sky-400 transition-colors"
                     >
                       Chat with Support
                     </a>
@@ -270,16 +270,16 @@ export default function ContactSection({ preselectedService = '' }) {
 
                 {/* Email */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#1C6FA5] shrink-0">
+                  <div className="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-sky-400 shrink-0">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
                       Email Address
                     </span>
                     <a
                       href="mailto:businessgroupikasle@gmail.com"
-                      className="text-sm font-semibold text-[#10364E] hover:text-[#1C6FA5] transition-colors"
+                      className="text-sm font-semibold text-[#10364E] dark:text-white hover:text-[#1C6FA5] dark:hover:text-sky-400 transition-colors"
                     >
                       businessgroupikasle@gmail.com
                     </a>
@@ -288,14 +288,14 @@ export default function ContactSection({ preselectedService = '' }) {
 
                 {/* Office Address */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#1C6FA5] shrink-0">
+                  <div className="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-sky-400 shrink-0">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
                       Office Address
                     </span>
-                    <p className="text-xs text-slate-700 leading-relaxed">
+                    <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                       1639/ A, 2nd Floor, Hopes, Coimbatore, India- 641004
                     </p>
                   </div>
@@ -303,14 +303,14 @@ export default function ContactSection({ preselectedService = '' }) {
 
                 {/* Business Hours */}
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#1C6FA5] shrink-0">
+                  <div className="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-sky-400 shrink-0">
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
                       Business Hours
                     </span>
-                    <p className="text-xs text-slate-700">
+                    <p className="text-xs text-slate-700 dark:text-slate-300">
                       Monday – Saturday: 9:30 AM – 6:30 PM IST<br />
                       Sunday: Closed (Emergency Filings Monitored)
                     </p>
@@ -321,9 +321,9 @@ export default function ContactSection({ preselectedService = '' }) {
             </div>
 
             {/* Quick Assurance Box */}
-            <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-100 flex items-start gap-3">
+            <div className="p-4 rounded-xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/50 flex items-start gap-3">
               <CheckCircle2 className="w-4 h-4 text-[#1C6FA5] shrink-0 mt-0.5" />
-              <p className="text-xs text-blue-900 leading-relaxed">
+              <p className="text-xs text-blue-900 dark:text-blue-200 leading-relaxed">
                 All client enquiries are handled under strict confidentiality agreements. Your commercial information is never shared with third parties.
               </p>
             </div>

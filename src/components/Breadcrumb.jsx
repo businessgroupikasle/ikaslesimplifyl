@@ -16,10 +16,10 @@ export default function Breadcrumb({ items, variant = 'dark', className = '' }) 
 
   const linkClass = dark
     ? 'text-slate-300 hover:text-white'
-    : 'text-slate-500 hover:text-[#1C6FA5]';
-  const textClass = dark ? 'text-slate-300' : 'text-slate-500';
-  const currentClass = dark ? 'text-white' : 'text-[#10364E]';
-  const chevronClass = dark ? 'text-slate-500' : 'text-slate-400';
+    : 'text-slate-500 hover:text-[#1C6FA5] dark:text-slate-400 dark:hover:text-white';
+  const textClass = dark ? 'text-slate-300' : 'text-slate-500 dark:text-slate-400';
+  const currentClass = dark ? 'text-white' : 'text-[#10364E] dark:text-slate-200';
+  const chevronClass = dark ? 'text-slate-500' : 'text-slate-400 dark:text-slate-500';
 
   const trail = [{ label: 'Home', to: '/' }, ...items];
 

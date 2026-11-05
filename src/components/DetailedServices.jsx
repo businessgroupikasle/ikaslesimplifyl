@@ -207,29 +207,29 @@ export default function DetailedServices({ onOpenContact }) {
   const current = categories[activeTab];
 
   return (
-    <section className="py-10 lg:py-14 bg-white border-b border-slate-100">
+    <section className="py-10 lg:py-14 bg-white dark:bg-[#091822] border-b border-slate-100 dark:border-slate-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F8FB] dark:bg-blue-950/60 border border-[#E3EFF8] dark:border-blue-800/60 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
-            <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
+            <span className="text-xs font-bold text-[#1C6FA5] dark:text-blue-300 tracking-wider uppercase">
               DETAILED BREAKDOWN
             </span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#10364E] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#10364E] dark:text-white tracking-tight">
             Detailed Service Specifications
           </h2>
 
-          <p className="mt-2 text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-2 text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
             Review inclusions, documentation requirements, procedural steps, and tangible benefits for each core compliance practice.
           </p>
         </div>
 
         {/* Elevated Category Selector Tabs with Sliding Pill Indicator */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12 p-2 bg-[#F5F7FA] rounded-2xl border border-slate-200/90 max-w-4xl mx-auto shadow-inner relative">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12 p-2 bg-[#F5F7FA] dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 max-w-4xl mx-auto shadow-inner relative">
           {Object.keys(categories).map((key) => {
             const cat = categories[key];
             const Icon = cat.icon;
@@ -242,17 +242,17 @@ export default function DetailedServices({ onOpenContact }) {
                   setExpandedSection('services');
                 }}
                 className={`relative flex items-center gap-2.5 px-5 py-3 rounded-xl text-xs font-extrabold transition-colors duration-200 z-10 ${
-                  isActive ? 'text-white' : 'text-slate-600 hover:text-[#10364E] hover:bg-white/60'
+                  isActive ? 'text-white' : 'text-slate-600 dark:text-slate-300 hover:text-[#10364E] dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-800/60'
                 }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeTabPill"
-                    className="absolute inset-0 bg-gradient-to-r from-[#10364E] via-[#144463] to-[#174E72] rounded-xl shadow-md shadow-navy-950/20 -z-10"
+                    className="absolute inset-0 bg-gradient-to-r from-[#10364E] via-[#144463] to-[#174E72] dark:from-blue-700 dark:via-blue-600 dark:to-[#174E72] rounded-xl shadow-md shadow-navy-950/20 -z-10"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
-                <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs transition-colors ${isActive ? 'bg-white/20 text-white' : 'bg-slate-200/80 text-[#1C6FA5]'}`}>
+                <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs transition-colors ${isActive ? 'bg-white/20 text-white' : 'bg-slate-200/80 dark:bg-slate-800 text-[#1C6FA5] dark:text-blue-300'}`}>
                   <Icon className="w-3.5 h-3.5" />
                 </div>
                 <span>{cat.title.split('&')[0].trim()}</span>
@@ -262,10 +262,10 @@ export default function DetailedServices({ onOpenContact }) {
         </div>
 
         {/* Detailed Container with Multi-layer Shadow */}
-        <div className="rounded-3xl bg-white border border-slate-200/90 shadow-[0_12px_40px_rgba(16,54,78,0.06)] p-6 sm:p-10 relative overflow-hidden">
+        <div className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-[0_12px_40px_rgba(16,54,78,0.06)] dark:shadow-none p-6 sm:p-10 relative overflow-hidden">
           
           {/* Subtle top brand aura */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50/60 rounded-full blur-3xl pointer-events-none -z-0" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50/60 dark:bg-blue-950/20 rounded-full blur-3xl pointer-events-none -z-0" />
 
           {/* AnimatePresence for Active Tab Content Transition */}
           <AnimatePresence mode="wait">
@@ -277,20 +277,20 @@ export default function DetailedServices({ onOpenContact }) {
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
               {/* Header of Active Service with Visual Image */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pb-8 border-b border-slate-100 relative z-10">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pb-8 border-b border-slate-100 dark:border-slate-800 relative z-10">
                 <div className="lg:col-span-8 space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F8FB] border border-[#E3EFF8]">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F8FB] dark:bg-blue-950/60 border border-[#E3EFF8] dark:border-blue-800/60">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5] animate-pulse" />
-                    <span className="text-xs font-bold text-[#1C6FA5] uppercase tracking-wider">
+                    <span className="text-xs font-bold text-[#1C6FA5] dark:text-blue-300 uppercase tracking-wider">
                       {current.tagline}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#10364E] leading-tight">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#10364E] dark:text-white leading-tight">
                     {current.title}
                   </h3>
 
-                  <p className="text-sm text-slate-600 leading-relaxed max-w-2xl font-normal">
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-normal">
                     {current.description}
                   </p>
 
@@ -303,7 +303,7 @@ export default function DetailedServices({ onOpenContact }) {
                     </button>
                     <Link
                       to={current.pageLink}
-                      className="px-5 py-3 rounded-full bg-slate-50 hover:bg-[#F4F8FB] border border-slate-200 text-xs font-bold text-[#10364E] hover:text-[#1C6FA5] hover:border-[#1C6FA5]/40 transition-colors"
+                      className="px-5 py-3 rounded-full bg-slate-50 dark:bg-slate-800 hover:bg-[#F4F8FB] dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-xs font-bold text-[#10364E] dark:text-slate-200 hover:text-[#1C6FA5] dark:hover:text-blue-300 hover:border-[#1C6FA5]/40 transition-colors"
                     >
                       Dedicated Service Page →
                     </Link>
@@ -312,7 +312,7 @@ export default function DetailedServices({ onOpenContact }) {
 
                 {/* Active Service Photo Card with Floating Active Scope Badge */}
                 <div className="lg:col-span-4">
-                  <div className="rounded-2xl p-2 bg-gradient-to-tr from-slate-100 via-blue-50 to-indigo-50 border border-slate-200 shadow-lg group relative">
+                  <div className="rounded-2xl p-2 bg-gradient-to-tr from-slate-100 via-blue-50 to-indigo-50 dark:from-slate-800 dark:via-blue-950/40 dark:to-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg group relative">
                     <div className="w-full aspect-[16/10] rounded-xl overflow-hidden relative">
                       <img
                         src={current.image}
@@ -329,7 +329,7 @@ export default function DetailedServices({ onOpenContact }) {
                       <motion.div
                         animate={{ y: [0, -5, 0] }}
                         transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-                        className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white bg-[#10364E]/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 shadow-md"
+                        className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white bg-[#10364E]/90 dark:bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 shadow-md"
                       >
                         <span className="text-[11px] font-bold truncate">
                           {current.title.split('&')[0].trim()}
@@ -348,20 +348,20 @@ export default function DetailedServices({ onOpenContact }) {
               <div className="mt-8 space-y-4 relative z-10">
                 
                 {/* Accordion 1: Service List */}
-                <div className="rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs">
+                <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-xs">
                   <button
                     onClick={() => setExpandedSection(expandedSection === 'services' ? '' : 'services')}
                     className={`w-full flex items-center justify-between p-4.5 sm:p-5 text-left font-extrabold text-sm transition-colors duration-200 ${
-                      expandedSection === 'services' ? 'bg-[#10364E] text-white' : 'bg-[#F5F7FA] text-[#10364E] hover:bg-slate-100'
+                      expandedSection === 'services' ? 'bg-[#10364E] dark:bg-slate-800 text-white' : 'bg-[#F5F7FA] dark:bg-slate-800/70 text-[#10364E] dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold ${expandedSection === 'services' ? 'bg-white/20 text-white' : 'bg-white text-[#1C6FA5] shadow-xs'}`}>
+                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold ${expandedSection === 'services' ? 'bg-white/20 text-white' : 'bg-white dark:bg-slate-700 text-[#1C6FA5] dark:text-blue-300 shadow-xs'}`}>
                         01
                       </div>
                       <span>Individual Services & Inclusions</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSection === 'services' ? 'rotate-180 text-white' : 'text-slate-500'}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSection === 'services' ? 'rotate-180 text-white' : 'text-slate-500 dark:text-slate-400'}`} />
                   </button>
                   <AnimatePresence initial={false}>
                     {expandedSection === 'services' && (
@@ -372,12 +372,12 @@ export default function DetailedServices({ onOpenContact }) {
                         transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
                         className="overflow-hidden"
                       >
-                        <div className="p-6 bg-white border-t border-slate-100">
+                        <div className="p-6 bg-white dark:bg-slate-900/90 border-t border-slate-100 dark:border-slate-800">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                             {current.servicesList.map((srv, i) => (
-                              <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-slate-50/70 border border-slate-100 glass-hover transition-all duration-200">
-                                <CheckCircle2 className="w-4 h-4 text-[#1C6FA5] shrink-0 mt-0.5" />
-                                <span className="text-xs font-medium text-slate-700 leading-normal">{srv}</span>
+                              <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-slate-50/70 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 glass-hover transition-all duration-200">
+                                <CheckCircle2 className="w-4 h-4 text-[#1C6FA5] dark:text-blue-400 shrink-0 mt-0.5" />
+                                <span className="text-xs font-medium text-slate-700 dark:text-slate-200 leading-normal">{srv}</span>
                               </div>
                             ))}
                           </div>
@@ -388,20 +388,20 @@ export default function DetailedServices({ onOpenContact }) {
                 </div>
 
                 {/* Accordion 2: Benefits */}
-                <div className="rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs">
+                <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-xs">
                   <button
                     onClick={() => setExpandedSection(expandedSection === 'benefits' ? '' : 'benefits')}
                     className={`w-full flex items-center justify-between p-4.5 sm:p-5 text-left font-extrabold text-sm transition-colors duration-200 ${
-                      expandedSection === 'benefits' ? 'bg-[#10364E] text-white' : 'bg-[#F5F7FA] text-[#10364E] hover:bg-slate-100'
+                      expandedSection === 'benefits' ? 'bg-[#10364E] dark:bg-slate-800 text-white' : 'bg-[#F5F7FA] dark:bg-slate-800/70 text-[#10364E] dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold ${expandedSection === 'benefits' ? 'bg-white/20 text-white' : 'bg-white text-[#1C6FA5] shadow-xs'}`}>
+                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold ${expandedSection === 'benefits' ? 'bg-white/20 text-white' : 'bg-white dark:bg-slate-700 text-[#1C6FA5] dark:text-blue-300 shadow-xs'}`}>
                         02
                       </div>
                       <span>Key Benefits & Value Delivered</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSection === 'benefits' ? 'rotate-180 text-white' : 'text-slate-500'}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSection === 'benefits' ? 'rotate-180 text-white' : 'text-slate-500 dark:text-slate-400'}`} />
                   </button>
                   <AnimatePresence initial={false}>
                     {expandedSection === 'benefits' && (
@@ -412,12 +412,12 @@ export default function DetailedServices({ onOpenContact }) {
                         transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
                         className="overflow-hidden"
                       >
-                        <div className="p-6 bg-white border-t border-slate-100">
+                        <div className="p-6 bg-white dark:bg-slate-900/90 border-t border-slate-100 dark:border-slate-800">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                             {current.benefits.map((bnf, i) => (
-                              <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-[#F4F8FB]/60 border border-blue-100 glass-hover transition-all">
-                                <CheckCircle2 className="w-4 h-4 text-[#1C6FA5] shrink-0 mt-0.5" />
-                                <span className="text-xs font-medium text-slate-700 leading-normal">{bnf}</span>
+                              <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-[#F4F8FB]/60 dark:bg-slate-800/50 border border-blue-100 dark:border-slate-800 glass-hover transition-all">
+                                <CheckCircle2 className="w-4 h-4 text-[#1C6FA5] dark:text-blue-400 shrink-0 mt-0.5" />
+                                <span className="text-xs font-medium text-slate-700 dark:text-slate-200 leading-normal">{bnf}</span>
                               </div>
                             ))}
                           </div>
@@ -428,20 +428,20 @@ export default function DetailedServices({ onOpenContact }) {
                 </div>
 
                 {/* Accordion 3: Documents Required */}
-                <div className="rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs">
+                <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-xs">
                   <button
                     onClick={() => setExpandedSection(expandedSection === 'documents' ? '' : 'documents')}
                     className={`w-full flex items-center justify-between p-4.5 sm:p-5 text-left font-extrabold text-sm transition-colors duration-200 ${
-                      expandedSection === 'documents' ? 'bg-[#10364E] text-white' : 'bg-[#F5F7FA] text-[#10364E] hover:bg-slate-100'
+                      expandedSection === 'documents' ? 'bg-[#10364E] dark:bg-slate-800 text-white' : 'bg-[#F5F7FA] dark:bg-slate-800/70 text-[#10364E] dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold ${expandedSection === 'documents' ? 'bg-white/20 text-white' : 'bg-white text-[#1C6FA5] shadow-xs'}`}>
+                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold ${expandedSection === 'documents' ? 'bg-white/20 text-white' : 'bg-white dark:bg-slate-700 text-[#1C6FA5] dark:text-blue-300 shadow-xs'}`}>
                         03
                       </div>
                       <span>Required Documents & Checklists</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSection === 'documents' ? 'rotate-180 text-white' : 'text-slate-500'}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSection === 'documents' ? 'rotate-180 text-white' : 'text-slate-500 dark:text-slate-400'}`} />
                   </button>
                   <AnimatePresence initial={false}>
                     {expandedSection === 'documents' && (
@@ -452,17 +452,17 @@ export default function DetailedServices({ onOpenContact }) {
                         transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
                         className="overflow-hidden"
                       >
-                        <div className="p-6 bg-white border-t border-slate-100 space-y-3">
-                          <p className="text-xs text-slate-500 italic">
+                        <div className="p-6 bg-white dark:bg-slate-900/90 border-t border-slate-100 dark:border-slate-800 space-y-3">
+                          <p className="text-xs text-slate-500 dark:text-slate-400 italic">
                             Note: Exact document requirements may vary slightly depending on applicant constitution, entity type, and regulatory amendments.
                           </p>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                             {current.documents.map((doc, i) => (
-                              <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-slate-300 transition-colors">
-                                <span className="w-6 h-6 rounded-full bg-[#10364E] text-white text-[11px] font-bold flex items-center justify-center shrink-0">
+                              <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
+                                <span className="w-6 h-6 rounded-full bg-[#10364E] dark:bg-blue-600 text-white text-[11px] font-bold flex items-center justify-center shrink-0">
                                   {i + 1}
                                 </span>
-                                <span className="text-xs font-medium text-slate-700 leading-normal pt-0.5">{doc}</span>
+                                <span className="text-xs font-medium text-slate-700 dark:text-slate-200 leading-normal pt-0.5">{doc}</span>
                               </div>
                             ))}
                           </div>
@@ -473,20 +473,20 @@ export default function DetailedServices({ onOpenContact }) {
                 </div>
 
                 {/* Accordion 4: Process Flow */}
-                <div className="rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs">
+                <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-xs">
                   <button
                     onClick={() => setExpandedSection(expandedSection === 'process' ? '' : 'process')}
                     className={`w-full flex items-center justify-between p-4.5 sm:p-5 text-left font-extrabold text-sm transition-colors duration-200 ${
-                      expandedSection === 'process' ? 'bg-[#10364E] text-white' : 'bg-[#F5F7FA] text-[#10364E] hover:bg-slate-100'
+                      expandedSection === 'process' ? 'bg-[#10364E] dark:bg-slate-800 text-white' : 'bg-[#F5F7FA] dark:bg-slate-800/70 text-[#10364E] dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold ${expandedSection === 'process' ? 'bg-white/20 text-white' : 'bg-white text-[#1C6FA5] shadow-xs'}`}>
+                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold ${expandedSection === 'process' ? 'bg-white/20 text-white' : 'bg-white dark:bg-slate-700 text-[#1C6FA5] dark:text-blue-300 shadow-xs'}`}>
                         04
                       </div>
                       <span>Standard Process Flow</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSection === 'process' ? 'rotate-180 text-white' : 'text-slate-500'}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSection === 'process' ? 'rotate-180 text-white' : 'text-slate-500 dark:text-slate-400'}`} />
                   </button>
                   <AnimatePresence initial={false}>
                     {expandedSection === 'process' && (
@@ -497,14 +497,14 @@ export default function DetailedServices({ onOpenContact }) {
                         transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
                         className="overflow-hidden"
                       >
-                        <div className="p-6 bg-white border-t border-slate-100">
+                        <div className="p-6 bg-white dark:bg-slate-900/90 border-t border-slate-100 dark:border-slate-800">
                           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                             {current.process.map((step, i) => (
-                              <div key={i} className="p-4 rounded-xl bg-gradient-to-b from-white to-[#F5F7FA] border border-slate-200/90 shadow-xs relative hover:-translate-y-1 glass-hover transition-all duration-200">
-                                <span className="text-[10px] font-mono font-extrabold text-[#1C6FA5] bg-[#F4F8FB] px-2 py-0.5 rounded-full">
+                              <div key={i} className="p-4 rounded-xl bg-gradient-to-b from-white to-[#F5F7FA] dark:from-slate-800 dark:to-slate-850 border border-slate-200/90 dark:border-slate-700 shadow-xs relative hover:-translate-y-1 glass-hover transition-all duration-200">
+                                <span className="text-[10px] font-mono font-extrabold text-[#1C6FA5] dark:text-blue-400 bg-[#F4F8FB] dark:bg-slate-900 px-2 py-0.5 rounded-full">
                                   Phase 0{i + 1}
                                 </span>
-                                <p className="text-xs font-bold text-[#10364E] mt-2.5 leading-relaxed">{step}</p>
+                                <p className="text-xs font-bold text-[#10364E] dark:text-slate-200 mt-2.5 leading-relaxed">{step}</p>
                               </div>
                             ))}
                           </div>
@@ -515,20 +515,20 @@ export default function DetailedServices({ onOpenContact }) {
                 </div>
 
                 {/* Accordion 5: FAQs */}
-                <div className="rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs">
+                <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-xs">
                   <button
                     onClick={() => setExpandedSection(expandedSection === 'faqs' ? '' : 'faqs')}
                     className={`w-full flex items-center justify-between p-4.5 sm:p-5 text-left font-extrabold text-sm transition-colors duration-200 ${
-                      expandedSection === 'faqs' ? 'bg-[#10364E] text-white' : 'bg-[#F5F7FA] text-[#10364E] hover:bg-slate-100'
+                      expandedSection === 'faqs' ? 'bg-[#10364E] dark:bg-slate-800 text-white' : 'bg-[#F5F7FA] dark:bg-slate-800/70 text-[#10364E] dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold ${expandedSection === 'faqs' ? 'bg-white/20 text-white' : 'bg-white text-[#1C6FA5] shadow-xs'}`}>
+                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold ${expandedSection === 'faqs' ? 'bg-white/20 text-white' : 'bg-white dark:bg-slate-700 text-[#1C6FA5] dark:text-blue-300 shadow-xs'}`}>
                         05
                       </div>
                       <span>Category Frequently Asked Questions</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSection === 'faqs' ? 'rotate-180 text-white' : 'text-slate-500'}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSection === 'faqs' ? 'rotate-180 text-white' : 'text-slate-500 dark:text-slate-400'}`} />
                   </button>
                   <AnimatePresence initial={false}>
                     {expandedSection === 'faqs' && (
@@ -539,11 +539,11 @@ export default function DetailedServices({ onOpenContact }) {
                         transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
                         className="overflow-hidden"
                       >
-                        <div className="p-6 bg-white border-t border-slate-100 space-y-3.5">
+                        <div className="p-6 bg-white dark:bg-slate-900/90 border-t border-slate-100 dark:border-slate-800 space-y-3.5">
                           {current.faqs.map((faq, i) => (
-                            <div key={i} className="p-4 rounded-xl bg-[#F5F7FA] border border-slate-200 glass-hover transition-all">
-                              <p className="text-xs font-extrabold text-[#10364E]">Q: {faq.q}</p>
-                              <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">A: {faq.a}</p>
+                            <div key={i} className="p-4 rounded-xl bg-[#F5F7FA] dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 glass-hover transition-all">
+                              <p className="text-xs font-extrabold text-[#10364E] dark:text-white">Q: {faq.q}</p>
+                              <p className="text-xs text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">A: {faq.a}</p>
                             </div>
                           ))}
                         </div>
@@ -555,13 +555,13 @@ export default function DetailedServices({ onOpenContact }) {
               </div>
 
               {/* Bottom Callout */}
-              <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p className="text-xs text-slate-500">
+              <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   Have specific questions regarding {current.title}? Our consultants are available to assist.
                 </p>
                 <button
                   onClick={() => onOpenContact(current.title)}
-                  className="btn-shimmer inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#10364E] hover:bg-[#174E72] text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="btn-shimmer inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#10364E] hover:bg-[#174E72] dark:bg-blue-600 dark:hover:bg-blue-500 text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow-md"
                 >
                   <span>Enquire For This Service</span>
                   <ArrowRight className="w-3.5 h-3.5" />

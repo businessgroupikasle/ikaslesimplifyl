@@ -7,7 +7,7 @@ import ContactSection from '../components/ContactSection';
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-white text-[#263445] flex flex-col font-sans">
+    <div className="min-h-screen bg-white dark:bg-[#091822] text-[#263445] dark:text-slate-200 flex flex-col font-sans transition-colors duration-200">
       <SEOHead
         title="Contact Us | Consultation & Support | Simplifyl Compliance Solutions"
         description="Get in touch with Simplifyl Compliance Solutions. Request a consultation for GST filing, company registrations, trademark security, and corporate compliance in India."
@@ -20,7 +20,7 @@ export default function ContactPage() {
       <main className="flex-grow">
         
         {/* Hero */}
-        <section className="bg-[#10364E] text-white pt-8 pb-14 lg:pb-20">
+        <section className="bg-[#10364E] dark:bg-[#0C2332] text-white pt-8 pb-14 lg:pb-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumb items={[{ label: 'Contact Us' }]} />
             <div className="mt-9 lg:mt-12 max-w-3xl space-y-4">

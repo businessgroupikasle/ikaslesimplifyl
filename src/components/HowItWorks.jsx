@@ -31,23 +31,23 @@ export default function HowItWorks({ onOpenContact }) {
   ];
 
   return (
-    <section id="how-it-works" className="py-10 lg:py-14 bg-white border-b border-slate-100">
+    <section id="how-it-works" className="py-10 lg:py-14 bg-white dark:bg-[#091822] border-b border-slate-100 dark:border-slate-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] dark:bg-blue-950/60 border border-[#E3EFF8] dark:border-blue-800/60 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
-            <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
+            <span className="text-xs font-bold text-[#1C6FA5] dark:text-blue-300 tracking-wider uppercase">
               PROCEDURAL TIMELINE
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] dark:text-white tracking-tight">
             A Simple Process. Professional Support.
           </h2>
 
-          <p className="mt-3 text-base text-slate-600 leading-relaxed font-normal">
+          <p className="mt-3 text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
             We guide you step-by-step through registrations and compliance with clarity and structured timelines.
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function HowItWorks({ onOpenContact }) {
         <div className="relative">
           
           {/* Subtle Horizontal Connector Line on Desktop */}
-          <div className="hidden lg:block absolute top-1/2 left-12 right-12 h-[2px] bg-gradient-to-r from-blue-200 via-indigo-300 to-blue-200 -translate-y-12 z-0 pointer-events-none" />
+          <div className="hidden lg:block absolute top-1/2 left-12 right-12 h-[2px] bg-gradient-to-r from-blue-200 via-indigo-300 to-blue-200 dark:from-blue-900/60 dark:via-indigo-900/60 dark:to-blue-900/60 -translate-y-12 z-0 pointer-events-none" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
             {steps.map((step, idx) => {
@@ -68,7 +68,7 @@ export default function HowItWorks({ onOpenContact }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: idx * 0.08 }}
-                  className="group relative flex flex-col justify-between p-6 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(16,54,78,0.04)] hover:-translate-y-1.5 glass-hover transition-all duration-300 overflow-hidden"
+                  className="group relative flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-[0_4px_16px_rgba(16,54,78,0.04)] dark:shadow-none hover:-translate-y-1.5 glass-hover transition-all duration-300 overflow-hidden"
                 >
                   {/* Top Glowing Gradient Accent Line */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#10364E] via-[#1C6FA5] to-[#4FA2D8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -76,7 +76,7 @@ export default function HowItWorks({ onOpenContact }) {
                   <div>
                     {/* Step Badge & Icon */}
                     <div className="flex items-center justify-between mb-5">
-                      <span className="text-[11px] font-mono font-extrabold text-[#1C6FA5] bg-[#F4F8FB] px-2.5 py-1 rounded-full border border-blue-100">
+                      <span className="text-[11px] font-mono font-extrabold text-[#1C6FA5] dark:text-blue-400 bg-[#F4F8FB] dark:bg-slate-800 px-2.5 py-1 rounded-full border border-blue-100 dark:border-slate-700">
                         STEP {step.num}
                       </span>
                       <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#10364E] to-[#1C6FA5] text-white flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
@@ -84,18 +84,18 @@ export default function HowItWorks({ onOpenContact }) {
                       </div>
                     </div>
 
-                    <h3 className="text-base font-extrabold text-[#10364E] group-hover:text-[#1C6FA5] transition-colors">
+                    <h3 className="text-base font-extrabold text-[#10364E] dark:text-white group-hover:text-[#1C6FA5] dark:group-hover:text-blue-400 transition-colors">
                       {step.title}
                     </h3>
 
-                    <p className="mt-2 text-xs text-slate-500 leading-relaxed font-normal">
+                    <p className="mt-2 text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-normal">
                       {step.desc}
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-3.5 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-400">
+                  <div className="mt-6 pt-3.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-bold text-slate-400 dark:text-slate-500">
                     <span>Phase 0{idx + 1} of 04</span>
-                    <span className="text-[#1C6FA5] group-hover:translate-x-1 transition-transform">→</span>
+                    <span className="text-[#1C6FA5] dark:text-blue-400 group-hover:translate-x-1 transition-transform">→</span>
                   </div>
                 </motion.div>
               );
@@ -108,7 +108,7 @@ export default function HowItWorks({ onOpenContact }) {
         <div className="mt-8 text-center">
           <button
             onClick={onOpenContact}
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#10364E] hover:bg-[#174E72] text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm active:scale-95 group"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#10364E] hover:bg-[#174E72] dark:bg-blue-600 dark:hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm active:scale-95 group"
           >
             <span>Start Step 01 Today</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />

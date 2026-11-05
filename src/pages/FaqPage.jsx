@@ -10,7 +10,7 @@ export default function FaqPage() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-[#263445] flex flex-col font-sans">
+    <div className="min-h-screen bg-white dark:bg-[#091822] text-[#263445] dark:text-slate-200 flex flex-col font-sans transition-colors duration-200">
       <SEOHead
         title="Frequently Asked Questions (FAQ) | Business Compliance & GST | Simplifyl"
         description="Find clear answers to common questions about GST registration, return filing due dates, Private Limited company incorporation, trademarks, and ROC annual compliance."
@@ -23,7 +23,7 @@ export default function FaqPage() {
       <main className="flex-grow">
         
         {/* Hero */}
-        <section className="bg-[#10364E] text-white pt-8 pb-14 lg:pb-20">
+        <section className="bg-[#10364E] dark:bg-[#0C2332] text-white pt-8 pb-14 lg:pb-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumb items={[{ label: 'FAQ' }]} />
             <div className="mt-9 lg:mt-12 max-w-3xl space-y-4">

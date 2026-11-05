@@ -42,23 +42,23 @@ export default function FAQSection({ onOpenContact }) {
   };
 
   return (
-    <section id="faq" className="pt-8 pb-10 lg:pt-10 lg:pb-12 bg-[#F5F7FA] border-b border-slate-200/80">
+    <section id="faq" className="pt-8 pb-10 lg:pt-10 lg:pb-12 bg-[#F5F7FA] dark:bg-[#0C2332] border-b border-slate-200/80 dark:border-slate-800 transition-colors duration-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center mb-6 sm:mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] dark:bg-blue-950/60 border border-[#E3EFF8] dark:border-blue-800/60 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
-            <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
+            <span className="text-xs font-bold text-[#1C6FA5] dark:text-blue-300 tracking-wider uppercase">
               KNOWLEDGE BASE
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] dark:text-white tracking-tight">
             Frequently Asked Questions
           </h2>
 
-          <p className="mt-3 text-base text-slate-600 leading-relaxed font-normal">
+          <p className="mt-3 text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
             Accurate answers to common queries regarding GST, business registrations, trademarks, and statutory corporate compliance.
           </p>
         </div>
@@ -70,24 +70,24 @@ export default function FAQSection({ onOpenContact }) {
             return (
               <div
                 key={index}
-                className="rounded-xl bg-white border border-slate-200 overflow-hidden shadow-xs transition-colors"
+                className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs transition-colors"
               >
                 <button
                   type="button"
                   onClick={() => toggleAccordion(index)}
-                  className="w-full flex items-center justify-between p-4 sm:p-5 text-left transition-colors hover:bg-slate-50 focus:outline-none"
+                  className="w-full flex items-center justify-between p-4 sm:p-5 text-left transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/60 focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-sm sm:text-base font-bold text-[#10364E] pr-4">
+                  <span className="text-sm sm:text-base font-bold text-[#10364E] dark:text-white pr-4">
                     {index + 1}. {faq.q}
                   </span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'bg-[#10364E] text-white rotate-180' : 'bg-[#F5F7FA] text-slate-500'}`}>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'bg-[#10364E] dark:bg-blue-600 text-white rotate-180' : 'bg-[#F4F8FB] dark:bg-slate-800 text-slate-500 dark:text-slate-400'}`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-4 pb-5 sm:px-5 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                  <div className="px-4 pb-5 sm:px-5 sm:pb-6 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-3">
                     {faq.a}
                   </div>
                 )}
@@ -97,18 +97,18 @@ export default function FAQSection({ onOpenContact }) {
         </div>
 
         {/* Still Have Questions Box */}
-        <div className="mt-12 p-6 rounded-xl bg-white border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-12 p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
-            <h4 className="text-sm font-bold text-[#10364E]">
+            <h4 className="text-sm font-bold text-[#10364E] dark:text-white">
               Have a question not listed here?
             </h4>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               Our regulatory consultants are ready to provide clarification on your specific business queries.
             </p>
           </div>
           <button
             onClick={onOpenContact}
-            className="px-5 py-2.5 rounded-full bg-[#10364E] hover:bg-[#174E72] text-white text-xs font-bold uppercase tracking-wider transition-colors shrink-0"
+            className="px-5 py-2.5 rounded-full bg-[#10364E] hover:bg-[#174E72] dark:bg-blue-600 dark:hover:bg-blue-500 text-white text-xs font-bold uppercase tracking-wider transition-colors shrink-0"
           >
             Ask a Consultant
           </button>

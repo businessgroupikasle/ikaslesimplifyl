@@ -41,7 +41,7 @@ export default function BlogPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-[#263445] flex flex-col font-sans">
+    <div className="min-h-screen bg-white dark:bg-[#091822] text-[#263445] dark:text-slate-200 flex flex-col font-sans">
       <SEOHead
         title="Blog | GST, Company Registration, Trademark & ROC Compliance Guides | Simplifyl"
         description="Practical guides from Simplifyl on GST filing, business registration, trademark protection and annual ROC compliance for Indian startups and growing businesses."
@@ -110,8 +110,8 @@ export default function BlogPage() {
         </section>
 
         {/* ───────────── Articles ───────────── */}
-        <section className="relative py-14 lg:py-20 bg-gradient-to-b from-white via-[#F4F8FB] to-white overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(#C1DEF0_1px,transparent_1px)] [background-size:26px_26px] opacity-40 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]" />
+        <section className="relative py-14 lg:py-20 bg-gradient-to-b from-white via-[#F4F8FB] to-white dark:from-[#091822] dark:via-[#0c1c28] dark:to-[#091822] overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(#C1DEF0_1px,transparent_1px)] dark:bg-[radial-gradient(#1e3a5f_1px,transparent_1px)] [background-size:26px_26px] opacity-40 dark:opacity-20 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Category filter */}
@@ -126,14 +126,14 @@ export default function BlogPage() {
                     aria-pressed={active}
                     className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
                       active
-                        ? 'bg-[#10364E] text-white shadow-md shadow-[#10364E]/20'
-                        : 'bg-white text-slate-600 border border-slate-200 hover:border-[#4FA2D8] hover:text-[#1C6FA5]'
+                        ? 'bg-[#10364E] text-white shadow-md shadow-[#10364E]/20 dark:bg-sky-600 dark:shadow-sky-950/40'
+                        : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-[#4FA2D8] hover:text-[#1C6FA5] dark:hover:text-white'
                     }`}
                   >
                     <span>{c}</span>
                     <span
                       className={`text-[10px] px-1.5 py-0.5 rounded-full ${
-                        active ? 'bg-white/20 text-white' : 'bg-[#F4F8FB] text-[#1C6FA5]'
+                        active ? 'bg-white/20 text-white' : 'bg-[#F4F8FB] dark:bg-slate-800 text-[#1C6FA5] dark:text-sky-400'
                       }`}
                     >
                       {counts[c]}
@@ -154,7 +154,7 @@ export default function BlogPage() {
               >
                 <Link
                   to={`/blog/${featured.slug}`}
-                  className="group grid grid-cols-1 lg:grid-cols-12 rounded-[28px] overflow-hidden bg-white border border-slate-200/90 shadow-[0_24px_60px_-28px_rgba(16,54,78,0.35)] hover:shadow-[0_30px_70px_-28px_rgba(16,54,78,0.45)] transition-shadow"
+                  className="group grid grid-cols-1 lg:grid-cols-12 rounded-[28px] overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-[0_24px_60px_-28px_rgba(16,54,78,0.35)] dark:shadow-none hover:shadow-[0_30px_70px_-28px_rgba(16,54,78,0.45)] transition-shadow"
                 >
                   <div className="relative lg:col-span-6 min-h-[240px] lg:min-h-[380px] overflow-hidden">
                     <img
@@ -170,22 +170,22 @@ export default function BlogPage() {
                   </div>
 
                   <div className="lg:col-span-6 p-7 sm:p-10 lg:p-12 flex flex-col justify-center">
-                    <span className="self-start px-3 py-1 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] text-[10px] font-bold uppercase tracking-wider text-[#1C6FA5]">
+                    <span className="self-start px-3 py-1 rounded-full bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 text-[10px] font-bold uppercase tracking-wider text-[#1C6FA5] dark:text-sky-400">
                       {featured.category}
                     </span>
-                    <h2 className="mt-4 text-2xl sm:text-3xl lg:text-[2rem] font-extrabold text-[#10364E] tracking-tight leading-tight group-hover:text-[#1C6FA5] transition-colors">
+                    <h2 className="mt-4 text-2xl sm:text-3xl lg:text-[2rem] font-extrabold text-[#10364E] dark:text-white tracking-tight leading-tight group-hover:text-[#1C6FA5] dark:group-hover:text-sky-400 transition-colors">
                       {featured.title}
                     </h2>
-                    <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">{featured.summary}</p>
-                    <div className="mt-5 flex items-center gap-2 text-xs font-semibold text-slate-500">
+                    <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">{featured.summary}</p>
+                    <div className="mt-5 flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
                       <span>{formatPostDate(featured.isoDate)}</span>
-                      <span className="text-slate-300">•</span>
+                      <span className="text-slate-300 dark:text-slate-600">•</span>
                       <span className="inline-flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
                         {getReadTime(featured)}
                       </span>
                     </div>
-                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#1C6FA5] group-hover:gap-3 transition-all">
+                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#1C6FA5] dark:text-sky-400 group-hover:gap-3 transition-all">
                       Read the article
                       <ArrowRight className="w-4 h-4" />
                     </span>
@@ -198,7 +198,7 @@ export default function BlogPage() {
             {gridPosts.length > 0 ? (
               <>
                 {featured && (
-                  <h2 className="mb-6 text-xl sm:text-2xl font-extrabold text-[#10364E] tracking-tight">
+                  <h2 className="mb-6 text-xl sm:text-2xl font-extrabold text-[#10364E] dark:text-white tracking-tight">
                     More articles
                   </h2>
                 )}
@@ -219,18 +219,18 @@ export default function BlogPage() {
             ) : (
               !featured && (
                 <div className="text-center py-16">
-                  <span className="mx-auto w-14 h-14 rounded-full bg-[#E3EFF8] text-[#1C6FA5] flex items-center justify-center">
+                  <span className="mx-auto w-14 h-14 rounded-full bg-[#E3EFF8] dark:bg-slate-800 text-[#1C6FA5] dark:text-sky-400 flex items-center justify-center">
                     <Search className="w-6 h-6" />
                   </span>
-                  <h3 className="mt-5 text-xl font-extrabold text-[#10364E]">No articles found</h3>
-                  <p className="mt-2 text-sm text-slate-600">Try a different keyword or choose another category.</p>
+                  <h3 className="mt-5 text-xl font-extrabold text-[#10364E] dark:text-white">No articles found</h3>
+                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Try a different keyword or choose another category.</p>
                   <button
                     type="button"
                     onClick={() => {
                       setQuery('');
                       setCategory('All');
                     }}
-                    className="mt-5 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#10364E] hover:bg-[#175B87] text-white text-xs font-bold uppercase tracking-wider transition-colors"
+                    className="mt-5 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#10364E] hover:bg-[#175B87] dark:bg-sky-600 dark:hover:bg-sky-500 text-white text-xs font-bold uppercase tracking-wider transition-colors"
                   >
                     Show all articles
                   </button>
@@ -241,9 +241,9 @@ export default function BlogPage() {
         </section>
 
         {/* ───────────── CTA ───────────── */}
-        <section className="pb-16 lg:pb-24 bg-white">
+        <section className="pb-16 lg:pb-24 bg-white dark:bg-[#091822]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#0C2332] via-[#10364E] to-[#175B87] px-6 sm:px-12 py-14 lg:py-16 text-center text-white shadow-[0_30px_70px_-30px_rgba(16,54,78,0.6)]">
+            <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#0C2332] via-[#10364E] to-[#175B87] dark:from-[#081824] dark:via-[#0c2235] dark:to-[#10364E] dark:border dark:border-slate-800 px-6 sm:px-12 py-14 lg:py-16 text-center text-white shadow-[0_30px_70px_-30px_rgba(16,54,78,0.6)]">
               <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)] pointer-events-none" />
               <div className="absolute -top-24 -right-16 w-[380px] h-[380px] bg-[#4FA2D8] rounded-full blur-[130px] opacity-30 pointer-events-none" />
 

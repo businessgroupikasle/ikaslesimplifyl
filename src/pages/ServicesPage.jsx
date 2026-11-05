@@ -171,7 +171,7 @@ export default function ServicesPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-[#263445] flex flex-col font-sans">
+    <div className="min-h-screen bg-white dark:bg-[#091822] text-[#263445] dark:text-slate-200 flex flex-col font-sans transition-colors duration-200">
       <SEOHead
         title="Our Services | GST Filing, Business Registrations & Trademarks | Simplifyl"
         description="Explore Simplifyl's complete business consultancy services: GST registration & monthly return filing, company incorporation (Pvt Ltd & LLP), trademark protection, and annual ROC compliance in India."
@@ -188,7 +188,7 @@ export default function ServicesPage() {
         }`}
         aria-hidden={!showSubNav}
       >
-        <div className="bg-white/85 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_6px_20px_-12px_rgba(16,54,78,0.25)]">
+        <div className="bg-white/85 dark:bg-slate-900/90 backdrop-blur-xl border-b border-slate-200/80 dark:border-slate-800 shadow-[0_6px_20px_-12px_rgba(16,54,78,0.25)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {SERVICES.map((s) => {
               const Icon = s.icon;
@@ -201,8 +201,8 @@ export default function ServicesPage() {
                   onClick={() => scrollToId(s.id)}
                   className={`shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
                     active
-                      ? 'bg-[#10364E] text-white shadow-md shadow-[#10364E]/20'
-                      : 'bg-white text-slate-600 border border-slate-200 hover:border-[#4FA2D8] hover:text-[#1C6FA5]'
+                      ? 'bg-[#10364E] dark:bg-[#1C6FA5] text-white shadow-md shadow-[#10364E]/20'
+                      : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-[#4FA2D8] hover:text-[#1C6FA5] dark:hover:text-blue-300'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -324,19 +324,19 @@ export default function ServicesPage() {
         </section>
 
         {/* ───────────── Service showcase ───────────── */}
-        <section className="relative py-16 lg:py-24 bg-gradient-to-b from-white via-[#F4F8FB] to-white overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(#C1DEF0_1px,transparent_1px)] [background-size:26px_26px] opacity-40 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]" />
+        <section className="relative py-16 lg:py-24 bg-gradient-to-b from-white via-[#F4F8FB] to-white dark:from-[#091822] dark:via-[#0c1c28] dark:to-[#091822] overflow-hidden transition-colors duration-200">
+          <div className="absolute inset-0 bg-[radial-gradient(#C1DEF0_1px,transparent_1px)] [background-size:26px_26px] opacity-40 dark:opacity-20 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)]" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto text-center mb-14 lg:mb-20">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E3EFF8] text-[#1C6FA5] text-xs font-bold uppercase tracking-wider">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E3EFF8] dark:bg-slate-800 text-[#1C6FA5] dark:text-blue-400 text-xs font-bold uppercase tracking-wider border border-transparent dark:border-slate-700">
                 What we do
               </span>
-              <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold text-[#10364E] tracking-tight">
+              <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold text-[#10364E] dark:text-white tracking-tight">
                 Four practice areas,{' '}
-                <span className="font-script text-4xl sm:text-5xl text-[#1C6FA5]">one trusted partner</span>
+                <span className="font-script text-4xl sm:text-5xl text-[#1C6FA5] dark:text-blue-400">one trusted partner</span>
               </h2>
-              <p className="mt-4 text-base text-slate-600 leading-relaxed">
+              <p className="mt-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
                 From the day you incorporate to every filing that follows, each practice area is handled by a dedicated specialist.
               </p>
             </div>
@@ -353,7 +353,7 @@ export default function ServicesPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-80px' }}
                     transition={{ duration: 0.55 }}
-                    className="group/svc scroll-mt-32 relative grid grid-cols-1 lg:grid-cols-12 rounded-[28px] overflow-hidden bg-white border border-slate-200/90 shadow-[0_20px_50px_-24px_rgba(16,54,78,0.25)]"
+                    className="group/svc scroll-mt-32 relative grid grid-cols-1 lg:grid-cols-12 rounded-[28px] overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-[0_20px_50px_-24px_rgba(16,54,78,0.25)] dark:shadow-none transition-colors duration-200"
                   >
                     {/* Visual column */}
                     <div className={`relative lg:col-span-5 min-h-[280px] lg:min-h-full overflow-hidden ${flip ? 'lg:order-2' : ''}`}>
@@ -387,13 +387,13 @@ export default function ServicesPage() {
 
                     {/* Content column */}
                     <div className="lg:col-span-7 p-7 sm:p-10 lg:p-12 flex flex-col">
-                      <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#1C6FA5]">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#1C6FA5] dark:text-sky-400">
                         {svc.subtitle}
                       </p>
-                      <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#10364E] tracking-tight leading-tight">
+                      <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#10364E] dark:text-white tracking-tight leading-tight">
                         {svc.title}
                       </h3>
-                      <p className="mt-4 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+                      <p className="mt-4 text-sm sm:text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed">
                         {svc.desc}
                       </p>
 
@@ -401,7 +401,7 @@ export default function ServicesPage() {
                       <div className="mt-5 flex flex-wrap items-center gap-2">
                         <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mr-1">Ideal for</span>
                         {svc.idealFor.map((tag) => (
-                          <span key={tag} className="px-3 py-1 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] text-[11px] font-semibold text-[#175B87]">
+                          <span key={tag} className="px-3 py-1 rounded-full bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 text-[11px] font-semibold text-[#175B87] dark:text-blue-300">
                             {tag}
                           </span>
                         ))}
@@ -416,7 +416,7 @@ export default function ServicesPage() {
                           {svc.inclusions.map((inc) => (
                             <li
                               key={inc}
-                              className="glass-hover transition-all duration-300 flex items-start gap-2.5 p-3 rounded-xl bg-[#F4F8FB]/70 border border-slate-200/70 text-xs text-slate-700 leading-snug"
+                              className="glass-hover transition-all duration-300 flex items-start gap-2.5 p-3 rounded-xl bg-[#F4F8FB]/70 dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-300 leading-snug"
                             >
                               <span className="mt-0.5 w-4 h-4 rounded-full bg-[#1C6FA5] text-white flex items-center justify-center shrink-0">
                                 <Check className="w-2.5 h-2.5" strokeWidth={3} />
@@ -429,7 +429,7 @@ export default function ServicesPage() {
 
                       {/* CTAs */}
                       <div className="mt-auto pt-8">
-                      <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center gap-3">
+                      <div className="pt-6 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center gap-3">
                         <Link
                           to={svc.pageLink}
                           className="btn-shimmer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#10364E] to-[#175B87] hover:from-[#175B87] hover:to-[#1C6FA5] text-white text-xs font-bold uppercase tracking-wider shadow-md shadow-[#10364E]/20 transition-all duration-300 active:scale-95"
@@ -440,7 +440,7 @@ export default function ServicesPage() {
                         <button
                           type="button"
                           onClick={() => setIsContactOpen(true)}
-                          className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-[#10364E] border border-slate-300 hover:border-[#1C6FA5] hover:text-[#1C6FA5] text-xs font-bold uppercase tracking-wider transition-colors"
+                          className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-slate-800 text-[#10364E] dark:text-white border border-slate-300 dark:border-slate-700 hover:border-[#1C6FA5] dark:hover:border-blue-400 hover:text-[#1C6FA5] dark:hover:text-blue-400 text-xs font-bold uppercase tracking-wider transition-colors"
                         >
                           <span>Talk to an expert</span>
                         </button>
@@ -455,16 +455,16 @@ export default function ServicesPage() {
         </section>
 
         {/* ───────────── Not sure where to start? ───────────── */}
-        <section className="py-16 lg:py-20 bg-white border-t border-slate-100">
+        <section className="py-16 lg:py-20 bg-white dark:bg-[#091822] border-t border-slate-100 dark:border-slate-800 transition-colors duration-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto text-center mb-10">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E3EFF8] text-[#1C6FA5] text-xs font-bold uppercase tracking-wider">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E3EFF8] dark:bg-slate-800 text-[#1C6FA5] dark:text-blue-400 text-xs font-bold uppercase tracking-wider border border-transparent dark:border-slate-700">
                 Quick match
               </span>
-              <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold text-[#10364E] tracking-tight">
+              <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold text-[#10364E] dark:text-white tracking-tight">
                 Not sure where to start?
               </h2>
-              <p className="mt-3 text-sm sm:text-base text-slate-600">
+              <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
                 Tell us what you&apos;re trying to do and we&apos;ll point you to the right service.
               </p>
             </div>
@@ -482,14 +482,14 @@ export default function ServicesPage() {
                   >
                     <Link
                       to={q.href}
-                      className="group glass-hover transition-all duration-300 relative flex flex-col h-full p-6 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(16,54,78,0.04)] hover:-translate-y-1"
+                      className="group glass-hover transition-all duration-300 relative flex flex-col h-full p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-[0_4px_16px_rgba(16,54,78,0.04)] dark:shadow-none hover:-translate-y-1"
                     >
                       <span className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#10364E] to-[#1C6FA5] text-white flex items-center justify-center shadow-md shadow-[#1C6FA5]/20 group-hover:scale-110 transition-transform duration-300">
                         <Icon className="w-5 h-5" />
                       </span>
-                      <p className="mt-5 text-base font-extrabold text-[#10364E] leading-snug">{q.intent}</p>
-                      <p className="mt-1 text-xs text-slate-500">We recommend</p>
-                      <p className="mt-0.5 inline-flex items-center gap-1.5 text-sm font-bold text-[#1C6FA5]">
+                      <p className="mt-5 text-base font-extrabold text-[#10364E] dark:text-white leading-snug">{q.intent}</p>
+                      <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">We recommend</p>
+                      <p className="mt-0.5 inline-flex items-center gap-1.5 text-sm font-bold text-[#1C6FA5] dark:text-blue-400">
                         {q.to}
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                       </p>
@@ -502,7 +502,7 @@ export default function ServicesPage() {
         </section>
 
         {/* ───────────── Closing CTA ───────────── */}
-        <section className="pb-16 lg:pb-24 bg-white">
+        <section className="pb-16 lg:pb-24 bg-white dark:bg-[#091822] transition-colors duration-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#0C2332] via-[#10364E] to-[#175B87] px-6 sm:px-12 py-14 lg:py-16 text-center text-white shadow-[0_30px_70px_-30px_rgba(16,54,78,0.6)]">
               <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)] pointer-events-none" />

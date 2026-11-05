@@ -5,7 +5,7 @@ import { GST_RATES, calculateGst, formatINR } from '../../lib/gst';
 
 function Toggle({ options, value, onChange, dark }) {
   return (
-    <div className={`relative grid grid-cols-2 p-1 rounded-full ${dark ? 'bg-white/10' : 'bg-slate-100'}`}>
+    <div className={`relative grid grid-cols-2 p-1 rounded-full ${dark ? 'bg-white/10' : 'bg-slate-100 dark:bg-slate-800'}`}>
       {options.map((opt) => {
         const active = opt.value === value;
         return (
@@ -14,13 +14,19 @@ function Toggle({ options, value, onChange, dark }) {
             type="button"
             onClick={() => onChange(opt.value)}
             className={`relative z-10 px-3 py-2 text-[11px] font-bold uppercase tracking-wider rounded-full transition-colors ${
-              active ? (dark ? 'text-[#10364E]' : 'text-white') : dark ? 'text-blue-100' : 'text-slate-500'
+              active
+                ? dark
+                  ? 'text-[#10364E]'
+                  : 'text-white'
+                : dark
+                  ? 'text-blue-100'
+                  : 'text-slate-500 dark:text-slate-400'
             }`}
           >
             {active && (
               <motion.span
                 layoutId={`toggle-${options[0].value}-${dark ? 'd' : 'l'}`}
-                className={`absolute inset-0 -z-10 rounded-full ${dark ? 'bg-white' : 'bg-[#10364E]'}`}
+                className={`absolute inset-0 -z-10 rounded-full ${dark ? 'bg-white' : 'bg-[#10364E] dark:bg-slate-700'}`}
                 transition={{ type: 'spring', stiffness: 400, damping: 32 }}
               />
             )}
@@ -69,7 +75,7 @@ export default function GstCalculator({ compact = false }) {
   };
 
   const dark = compact;
-  const label = `text-[11px] font-bold uppercase tracking-wider ${dark ? 'text-blue-200' : 'text-slate-500'}`;
+  const label = `text-[11px] font-bold uppercase tracking-wider ${dark ? 'text-blue-200' : 'text-slate-500 dark:text-slate-400'}`;
 
   return (
     <div className={compact ? 'space-y-4' : 'grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10'}>
@@ -81,10 +87,10 @@ export default function GstCalculator({ compact = false }) {
           </label>
           <div
             className={`mt-2 flex items-center rounded-2xl border transition-colors focus-within:border-[#1C6FA5] ${
-              dark ? 'bg-white/5 border-white/15' : 'bg-white border-slate-200'
+              dark ? 'bg-white/5 border-white/15' : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
             }`}
           >
-            <span className={`pl-4 text-lg font-bold ${dark ? 'text-blue-200' : 'text-slate-400'}`}>₹</span>
+            <span className={`pl-4 text-lg font-bold ${dark ? 'text-blue-200' : 'text-slate-400 dark:text-slate-500'}`}>₹</span>
             <input
               id={`gst-amount-${compact ? 'c' : 'f'}`}
               type="number"
@@ -93,7 +99,7 @@ export default function GstCalculator({ compact = false }) {
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               className={`w-full bg-transparent px-3 py-3.5 text-xl font-extrabold outline-none ${
-                dark ? 'text-white placeholder:text-blue-200/50' : 'text-[#10364E]'
+                dark ? 'text-white placeholder:text-blue-200/50' : 'text-[#10364E] dark:text-white'
               }`}
               placeholder="0"
             />
@@ -118,7 +124,7 @@ export default function GstCalculator({ compact = false }) {
                       ? 'bg-[#1C6FA5] border-[#1C6FA5] text-white shadow-md shadow-blue-600/30 scale-105'
                       : dark
                         ? 'bg-white/5 border-white/15 text-blue-100 hover:border-blue-300'
-                        : 'bg-white border-slate-200 text-[#10364E] hover:border-[#1C6FA5]'
+                        : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-[#10364E] dark:text-white hover:border-[#1C6FA5]'
                   }`}
                 >
                   {r}%
@@ -136,7 +142,9 @@ export default function GstCalculator({ compact = false }) {
                 placeholder="Custom %"
                 aria-label="Custom GST rate"
                 className={`w-28 px-3 py-2 rounded-xl text-sm font-bold border outline-none focus:border-[#1C6FA5] ${
-                  customRate !== '' ? 'border-[#1C6FA5] text-[#1C6FA5]' : 'border-slate-200 text-[#10364E]'
+                  customRate !== ''
+                    ? 'border-[#1C6FA5] text-[#1C6FA5]'
+                    : 'border-slate-200 dark:border-slate-700 text-[#10364E] dark:text-white bg-white dark:bg-slate-800'
                 }`}
               />
             )}

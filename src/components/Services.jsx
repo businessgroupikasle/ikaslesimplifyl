@@ -86,23 +86,23 @@ export default function Services({ onOpenContact }) {
   ];
 
   return (
-    <section id="services" className="py-10 lg:py-14 bg-[#F5F7FA] border-b border-slate-200/80">
+    <section id="services" className="py-10 lg:py-14 bg-[#F5F7FA] dark:bg-[#0C2332] border-b border-slate-200/80 dark:border-slate-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F8FB] dark:bg-blue-950/60 border border-[#E3EFF8] dark:border-blue-800/60 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
-            <span className="text-xs font-bold text-[#1C6FA5] tracking-wider uppercase">
+            <span className="text-xs font-bold text-[#1C6FA5] dark:text-blue-300 tracking-wider uppercase">
               OUR PRACTICE AREAS
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#10364E] dark:text-white tracking-tight">
             Our Professional Services
           </h2>
 
-          <p className="mt-3 text-base text-slate-600 leading-relaxed font-normal">
+          <p className="mt-3 text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
             Explore business support services designed to simplify registrations, taxation and compliance.
           </p>
         </div>
@@ -119,14 +119,14 @@ export default function Services({ onOpenContact }) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
                 whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
-                className="relative flex flex-col justify-between rounded-2xl bg-white border border-slate-200 shadow-[0_4px_20px_rgba(16,54,78,0.05)] glass-hover transition-all duration-300 group overflow-hidden card-glow"
+                className="relative flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-[0_4px_20px_rgba(16,54,78,0.05)] dark:shadow-none glass-hover transition-all duration-300 group overflow-hidden card-glow"
               >
                 {/* Top Glowing Gradient Accent Line */}
                 <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#10364E] via-[#1C6FA5] to-[#4FA2D8] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
 
                 <div>
                   {/* Service Card Image Header with stylish badge & icon */}
-                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-100">
+                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-100 dark:bg-slate-800">
                     <img
                       src={service.image}
                       alt={service.title}
@@ -144,7 +144,7 @@ export default function Services({ onOpenContact }) {
                         <span className="w-1.5 h-1.5 rounded-full bg-[#4FA2D8] animate-pulse" />
                         {service.step}
                       </span>
-                      <div className="w-9 h-9 rounded-xl bg-white/95 backdrop-blur-md text-[#1C6FA5] flex items-center justify-center shadow-md group-hover:bg-[#1C6FA5] group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      <div className="w-9 h-9 rounded-xl bg-white/95 dark:bg-slate-800/95 backdrop-blur-md text-[#1C6FA5] dark:text-blue-400 flex items-center justify-center shadow-md group-hover:bg-[#1C6FA5] group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                         <Icon className="w-4 h-4" />
                       </div>
                     </div>
@@ -159,29 +159,29 @@ export default function Services({ onOpenContact }) {
 
                   <div className="p-5 sm:p-6">
                     {/* Description */}
-                    <p className="text-xs text-slate-600 leading-relaxed min-h-[44px]">
+                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed min-h-[44px]">
                       {service.desc}
                     </p>
 
                     {/* Checklist of Included Services */}
-                    <div className="mt-4 pt-3.5 border-t border-slate-100">
+                    <div className="mt-4 pt-3.5 border-t border-slate-100 dark:border-slate-800">
                       <div className="flex items-center justify-between mb-2.5">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                           Included Services:
                         </span>
-                        <span className="text-[10px] font-bold text-[#1C6FA5] bg-[#F4F8FB] px-2 py-0.5 rounded-full group-hover:bg-[#1C6FA5] group-hover:text-white transition-colors duration-300">
+                        <span className="text-[10px] font-bold text-[#1C6FA5] dark:text-blue-400 bg-[#F4F8FB] dark:bg-slate-800 px-2 py-0.5 rounded-full group-hover:bg-[#1C6FA5] group-hover:text-white transition-colors duration-300">
                           {service.items.length} Scopes
                         </span>
                       </div>
                       <ul className="space-y-1.5">
                         {service.items.slice(0, 5).map((item, i) => (
-                          <li key={i} className="flex items-center gap-2 text-xs text-slate-700 hover:text-[#10364E] hover:translate-x-1 transition-all duration-200">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5] shrink-0" />
+                          <li key={i} className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 hover:text-[#10364E] dark:hover:text-white hover:translate-x-1 transition-all duration-200">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5] dark:text-blue-400 shrink-0" />
                             <span className="truncate font-medium">{item}</span>
                           </li>
                         ))}
                         {service.items.length > 5 && (
-                          <li className="text-[11px] font-bold text-[#1C6FA5] pt-1 pl-5 group-hover:underline">
+                          <li className="text-[11px] font-bold text-[#1C6FA5] dark:text-blue-400 pt-1 pl-5 group-hover:underline">
                             + {service.items.length - 5} more scopes included
                           </li>
                         )}
@@ -192,10 +192,10 @@ export default function Services({ onOpenContact }) {
 
                 {/* Bottom CTA Link */}
                 <div className="p-5 sm:p-6 pt-0">
-                  <div className="pt-3 border-t border-slate-100">
+                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800">
                     <Link
                       to={service.href}
-                      className="btn-shimmer inline-flex items-center justify-between w-full p-2.5 rounded-xl bg-[#F5F7FA] hover:bg-[#10364E] text-xs font-bold text-[#10364E] hover:text-white transition-all duration-300 group/btn shadow-xs hover:shadow-md"
+                      className="btn-shimmer inline-flex items-center justify-between w-full p-2.5 rounded-xl bg-[#F5F7FA] dark:bg-slate-800 hover:bg-[#10364E] dark:hover:bg-[#1C6FA5] text-xs font-bold text-[#10364E] dark:text-white hover:text-white transition-all duration-300 group/btn shadow-xs hover:shadow-md"
                     >
                       <span>{service.cta}</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/btn:translate-x-1.5" />
@@ -208,8 +208,8 @@ export default function Services({ onOpenContact }) {
         </div>
 
         {/* Disclaimer Note */}
-        <div className="mt-10 p-4 rounded-xl bg-white border border-slate-200 text-center max-w-3xl mx-auto shadow-xs">
-          <p className="text-xs text-slate-500 leading-relaxed">
+        <div className="mt-10 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center max-w-3xl mx-auto shadow-xs">
+          <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
             <strong>Statutory Notice:</strong> Simplifyl is an independent business consultancy providing advisory and documentation assistance. We do not represent any government authority, Ministry, or Registrar, and we do not claim guaranteed official approval as approvals are subject to government discretion and statutory conformity.
           </p>
         </div>

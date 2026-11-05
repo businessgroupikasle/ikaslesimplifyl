@@ -49,7 +49,7 @@ function scrollToId(id) {
 function ToolSection({ tool, children, tinted }) {
   const Icon = tool.icon;
   return (
-    <section id={tool.id} className={`py-16 lg:py-24 border-b border-slate-100 ${tinted ? 'bg-[#F5F7FA]' : 'bg-white'}`}>
+    <section id={tool.id} className={`py-16 lg:py-24 border-b border-slate-100 dark:border-slate-800 ${tinted ? 'bg-[#F5F7FA] dark:bg-[#0c1c28]' : 'bg-white dark:bg-[#091822]'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -59,7 +59,7 @@ function ToolSection({ tool, children, tinted }) {
           className="flex flex-col sm:flex-row sm:items-end gap-5 mb-10"
         >
           <div className="flex items-center gap-4">
-            <span className="text-6xl sm:text-7xl font-extrabold text-transparent [-webkit-text-stroke:1.5px_#CBD5E1] leading-none select-none">
+            <span className="text-6xl sm:text-7xl font-extrabold text-transparent [-webkit-text-stroke:1.5px_#CBD5E1] dark:[-webkit-text-stroke:1.5px_#334155] leading-none select-none">
               {tool.num}
             </span>
             <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${tool.accent} flex items-center justify-center text-white shadow-lg`}>
@@ -67,8 +67,8 @@ function ToolSection({ tool, children, tinted }) {
             </div>
           </div>
           <div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#10364E]">{tool.title}</h2>
-            <p className="text-sm text-slate-600 mt-1 max-w-xl">{tool.blurb}</p>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#10364E] dark:text-white">{tool.title}</h2>
+            <p className="text-sm text-slate-600 dark:text-slate-300 mt-1 max-w-xl">{tool.blurb}</p>
           </div>
         </motion.div>
         {children}
@@ -93,7 +93,7 @@ export default function ToolsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-[#263445] flex flex-col font-sans">
+    <div className="min-h-screen bg-white dark:bg-[#091822] text-[#263445] dark:text-slate-200 flex flex-col font-sans">
       <SEOHead
         title="Free Business Tools: GST Calculator & Structure Finder | Simplifyl"
         description="Free tools for Indian businesses: GST calculator with CGST/SGST/IGST split, business structure finder quiz, and GST late fee & interest estimator."
@@ -171,9 +171,9 @@ export default function ToolsPage() {
         </ToolSection>
 
         {/* Cross-link to calendar */}
-        <section className="py-16 lg:py-20 bg-white">
+        <section className="py-16 lg:py-20 bg-white dark:bg-[#091822]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative rounded-3xl bg-gradient-to-br from-[#10364E] via-[#174E72] to-[#1C6FA5] p-8 sm:p-12 overflow-hidden text-white">
+            <div className="relative rounded-3xl bg-gradient-to-br from-[#10364E] via-[#174E72] to-[#1C6FA5] dark:from-[#0b2131] dark:via-[#11324a] dark:to-[#174e72] dark:border dark:border-slate-700/60 p-8 sm:p-12 overflow-hidden text-white shadow-xl">
               <CalendarDays className="absolute -right-6 -bottom-6 w-48 h-48 text-white/10 rotate-12" />
               <div className="relative max-w-xl">
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Never pay a late fee again.</h2>

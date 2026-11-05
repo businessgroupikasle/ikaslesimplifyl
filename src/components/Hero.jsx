@@ -42,12 +42,12 @@ export default function Hero({ onOpenContact, onExploreServices }) {
   }, [currentText, isDeleting, wordIndex]);
 
   return (
-    <section id="home" className="relative pt-10 pb-16 lg:pt-16 lg:pb-24 bg-white overflow-hidden border-b border-slate-100">
+    <section id="home" className="relative pt-10 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-[#091822] overflow-hidden border-b border-slate-100 dark:border-slate-800 transition-colors duration-200">
       
       {/* Subtle modern corporate grid & ambient glowing orbs */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-70 pointer-events-none" />
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-blue-100/60 via-indigo-50/40 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
-      <div className="absolute -bottom-20 -left-20 w-[450px] h-[450px] bg-gradient-to-tr from-slate-100 via-blue-50/50 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] dark:bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:24px_24px] opacity-70 dark:opacity-40 pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-blue-100/60 via-indigo-50/40 to-transparent dark:from-blue-900/20 dark:via-indigo-950/20 rounded-full blur-3xl pointer-events-none -z-0" />
+      <div className="absolute -bottom-20 -left-20 w-[450px] h-[450px] bg-gradient-to-tr from-slate-100 via-blue-50/50 to-transparent dark:from-slate-900/50 dark:via-blue-950/20 rounded-full blur-3xl pointer-events-none -z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -60,34 +60,34 @@ export default function Hero({ onOpenContact, onExploreServices }) {
             className="lg:col-span-7 space-y-6"
           >
             {/* Animated Pill Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50/80 border border-blue-200/80 shadow-xs">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50/80 dark:from-blue-950/60 dark:to-indigo-950/60 border border-blue-200/80 dark:border-blue-800/60 shadow-xs">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1C6FA5] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1C6FA5]" />
               </span>
-              <span className="text-xs font-extrabold text-[#1C6FA5] tracking-wider uppercase">
+              <span className="text-xs font-extrabold text-[#1C6FA5] dark:text-blue-300 tracking-wider uppercase">
                 BUSINESS REGISTRATION • TAX • COMPLIANCE
               </span>
             </div>
 
             {/* Main H1 with multi-tone gradient highlight & Typewriter Effect */}
-            <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[#10364E] tracking-tight leading-[1.32] sm:leading-[1.28] py-1">
-              <span className="block mb-2 sm:mb-3">
+            <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-[#10364E] dark:text-white tracking-tight leading-[1.32] sm:leading-[1.28] py-1">
+              <span className="block mb-2 sm:mb-3 text-[#10364E] dark:text-white">
                 Simplifying Business Registrations,
               </span>
               <span className="inline-flex items-center flex-wrap gap-x-2.5 gap-y-1 mr-3 py-1">
-                <span className="bg-gradient-to-r from-[#1C6FA5] via-[#2686C5] to-[#175B87] bg-clip-text text-transparent underline decoration-[#1C6FA5]/30 underline-offset-[10px] pb-1">
+                <span className="bg-gradient-to-r from-[#1C6FA5] via-[#2686C5] to-[#175B87] dark:from-sky-400 dark:via-blue-300 dark:to-indigo-300 bg-clip-text text-transparent underline decoration-[#1C6FA5]/30 dark:decoration-sky-400/40 underline-offset-[10px] pb-1">
                   {currentText || '\u00A0'}
                 </span>
-                <span className="inline-block w-[3.5px] h-7 sm:h-9 lg:h-10 bg-[#1C6FA5] animate-cursor rounded-full shrink-0 align-middle" />
+                <span className="inline-block w-[3.5px] h-7 sm:h-9 lg:h-10 bg-[#1C6FA5] dark:bg-sky-400 animate-cursor rounded-full shrink-0 align-middle" />
               </span>
-              <span className="inline-block text-[#10364E]">
+              <span className="inline-block text-[#10364E] dark:text-white">
                 & Legal Compliance
               </span>
             </h1>
 
             {/* Description */}
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-normal">
               Start, manage, and grow your enterprise with complete peace of mind. Get expert end-to-end assistance for GST filing, company incorporation, trademark security, and statutory ROC corporate compliance.
             </p>
 
@@ -103,36 +103,36 @@ export default function Hero({ onOpenContact, onExploreServices }) {
 
               <button
                 onClick={onOpenContact}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 text-[#10364E] border border-slate-300/90 font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm hover:border-[#1C6FA5]/60 hover:text-[#1C6FA5]"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white dark:bg-slate-800/90 hover:bg-slate-50 dark:hover:bg-slate-700 text-[#10364E] dark:text-slate-100 border border-slate-300/90 dark:border-slate-700 font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm hover:border-[#1C6FA5]/60 hover:text-[#1C6FA5] dark:hover:text-blue-400"
               >
-                <MessageSquare className="w-4 h-4 text-[#1C6FA5]" />
+                <MessageSquare className="w-4 h-4 text-[#1C6FA5] dark:text-blue-400" />
                 <span>Talk to an Expert</span>
               </button>
             </div>
 
             {/* Supporting Highlights */}
-            <div className="pt-4 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="pt-4 border-t border-slate-200/80 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-full bg-[#F4F8FB] flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5]" />
+                <div className="w-5 h-5 rounded-full bg-[#F4F8FB] dark:bg-slate-800 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5] dark:text-blue-400" />
                 </div>
-                <span className="text-xs font-semibold text-[#10364E]">
+                <span className="text-xs font-semibold text-[#10364E] dark:text-slate-200">
                   Business Registration Support
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-full bg-[#F4F8FB] flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5]" />
+                <div className="w-5 h-5 rounded-full bg-[#F4F8FB] dark:bg-slate-800 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5] dark:text-blue-400" />
                 </div>
-                <span className="text-xs font-semibold text-[#10364E]">
+                <span className="text-xs font-semibold text-[#10364E] dark:text-slate-200">
                   GST Filing Assistance
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-full bg-[#F4F8FB] flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5]" />
+                <div className="w-5 h-5 rounded-full bg-[#F4F8FB] dark:bg-slate-800 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1C6FA5] dark:text-blue-400" />
                 </div>
-                <span className="text-xs font-semibold text-[#10364E]">
+                <span className="text-xs font-semibold text-[#10364E] dark:text-slate-200">
                   Trademark & Compliance
                 </span>
               </div>
@@ -150,8 +150,8 @@ export default function Hero({ onOpenContact, onExploreServices }) {
             <div className="relative mx-auto max-w-[460px] lg:max-w-none">
               
               {/* Luxury Frame Container with subtle gradient border */}
-              <div className="relative rounded-3xl p-2.5 bg-gradient-to-tr from-slate-200 via-blue-100/70 to-indigo-100 shadow-2xl">
-                <div className="relative rounded-2xl overflow-hidden bg-white shadow-inner">
+              <div className="relative rounded-3xl p-2.5 bg-gradient-to-tr from-slate-200 via-blue-100/70 to-indigo-100 dark:from-slate-800 dark:via-blue-950/40 dark:to-slate-800 shadow-2xl">
+                <div className="relative rounded-2xl overflow-hidden bg-white dark:bg-slate-900 shadow-inner">
                   <img
                     src={heroImg}
                     alt="Professional Corporate Compliance Advisor"
@@ -177,16 +177,16 @@ export default function Hero({ onOpenContact, onExploreServices }) {
                   x: { duration: 0.5, delay: 0.3 },
                   y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut' }
                 }}
-                className="absolute -bottom-6 -left-4 sm:-left-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_12px_30px_rgba(16,54,78,0.12)] flex items-center gap-3.5 z-20 max-w-[270px] hover:shadow-xl transition-shadow"
+                className="absolute -bottom-6 -left-4 sm:-left-6 p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 shadow-[0_12px_30px_rgba(16,54,78,0.12)] flex items-center gap-3.5 z-20 max-w-[270px] hover:shadow-xl transition-shadow"
               >
                 <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#10364E] to-[#1C6FA5] flex items-center justify-center text-white shrink-0 shadow-sm shadow-blue-500/25">
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-[#10364E]">Company Registration</p>
-                  <p className="text-[11px] text-slate-500 font-medium">Pvt Ltd, LLP, MSME & OPC</p>
-                  <div className="mt-1 flex items-center gap-1.5 text-[10px] font-bold text-[#1C6FA5]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5]" />
+                  <p className="text-xs font-bold text-[#10364E] dark:text-white">Company Registration</p>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Pvt Ltd, LLP, MSME & OPC</p>
+                  <div className="mt-1 flex items-center gap-1.5 text-[10px] font-bold text-[#1C6FA5] dark:text-blue-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#1C6FA5] dark:bg-blue-400" />
                     <span>MCA Digital Portal</span>
                   </div>
                 </div>

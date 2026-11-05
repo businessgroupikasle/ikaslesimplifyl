@@ -186,12 +186,12 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
             )}
 
             {submitted ? (
-              <div className="my-5 p-5 rounded-xl bg-[#F4F8FB] border border-[#C1DEF0] text-center animate-in fade-in zoom-in-95 duration-200">
-                <CheckCircle2 className="w-10 h-10 text-[#1C6FA5] mx-auto mb-2" />
-                <h4 className="text-xl font-extrabold text-[#10364E]">
+              <div className="my-5 p-5 rounded-xl bg-[#F4F8FB] dark:bg-slate-800/80 border border-[#C1DEF0] dark:border-slate-700 text-center animate-in fade-in zoom-in-95 duration-200">
+                <CheckCircle2 className="w-10 h-10 text-[#1C6FA5] dark:text-sky-400 mx-auto mb-2" />
+                <h4 className="text-xl font-extrabold text-[#10364E] dark:text-white">
                   {emailDelivered ? 'Sent Successfully!' : 'Enquiry Saved'}
                 </h4>
-                <p className="text-xs text-slate-600 mt-1 max-w-sm mx-auto leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 max-w-sm mx-auto leading-relaxed">
                   {emailDelivered
                     ? `Thank you! Your enquiry has been sent successfully. Our advisory desk will get in touch shortly.${confirmationSent ? ' A thank-you confirmation email has been sent to your inbox.' : ''}`
                     : 'Your request is saved, but we could not confirm it reached our team. If you do not hear from us soon, please call +91 78451 32962.'}
@@ -212,7 +212,7 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                       setErrors({});
                       setError('');
                     }}
-                    className="w-full sm:w-auto px-4 py-2 rounded-full bg-[#10364E] hover:bg-[#1C6FA5] text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+                    className="w-full sm:w-auto px-4 py-2 rounded-full bg-[#10364E] hover:bg-[#1C6FA5] dark:bg-sky-600 dark:hover:bg-sky-500 text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
                   >
                     <RotateCcw className="w-3 h-3" />
                     <span>Submit Another Enquiry</span>
@@ -221,16 +221,16 @@ export default function ContactModal({ isOpen, onClose, preselectedService = '' 
                   <button
                     type="button"
                     onClick={openWhatsApp}
-                    className="w-full sm:w-auto px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="w-full sm:w-auto px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    <MessageCircle className="w-3.5 h-3.5 text-[#1C6FA5]" />
+                    <MessageCircle className="w-3.5 h-3.5 text-[#1C6FA5] dark:text-sky-400" />
                     <span>WhatsApp</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={handleClose}
-                    className="w-full sm:w-auto px-3 py-2 rounded-full text-slate-500 hover:text-slate-700 text-xs font-semibold transition-colors cursor-pointer"
+                    className="w-full sm:w-auto px-3 py-2 rounded-full text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 text-xs font-semibold transition-colors cursor-pointer"
                   >
                     Close
                   </button>

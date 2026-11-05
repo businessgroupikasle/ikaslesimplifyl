@@ -71,28 +71,28 @@ function SectionHead({ eyebrow, title, accent, intro, light = false, center = fa
   return (
     <div className={`mb-8 lg:mb-10 ${center ? 'text-center mx-auto max-w-2xl' : ''}`}>
       <div className={`flex items-center gap-3 ${center ? 'justify-center' : ''}`}>
-        <span className={`h-px w-8 ${light ? 'bg-[#4FA2D8]' : 'bg-[#1C6FA5]'}`} />
+        <span className={`h-px w-8 ${light ? 'bg-[#4FA2D8]' : 'bg-[#1C6FA5] dark:bg-sky-400'}`} />
         <span
-          className={`text-[11px] font-bold uppercase tracking-[0.18em] ${light ? 'text-blue-200' : 'text-[#1C6FA5]'}`}
+          className={`text-[11px] font-bold uppercase tracking-[0.18em] ${light ? 'text-blue-200' : 'text-[#1C6FA5] dark:text-sky-400'}`}
         >
           {eyebrow}
         </span>
       </div>
       <h2
         className={`mt-3 text-2xl sm:text-3xl lg:text-[2.1rem] font-extrabold tracking-tight leading-tight ${
-          light ? 'text-white' : 'text-[#10364E]'
+          light ? 'text-white' : 'text-[#10364E] dark:text-white'
         }`}
       >
         {title}
         {accent && (
           <>
             {' '}
-            <span className={light ? 'text-sky-300' : 'text-[#1C6FA5]'}>{accent}</span>
+            <span className={light ? 'text-sky-300' : 'text-[#1C6FA5] dark:text-sky-400'}>{accent}</span>
           </>
         )}
       </h2>
       {intro && (
-        <p className={`mt-3 text-sm sm:text-base leading-relaxed max-w-2xl ${light ? 'text-slate-300' : 'text-slate-600'} ${center ? 'mx-auto' : ''}`}>
+        <p className={`mt-3 text-sm sm:text-base leading-relaxed max-w-2xl ${light ? 'text-slate-300' : 'text-slate-600 dark:text-slate-300'} ${center ? 'mx-auto' : ''}`}>
           {intro}
         </p>
       )}
@@ -192,7 +192,7 @@ export default function ServiceDetailLayout({ config }) {
   }, [tabs]);
 
   return (
-    <div className="min-h-screen bg-white text-[#263445] flex flex-col font-sans">
+    <div className="min-h-screen bg-white dark:bg-[#091822] text-[#263445] dark:text-slate-200 flex flex-col font-sans transition-colors duration-200">
       <SEOHead
         title={seo.title}
         description={seo.description}
@@ -205,8 +205,8 @@ export default function ServiceDetailLayout({ config }) {
 
       <main className="flex-grow">
         {/* ───────────── Hero with enquiry form ───────────── */}
-        <section className="relative bg-gradient-to-b from-[#F4F8FB] via-white to-white overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(#C1DEF0_1px,transparent_1px)] [background-size:24px_24px] opacity-50 [mask-image:linear-gradient(to_bottom,black,transparent_85%)] pointer-events-none" />
+        <section className="relative bg-gradient-to-b from-[#F4F8FB] via-white to-white dark:from-[#0c1c28] dark:via-[#091822] dark:to-[#091822] overflow-hidden transition-colors duration-200">
+          <div className="absolute inset-0 bg-[radial-gradient(#C1DEF0_1px,transparent_1px)] [background-size:24px_24px] opacity-50 dark:opacity-20 [mask-image:linear-gradient(to_bottom,black,transparent_85%)] pointer-events-none" />
           <div className="absolute -top-28 -right-24 w-[520px] h-[520px] rounded-full bg-[#4FA2D8]/15 blur-3xl pointer-events-none" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 lg:pb-20">
@@ -226,18 +226,18 @@ export default function ServiceDetailLayout({ config }) {
                   <span className="w-10 h-10 rounded-xl bg-[#10364E] text-white flex items-center justify-center shadow-md shadow-[#10364E]/20">
                     <HeroIcon className="w-5 h-5" />
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#1C6FA5]">{practice}</span>
+                  <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#1C6FA5] dark:text-sky-400">{practice}</span>
                 </div>
 
-                <h1 className="mt-5 text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold text-[#10364E] tracking-tight leading-[1.1]">
-                  {titleMain} <span className="text-[#1C6FA5]">{titleAccent}</span>
+                <h1 className="mt-5 text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold text-[#10364E] dark:text-white tracking-tight leading-[1.1]">
+                  {titleMain} <span className="text-[#1C6FA5] dark:text-sky-400">{titleAccent}</span>
                 </h1>
 
-                <p className="mt-5 text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">{intro}</p>
+                <p className="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl">{intro}</p>
 
                 <ul className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-xl">
                   {WHY_US.map((t) => (
-                    <li key={t} className="flex items-start gap-2.5 text-sm font-semibold text-[#10364E]">
+                    <li key={t} className="flex items-start gap-2.5 text-sm font-semibold text-[#10364E] dark:text-slate-200">
                       <span className="mt-0.5 w-5 h-5 rounded-full bg-[#1C6FA5] text-white flex items-center justify-center shrink-0">
                         <Check className="w-3 h-3" strokeWidth={3} />
                       </span>
@@ -249,14 +249,14 @@ export default function ServiceDetailLayout({ config }) {
                 <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
                   <a
                     href="tel:+917845132962"
-                    className="inline-flex items-center gap-2.5 text-sm font-bold text-[#10364E] hover:text-[#1C6FA5] transition-colors"
+                    className="inline-flex items-center gap-2.5 text-sm font-bold text-[#10364E] dark:text-slate-200 hover:text-[#1C6FA5] dark:hover:text-sky-400 transition-colors"
                   >
-                    <span className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-[#1C6FA5] shadow-sm">
+                    <span className="w-9 h-9 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-[#1C6FA5] dark:text-sky-400 shadow-sm">
                       <Phone className="w-4 h-4" />
                     </span>
                     +91 78451 32962
                   </a>
-                  <span className="text-xs text-slate-500">Mon – Sat, 9:30 AM – 6:30 PM IST</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Mon – Sat, 9:30 AM – 6:30 PM IST</span>
                 </div>
               </motion.div>
 
@@ -273,7 +273,7 @@ export default function ServiceDetailLayout({ config }) {
         </section>
 
         {/* ───────────── Sticky section tabs ───────────── */}
-        <div className="sticky top-16 z-40 bg-white/90 backdrop-blur-xl border-y border-slate-200/80 shadow-[0_6px_20px_-16px_rgba(16,54,78,0.35)]">
+        <div className="sticky top-16 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-y border-slate-200/80 dark:border-slate-800 shadow-[0_6px_20px_-16px_rgba(16,54,78,0.35)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
             <nav
               aria-label="Page sections"
@@ -288,8 +288,8 @@ export default function ServiceDetailLayout({ config }) {
                     onClick={() => scrollToId(t.id)}
                     className={`shrink-0 px-4 py-4 text-sm font-semibold border-b-2 transition-colors ${
                       active
-                        ? 'border-[#1C6FA5] text-[#1C6FA5]'
-                        : 'border-transparent text-slate-600 hover:text-[#10364E]'
+                        ? 'border-[#1C6FA5] dark:border-sky-400 text-[#1C6FA5] dark:text-sky-400'
+                        : 'border-transparent text-slate-600 dark:text-slate-300 hover:text-[#10364E] dark:hover:text-white'
                     }`}
                   >
                     {t.label}
@@ -309,13 +309,13 @@ export default function ServiceDetailLayout({ config }) {
         </div>
 
         {/* ───────────── Overview ───────────── */}
-        <section id="overview" className="scroll-mt-32 py-14 lg:py-20 bg-white">
+        <section id="overview" className="scroll-mt-32 py-14 lg:py-20 bg-white dark:bg-[#091822] transition-colors duration-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             <motion.div {...fadeUp} className="lg:col-span-7">
               <SectionHead eyebrow="Overview" title={overview.title} accent={overview.accent} />
               <div className="space-y-4 -mt-2">
                 {overview.paragraphs.map((p) => (
-                  <p key={p} className="text-sm sm:text-base text-slate-600 leading-relaxed">{p}</p>
+                  <p key={p} className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">{p}</p>
                 ))}
               </div>
               <div className="mt-6 flex flex-wrap items-center gap-2">
@@ -323,7 +323,7 @@ export default function ServiceDetailLayout({ config }) {
                 {overview.idealFor.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 rounded-full bg-[#F4F8FB] border border-[#E3EFF8] text-xs font-semibold text-[#175B87]"
+                    className="px-3 py-1 rounded-full bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 text-xs font-semibold text-[#175B87] dark:text-sky-300"
                   >
                     {tag}
                   </span>
@@ -332,15 +332,15 @@ export default function ServiceDetailLayout({ config }) {
             </motion.div>
 
             <motion.div {...fadeUp} className="lg:col-span-5">
-              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-slate-200 shadow-[0_24px_50px_-26px_rgba(16,54,78,0.5)]">
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-[0_24px_50px_-26px_rgba(16,54,78,0.5)]">
                 <img src={image} alt={imageAlt} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#10364E]/50 via-transparent to-transparent" />
               </div>
-              <div className="relative -mt-9 mx-5 rounded-2xl bg-white border border-slate-200/80 shadow-[0_18px_40px_-18px_rgba(16,54,78,0.35)] grid grid-cols-3 divide-x divide-slate-100">
+              <div className="relative -mt-9 mx-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-[0_18px_40px_-18px_rgba(16,54,78,0.35)] dark:shadow-none grid grid-cols-3 divide-x divide-slate-100 dark:divide-slate-800">
                 {highlights.map((h) => (
                   <div key={h.label} className="px-3 py-4 text-center">
-                    <p className="text-lg sm:text-xl font-extrabold text-[#1C6FA5] leading-none">{h.value}</p>
-                    <p className="mt-2 text-[10px] font-semibold uppercase tracking-wider text-slate-500 leading-tight">
+                    <p className="text-lg sm:text-xl font-extrabold text-[#1C6FA5] dark:text-sky-400 leading-none">{h.value}</p>
+                    <p className="mt-2 text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 leading-tight">
                       {h.label}
                     </p>
                   </div>
@@ -351,7 +351,7 @@ export default function ServiceDetailLayout({ config }) {
         </section>
 
         {/* ───────────── What's included ───────────── */}
-        <section id="services" className="scroll-mt-32 py-14 lg:py-20 bg-[#F4F8FB] border-y border-slate-200/60">
+        <section id="services" className="scroll-mt-32 py-14 lg:py-20 bg-[#F4F8FB] dark:bg-[#0c1c28] border-y border-slate-200/60 dark:border-slate-800 transition-colors duration-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHead eyebrow={scope.eyebrow} title={scope.title} accent={scope.accent} intro={scope.intro} />
             <motion.div
@@ -361,30 +361,30 @@ export default function ServiceDetailLayout({ config }) {
               {scope.items.map((item, i) => (
                 <div
                   key={item.title}
-                  className="group glass-hover transition-all duration-300 flex gap-4 p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(16,54,78,0.04)]"
+                  className="group glass-hover transition-all duration-300 flex gap-4 p-5 sm:p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-[0_4px_16px_rgba(16,54,78,0.04)] dark:shadow-none"
                 >
-                  <span className="shrink-0 w-11 h-11 rounded-xl bg-[#F4F8FB] border border-[#E3EFF8] text-[#1C6FA5] flex items-center justify-center group-hover:bg-[#1C6FA5] group-hover:border-[#1C6FA5] group-hover:text-white transition-colors">
+                  <span className="shrink-0 w-11 h-11 rounded-xl bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 text-[#1C6FA5] dark:text-sky-400 flex items-center justify-center group-hover:bg-[#1C6FA5] group-hover:border-[#1C6FA5] group-hover:text-white transition-colors">
                     <ScopeIcon className="w-5 h-5" />
                   </span>
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                      <span className="font-mono text-[11px] font-bold text-slate-400">
+                      <span className="font-mono text-[11px] font-bold text-slate-400 dark:text-slate-500">
                         {String(i + 1).padStart(2, '0')}
                       </span>
-                      <h3 className="text-base sm:text-lg font-extrabold text-[#10364E] leading-snug">{item.title}</h3>
+                      <h3 className="text-base sm:text-lg font-extrabold text-[#10364E] dark:text-white leading-snug">{item.title}</h3>
                       {item.badge && (
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#1C6FA5] bg-[#F4F8FB] px-2.5 py-1 rounded-full border border-[#E3EFF8]">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#1C6FA5] dark:text-sky-400 bg-[#F4F8FB] dark:bg-slate-800 px-2.5 py-1 rounded-full border border-[#E3EFF8] dark:border-slate-700">
                           {item.badge}
                         </span>
                       )}
                     </div>
-                    <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+                    <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{item.desc}</p>
 
                     {item.features && (
                       <>
                         <ul className="mt-4 space-y-2">
                           {item.features.map((f) => (
-                            <li key={f} className="flex items-start gap-2.5 text-xs text-slate-700">
+                            <li key={f} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300">
                               <span className="mt-0.5 w-4 h-4 rounded-full bg-[#1C6FA5] text-white flex items-center justify-center shrink-0">
                                 <Check className="w-2.5 h-2.5" strokeWidth={3} />
                               </span>
@@ -395,7 +395,7 @@ export default function ServiceDetailLayout({ config }) {
                         <button
                           type="button"
                           onClick={openContact}
-                          className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#10364E] hover:text-[#1C6FA5] transition-colors"
+                          className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#10364E] dark:text-sky-400 hover:text-[#1C6FA5] dark:hover:text-sky-300 transition-colors"
                         >
                           <span>Inquire about {item.title.split('(')[0].trim()}</span>
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -411,7 +411,7 @@ export default function ServiceDetailLayout({ config }) {
 
         {/* ───────────── Fee structure ───────────── */}
         {fees && (
-          <section id="fees" className="scroll-mt-32 py-14 lg:py-20 bg-white">
+          <section id="fees" className="scroll-mt-32 py-14 lg:py-20 bg-white dark:bg-[#091822] transition-colors duration-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
               <motion.div {...fadeUp} className="lg:col-span-5">
                 <SectionHead
@@ -432,29 +432,29 @@ export default function ServiceDetailLayout({ config }) {
 
               <motion.div {...fadeUp} className="lg:col-span-7 space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_24px_-18px_rgba(16,54,78,0.35)]">
-                    <span className="w-10 h-10 rounded-xl bg-[#F4F8FB] border border-[#E3EFF8] text-[#1C6FA5] flex items-center justify-center">
+                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-[0_8px_24px_-18px_rgba(16,54,78,0.35)] dark:shadow-none">
+                    <span className="w-10 h-10 rounded-xl bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 text-[#1C6FA5] dark:text-sky-400 flex items-center justify-center">
                       <Receipt className="w-5 h-5" />
                     </span>
                     <p className="mt-4 text-[11px] font-bold uppercase tracking-wider text-slate-400">Professional fee</p>
-                    <p className="mt-1.5 text-base font-extrabold text-[#10364E] leading-snug">{fees.professionalFee}</p>
+                    <p className="mt-1.5 text-base font-extrabold text-[#10364E] dark:text-white leading-snug">{fees.professionalFee}</p>
                   </div>
-                  <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_24px_-18px_rgba(16,54,78,0.35)]">
-                    <span className="w-10 h-10 rounded-xl bg-[#F4F8FB] border border-[#E3EFF8] text-[#1C6FA5] flex items-center justify-center">
+                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-[0_8px_24px_-18px_rgba(16,54,78,0.35)] dark:shadow-none">
+                    <span className="w-10 h-10 rounded-xl bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 text-[#1C6FA5] dark:text-sky-400 flex items-center justify-center">
                       <Landmark className="w-5 h-5" />
                     </span>
                     <p className="mt-4 text-[11px] font-bold uppercase tracking-wider text-slate-400">Government fee</p>
-                    <p className="mt-1.5 text-base font-extrabold text-[#10364E] leading-snug">{fees.governmentFee}</p>
+                    <p className="mt-1.5 text-base font-extrabold text-[#10364E] dark:text-white leading-snug">{fees.governmentFee}</p>
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-[#C1DEF0]/70 bg-[#F4F8FB] p-6">
+                <div className="rounded-2xl border border-[#C1DEF0]/70 dark:border-slate-700 bg-[#F4F8FB] dark:bg-slate-800/80 p-6">
                   <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-4">
                     Included in your package
                   </p>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {fees.included.map((inc) => (
-                      <li key={inc} className="flex items-start gap-2.5 text-sm text-slate-700">
+                      <li key={inc} className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-200">
                         <span className="mt-0.5 w-5 h-5 rounded-full bg-[#1C6FA5] text-white flex items-center justify-center shrink-0">
                           <Check className="w-3 h-3" strokeWidth={3} />
                         </span>
@@ -470,7 +470,7 @@ export default function ServiceDetailLayout({ config }) {
 
         {/* ───────────── Process ───────────── */}
         {steps && (
-          <section id="process" className="scroll-mt-32 py-14 lg:py-20 bg-[#F4F8FB] border-y border-slate-200/60">
+          <section id="process" className="scroll-mt-32 py-14 lg:py-20 bg-[#F4F8FB] dark:bg-[#0c1c28] border-y border-slate-200/60 dark:border-slate-800 transition-colors duration-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <SectionHead eyebrow={steps.eyebrow} title={steps.title} accent={steps.accent} intro={steps.intro} />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
@@ -479,19 +479,19 @@ export default function ServiceDetailLayout({ config }) {
                     key={st.num}
                     {...fadeUp}
                     transition={{ duration: 0.4, delay: i * 0.07 }}
-                    className="group glass-hover transition-all duration-300 relative rounded-2xl bg-white border border-slate-200/90 p-6 pt-7 shadow-[0_4px_16px_rgba(16,54,78,0.04)] hover:-translate-y-1"
+                    className="group glass-hover transition-all duration-300 relative rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-6 pt-7 shadow-[0_4px_16px_rgba(16,54,78,0.04)] dark:shadow-none hover:-translate-y-1"
                   >
                     <span className="absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-gradient-to-r from-[#1C6FA5] to-[#4FA2D8]" />
-                    <p className="text-5xl font-extrabold leading-none text-[#E3EFF8] group-hover:text-[#C1DEF0] transition-colors">
+                    <p className="text-5xl font-extrabold leading-none text-[#E3EFF8] dark:text-slate-800 group-hover:text-[#C1DEF0] dark:group-hover:text-slate-700 transition-colors">
                       {st.num}
                     </p>
-                    <p className="mt-4 text-[10px] font-mono font-bold tracking-[0.18em] text-[#1C6FA5]">
+                    <p className="mt-4 text-[10px] font-mono font-bold tracking-[0.18em] text-[#1C6FA5] dark:text-sky-400">
                       {steps.label} {st.num}
                     </p>
-                    <h3 className="mt-1.5 text-base font-extrabold text-[#10364E] leading-snug">{st.title}</h3>
-                    <p className="mt-2 text-sm text-slate-600 leading-relaxed">{st.desc}</p>
+                    <h3 className="mt-1.5 text-base font-extrabold text-[#10364E] dark:text-white leading-snug">{st.title}</h3>
+                    <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{st.desc}</p>
                     {i < steps.items.length - 1 && (
-                      <ChevronRight className="hidden lg:block absolute -right-[18px] top-1/2 -translate-y-1/2 w-5 h-5 text-[#92C6E7] z-10" />
+                      <ChevronRight className="hidden lg:block absolute -right-[18px] top-1/2 -translate-y-1/2 w-5 h-5 text-[#92C6E7] dark:text-slate-600 z-10" />
                     )}
                   </motion.div>
                 ))}
@@ -502,7 +502,7 @@ export default function ServiceDetailLayout({ config }) {
 
         {/* ───────────── Documents ───────────── */}
         {documents && (
-          <section id="documents" className="scroll-mt-32 py-14 lg:py-20 bg-white">
+          <section id="documents" className="scroll-mt-32 py-14 lg:py-20 bg-white dark:bg-[#091822] transition-colors duration-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <SectionHead
                 eyebrow={documents.eyebrow}
@@ -514,16 +514,16 @@ export default function ServiceDetailLayout({ config }) {
                 {documents.items.map((doc, i) => (
                   <div
                     key={doc}
-                    className="glass-hover transition-all duration-300 flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(16,54,78,0.04)]"
+                    className="glass-hover transition-all duration-300 flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-[0_4px_16px_rgba(16,54,78,0.04)] dark:shadow-none"
                   >
                     <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#10364E] to-[#1C6FA5] text-white flex items-center justify-center shrink-0 font-mono text-xs font-bold shadow-md shadow-[#1C6FA5]/20">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="text-sm text-slate-700 leading-relaxed pt-1.5">{doc}</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-1.5">{doc}</span>
                   </div>
                 ))}
               </motion.div>
-              <div className="mt-6 flex items-start gap-2.5 rounded-xl bg-amber-50 border border-amber-200 p-4 text-xs text-amber-900 leading-relaxed max-w-3xl">
+              <div className="mt-6 flex items-start gap-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 p-4 text-xs text-amber-900 dark:text-amber-200 leading-relaxed max-w-3xl">
                 <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                 <span>{documents.note}</span>
               </div>
@@ -533,19 +533,19 @@ export default function ServiceDetailLayout({ config }) {
 
         {/* ───────────── Notice / risk callout ───────────── */}
         {notice && (
-          <section className="py-12 lg:py-16 bg-white">
+          <section className="py-12 lg:py-16 bg-white dark:bg-[#091822] transition-colors duration-200">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 {...fadeUp}
-                className="rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-6 sm:p-8"
+                className="rounded-2xl border border-amber-200 dark:border-amber-900 bg-gradient-to-br from-amber-50 to-white dark:from-amber-950/40 dark:to-slate-900 p-6 sm:p-8"
               >
                 <div className="flex items-start gap-4">
-                  <span className="w-11 h-11 rounded-xl bg-amber-100 border border-amber-200 text-amber-600 flex items-center justify-center shrink-0">
+                  <span className="w-11 h-11 rounded-xl bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 text-amber-600 dark:text-amber-300 flex items-center justify-center shrink-0">
                     <AlertCircle className="w-5 h-5" />
                   </span>
                   <div>
-                    {notice.title && <h3 className="text-lg font-extrabold text-amber-950">{notice.title}</h3>}
-                    <p className={`text-sm text-amber-900 leading-relaxed ${notice.title ? 'mt-1.5' : 'pt-2'}`}>
+                    {notice.title && <h3 className="text-lg font-extrabold text-amber-950 dark:text-amber-200">{notice.title}</h3>}
+                    <p className={`text-sm text-amber-900 dark:text-amber-300 leading-relaxed ${notice.title ? 'mt-1.5' : 'pt-2'}`}>
                       {notice.text}
                     </p>
                   </div>
@@ -553,9 +553,9 @@ export default function ServiceDetailLayout({ config }) {
                 {notice.stats && (
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {notice.stats.map((s) => (
-                      <div key={s.label} className="rounded-xl bg-white border border-amber-200/80 px-5 py-4">
-                        <p className="text-2xl sm:text-3xl font-extrabold text-amber-700 tracking-tight">{s.value}</p>
-                        <p className="mt-1 text-xs font-semibold text-amber-900 leading-snug">{s.label}</p>
+                      <div key={s.label} className="rounded-xl bg-white dark:bg-slate-900 border border-amber-200/80 dark:border-amber-900/60 px-5 py-4">
+                        <p className="text-2xl sm:text-3xl font-extrabold text-amber-700 dark:text-amber-400 tracking-tight">{s.value}</p>
+                        <p className="mt-1 text-xs font-semibold text-amber-900 dark:text-amber-300 leading-snug">{s.label}</p>
                       </div>
                     ))}
                   </div>
@@ -607,7 +607,7 @@ export default function ServiceDetailLayout({ config }) {
 
         {/* ───────────── FAQs ───────────── */}
         {faqs && (
-          <section id="faqs" className="scroll-mt-32 py-14 lg:py-20 bg-white">
+          <section id="faqs" className="scroll-mt-32 py-14 lg:py-20 bg-white dark:bg-[#091822] transition-colors duration-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
               <div className="lg:col-span-4 lg:sticky lg:top-36">
                 <SectionHead
@@ -619,7 +619,7 @@ export default function ServiceDetailLayout({ config }) {
                 <button
                   type="button"
                   onClick={openContact}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#10364E] hover:bg-[#175B87] text-white text-xs font-bold uppercase tracking-wider transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#10364E] hover:bg-[#175B87] dark:bg-[#1C6FA5] dark:hover:bg-[#175B87] text-white text-xs font-bold uppercase tracking-wider transition-colors"
                 >
                   <span>Ask an expert</span>
                   <ArrowRight className="w-4 h-4" />
@@ -632,8 +632,10 @@ export default function ServiceDetailLayout({ config }) {
                   return (
                     <div
                       key={f.q}
-                      className={`rounded-2xl border bg-white transition-colors ${
-                        open ? 'border-[#92C6E7] shadow-[0_10px_30px_-20px_rgba(28,111,165,0.5)]' : 'border-slate-200'
+                      className={`rounded-2xl border transition-colors ${
+                        open
+                          ? 'border-[#92C6E7] dark:border-sky-500 bg-white dark:bg-slate-900 shadow-[0_10px_30px_-20px_rgba(28,111,165,0.5)]'
+                          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900'
                       }`}
                     >
                       <button
@@ -642,12 +644,12 @@ export default function ServiceDetailLayout({ config }) {
                         aria-expanded={open}
                         className="w-full flex items-center justify-between gap-4 px-5 sm:px-6 py-4 sm:py-5 text-left"
                       >
-                        <span className={`text-sm sm:text-base font-bold ${open ? 'text-[#1C6FA5]' : 'text-[#10364E]'}`}>
+                        <span className={`text-sm sm:text-base font-bold ${open ? 'text-[#1C6FA5] dark:text-sky-400' : 'text-[#10364E] dark:text-white'}`}>
                           {f.q}
                         </span>
                         <span
                           className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-                            open ? 'bg-[#1C6FA5] text-white' : 'bg-[#F4F8FB] text-[#1C6FA5]'
+                            open ? 'bg-[#1C6FA5] text-white' : 'bg-[#F4F8FB] dark:bg-slate-800 text-[#1C6FA5] dark:text-sky-400'
                           }`}
                         >
                           <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
@@ -663,7 +665,7 @@ export default function ServiceDetailLayout({ config }) {
                             transition={{ duration: 0.25 }}
                             className="overflow-hidden"
                           >
-                            <p className="px-5 sm:px-6 pb-5 text-sm text-slate-600 leading-relaxed">{f.a}</p>
+                            <p className="px-5 sm:px-6 pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{f.a}</p>
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -676,7 +678,7 @@ export default function ServiceDetailLayout({ config }) {
         )}
 
         {/* ───────────── Closing CTA ───────────── */}
-        <section className="pb-14 lg:pb-20 bg-white">
+        <section className="pb-14 lg:pb-20 bg-white dark:bg-[#091822] transition-colors duration-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               {...fadeUp}
@@ -712,7 +714,7 @@ export default function ServiceDetailLayout({ config }) {
         </section>
 
         {/* ───────────── Other practice areas ───────────── */}
-        <section className="py-14 lg:py-20 bg-[#F4F8FB] border-t border-slate-200/70">
+        <section className="py-14 lg:py-20 bg-[#F4F8FB] dark:bg-[#0c1c28] border-t border-slate-200/70 dark:border-slate-800 transition-colors duration-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHead
               eyebrow="Explore more"
@@ -727,16 +729,16 @@ export default function ServiceDetailLayout({ config }) {
                   <motion.div key={p.href} {...fadeUp} transition={{ duration: 0.4, delay: i * 0.07 }}>
                     <Link
                       to={p.href}
-                      className="group glass-hover transition-all duration-300 flex flex-col h-full p-6 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_16px_rgba(16,54,78,0.04)] hover:-translate-y-1"
+                      className="group glass-hover transition-all duration-300 flex flex-col h-full p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-[0_4px_16px_rgba(16,54,78,0.04)] dark:shadow-none hover:-translate-y-1"
                     >
-                      <span className="w-11 h-11 rounded-xl bg-[#F4F8FB] border border-[#E3EFF8] text-[#1C6FA5] flex items-center justify-center group-hover:bg-[#1C6FA5] group-hover:text-white group-hover:border-[#1C6FA5] transition-colors">
+                      <span className="w-11 h-11 rounded-xl bg-[#F4F8FB] dark:bg-slate-800 border border-[#E3EFF8] dark:border-slate-700 text-[#1C6FA5] dark:text-sky-400 flex items-center justify-center group-hover:bg-[#1C6FA5] group-hover:text-white group-hover:border-[#1C6FA5] transition-colors">
                         <Icon className="w-5 h-5" />
                       </span>
-                      <h3 className="mt-5 text-lg font-extrabold text-[#10364E] group-hover:text-[#1C6FA5] transition-colors">
+                      <h3 className="mt-5 text-lg font-extrabold text-[#10364E] dark:text-white group-hover:text-[#1C6FA5] dark:group-hover:text-sky-400 transition-colors">
                         {p.name}
                       </h3>
-                      <p className="mt-1.5 text-sm text-slate-600 leading-relaxed flex-1">{p.blurb}</p>
-                      <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-[#1C6FA5]">
+                      <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed flex-1">{p.blurb}</p>
+                      <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-[#1C6FA5] dark:text-sky-400">
                         Learn more
                         <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                       </span>

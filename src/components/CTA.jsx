@@ -5,7 +5,7 @@ import { Link } from '../lib/router';
 
 export default function CTA({ onOpenContact }) {
   return (
-    <section className="py-10 sm:py-14 bg-white">
+    <section className="py-10 sm:py-14 bg-white dark:bg-[#091822] transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Full-width corporate banner in Primary Navy #10364E */}

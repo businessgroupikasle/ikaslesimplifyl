@@ -8,12 +8,11 @@ function ComplianceMeter({ level }) {
   return (
     <div className="flex gap-1" aria-label={`Compliance level ${level} of 5`}>
       {[1, 2, 3, 4, 5].map((i) => (
-        <span key={i} className={`h-1.5 w-5 rounded-full ${i <= level ? 'bg-[#1C6FA5]' : 'bg-slate-200'}`} />
+        <span key={i} className={`h-1.5 w-5 rounded-full ${i <= level ? 'bg-[#1C6FA5] dark:bg-sky-400' : 'bg-slate-200 dark:bg-slate-700'}`} />
       ))}
     </div>
   );
 }
-
 export default function StructureFinder({ onOpenContact }) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState([]);
@@ -31,12 +30,10 @@ export default function StructureFinder({ onOpenContact }) {
     setDirection(1);
     setStep((s) => s + 1);
   };
-
   const back = () => {
     setDirection(-1);
     setStep((s) => Math.max(0, s - 1));
   };
-
   const reset = () => {
     setAnswers([]);
     setDirection(-1);
@@ -50,9 +47,9 @@ export default function StructureFinder({ onOpenContact }) {
   };
 
   return (
-    <div className="relative rounded-3xl bg-white border border-slate-200 shadow-card overflow-hidden">
+    <div className="relative rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-card overflow-hidden">
       {/* Progress */}
-      <div className="h-1.5 bg-slate-100">
+      <div className="h-1.5 bg-slate-100 dark:bg-slate-800">
         <motion.div
           className="h-full bg-gradient-to-r from-[#10364E] via-[#1C6FA5] to-sky-400"
           animate={{ width: `${progress}%` }}
@@ -73,21 +70,21 @@ export default function StructureFinder({ onOpenContact }) {
               transition={{ duration: 0.25 }}
             >
               <div className="flex items-center justify-between mb-6">
-                <span className="text-xs font-bold text-[#1C6FA5] uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#1C6FA5] dark:text-sky-400 uppercase tracking-wider">
                   Question {step + 1} of {QUESTIONS.length}
                 </span>
                 {step > 0 && (
                   <button
                     type="button"
                     onClick={back}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-[#10364E]"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-slate-500 hover:text-[#10364E] dark:text-slate-400 dark:hover:text-white"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" /> Back
                   </button>
                 )}
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#10364E] leading-tight max-w-xl">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#10364E] dark:text-white leading-tight max-w-xl">
                 {QUESTIONS[step].question}
               </h3>
 
@@ -100,14 +97,16 @@ export default function StructureFinder({ onOpenContact }) {
                       type="button"
                       onClick={() => choose(i)}
                       className={`group text-left p-5 rounded-2xl border-2 transition-all hover:-translate-y-0.5 hover:shadow-hover ${
-                        selected ? 'border-[#1C6FA5] bg-blue-50/60' : 'border-slate-200 hover:border-[#1C6FA5]/60 bg-white'
+                        selected
+                          ? 'border-[#1C6FA5] bg-blue-50/60 dark:bg-sky-950/40 dark:border-sky-500'
+                          : 'border-slate-200 dark:border-slate-800 hover:border-[#1C6FA5]/60 dark:hover:border-sky-500/60 bg-white dark:bg-slate-900/60'
                       }`}
                     >
                       <span className="flex items-center justify-between">
-                        <span className="text-base font-extrabold text-[#10364E]">{opt.label}</span>
-                        <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#1C6FA5] group-hover:translate-x-1 transition-all" />
+                        <span className="text-base font-extrabold text-[#10364E] dark:text-white">{opt.label}</span>
+                        <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-[#1C6FA5] dark:group-hover:text-sky-400 group-hover:translate-x-1 transition-all" />
                       </span>
-                      <span className="block mt-1 text-xs text-slate-500 font-medium">{opt.hint}</span>
+                      <span className="block mt-1 text-xs text-slate-500 dark:text-slate-400 font-medium">{opt.hint}</span>
                     </button>
                   );
                 })}
@@ -186,34 +185,34 @@ export default function StructureFinder({ onOpenContact }) {
 
               {/* Runner-ups */}
               <div className="lg:col-span-2 space-y-3">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Other options</p>
+                <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Other options</p>
                 {others.map((r, i) => (
                   <motion.div
                     key={r.id}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + i * 0.08 }}
-                    className="p-4 rounded-2xl border border-slate-200 bg-[#F5F7FA]"
+                    className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-[#F5F7FA] dark:bg-slate-800/60"
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <p className="text-sm font-extrabold text-[#10364E]">{r.name}</p>
-                      <span className="text-xs font-extrabold text-[#1C6FA5]">{r.match}%</span>
+                      <p className="text-sm font-extrabold text-[#10364E] dark:text-white">{r.name}</p>
+                      <span className="text-xs font-extrabold text-[#1C6FA5] dark:text-sky-400">{r.match}%</span>
                     </div>
-                    <div className="mt-2 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                    <div className="mt-2 h-1.5 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
                       <motion.div
-                        className="h-full rounded-full bg-[#1C6FA5]/70"
+                        className="h-full rounded-full bg-[#1C6FA5]/70 dark:bg-sky-400/80"
                         initial={{ width: 0 }}
                         animate={{ width: `${r.match}%` }}
                         transition={{ delay: 0.2 + i * 0.08, duration: 0.6 }}
                       />
                     </div>
-                    <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500 font-semibold">
+                    <div className="mt-3 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
                       <span>Liability: {r.liability}</span>
                       <ComplianceMeter level={r.compliance} />
                     </div>
                   </motion.div>
                 ))}
-                <p className="text-[11px] text-slate-400 leading-relaxed pt-1">
+                <p className="text-[11px] text-slate-400 dark:text-slate-500 leading-relaxed pt-1">
                   This is a guided suggestion, not legal advice. Our specialists will confirm the right structure on a free call.
                 </p>
               </div>

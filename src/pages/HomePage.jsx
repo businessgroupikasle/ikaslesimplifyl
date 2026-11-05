@@ -39,7 +39,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#263445] antialiased font-sans flex flex-col selection:bg-blue-100 selection:text-[#10364E]">
+    <div className="min-h-screen bg-white dark:bg-[#091822] text-[#263445] dark:text-slate-200 antialiased font-sans flex flex-col selection:bg-blue-100 selection:text-[#10364E] dark:selection:bg-blue-900 dark:selection:text-white transition-colors duration-200">
       
       {/* Dynamic SEO Head Management for Homepage */}
       <SEOHead

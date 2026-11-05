@@ -115,7 +115,7 @@ export default function ComplianceCalendarPage() {
   const isToday = (day) => view.y === today.getFullYear() && view.m === today.getMonth() && day === today.getDate();
 
   return (
-    <div className="min-h-screen bg-white text-[#263445] flex flex-col font-sans">
+    <div className="min-h-screen bg-white dark:bg-[#091822] text-[#263445] dark:text-slate-200 flex flex-col font-sans">
       <SEOHead
         title="Compliance Calendar: GST, TDS, ROC & LLP Due Dates | Simplifyl"
         description="Interactive compliance calendar for Indian businesses. Track GSTR-1, GSTR-3B, TDS, advance tax, AOC-4, MGT-7, DIR-3 KYC and LLP filing due dates."
@@ -180,11 +180,11 @@ export default function ComplianceCalendarPage() {
           </div>
         </section>
 
-        <section className="py-12 lg:py-16 bg-white">
+        <section className="py-12 lg:py-16 bg-white dark:bg-[#091822]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             {/* Filters */}
             <div className="flex flex-col lg:flex-row lg:items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500 shrink-0">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 shrink-0">
                 <Filter className="w-3.5 h-3.5" /> Show
               </span>
               <div className="flex flex-wrap gap-2">
@@ -197,10 +197,12 @@ export default function ComplianceCalendarPage() {
                       onClick={() => toggleCat(id)}
                       aria-pressed={on}
                       className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-full border text-xs font-bold transition-all ${
-                        on ? 'bg-[#10364E] border-[#10364E] text-white shadow-sm' : 'bg-white border-slate-200 text-slate-400 hover:text-slate-600'
+                        on
+                          ? 'bg-[#10364E] dark:bg-sky-600 border-[#10364E] dark:border-sky-600 text-white shadow-sm'
+                          : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200'
                       }`}
                     >
-                      <span className={`w-2 h-2 rounded-full ${on ? c.dot : 'bg-slate-300'}`} />
+                      <span className={`w-2 h-2 rounded-full ${on ? c.dot : 'bg-slate-300 dark:bg-slate-700'}`} />
                       {c.label}
                     </button>
                   );
@@ -209,9 +211,9 @@ export default function ComplianceCalendarPage() {
             </div>
 
             {/* Year heat strip */}
-            <div className="rounded-2xl border border-slate-200 p-4 bg-[#F5F7FA]">
+            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 p-4 bg-[#F5F7FA] dark:bg-slate-900/60">
               <div className="flex items-center justify-between mb-3">
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-500">{view.y} at a glance</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">{view.y} at a glance</p>
                 <p className="text-[11px] text-slate-400 font-semibold hidden sm:block">Taller bar = busier month</p>
               </div>
               <div className="grid grid-cols-12 gap-1.5 sm:gap-2 items-end h-24">
@@ -228,16 +230,16 @@ export default function ComplianceCalendarPage() {
                       className="group flex flex-col items-center justify-end h-full gap-1.5"
                       aria-label={`${MONTH_NAMES[m]}: ${count} deadlines`}
                     >
-                      <span className={`text-[10px] font-bold tabular-nums ${active ? 'text-[#1C6FA5]' : 'text-slate-400'}`}>{count}</span>
+                      <span className={`text-[10px] font-bold tabular-nums ${active ? 'text-[#1C6FA5] dark:text-sky-400' : 'text-slate-400 dark:text-slate-500'}`}>{count}</span>
                       <motion.span
                         initial={{ height: 0 }}
                         animate={{ height: `${(count / maxCount) * 100}%` }}
                         transition={{ type: 'spring', stiffness: 120, damping: 18, delay: m * 0.02 }}
                         className={`w-full rounded-md min-h-[4px] transition-colors ${
-                          active ? 'bg-gradient-to-t from-[#10364E] to-[#1C6FA5]' : 'bg-slate-300 group-hover:bg-blue-300'
+                          active ? 'bg-gradient-to-t from-[#10364E] to-[#1C6FA5]' : 'bg-slate-300 dark:bg-slate-700 group-hover:bg-blue-300'
                         }`}
                       />
-                      <span className={`text-[10px] font-bold ${active ? 'text-[#10364E]' : 'text-slate-400'}`}>{MONTH_NAMES[m].slice(0, 3)}</span>
+                      <span className={`text-[10px] font-bold ${active ? 'text-[#10364E] dark:text-white' : 'text-slate-400 dark:text-slate-500'}`}>{MONTH_NAMES[m].slice(0, 3)}</span>
                     </button>
                   );
                 })}
@@ -246,9 +248,9 @@ export default function ComplianceCalendarPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               {/* Month grid */}
-              <div className="lg:col-span-7 rounded-3xl border border-slate-200 shadow-card overflow-hidden">
-                <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-white">
-                  <button type="button" onClick={() => shiftMonth(-1)} className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center hover:border-[#1C6FA5] hover:text-[#1C6FA5]" aria-label="Previous month">
+              <div className="lg:col-span-7 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-card overflow-hidden">
+                <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+                  <button type="button" onClick={() => shiftMonth(-1)} className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:border-[#1C6FA5] hover:text-[#1C6FA5] dark:text-slate-300 dark:hover:text-white" aria-label="Previous month">
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <AnimatePresence mode="wait">
@@ -258,12 +260,12 @@ export default function ComplianceCalendarPage() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 6 }}
                       transition={{ duration: 0.18 }}
-                      className="text-lg font-extrabold text-[#10364E]"
+                      className="text-lg font-extrabold text-[#10364E] dark:text-white"
                     >
                       {MONTH_NAMES[view.m]} {view.y}
                     </motion.h2>
                   </AnimatePresence>
-                  <button type="button" onClick={() => shiftMonth(1)} className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center hover:border-[#1C6FA5] hover:text-[#1C6FA5]" aria-label="Next month">
+                  <button type="button" onClick={() => shiftMonth(1)} className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:border-[#1C6FA5] hover:text-[#1C6FA5] dark:text-slate-300 dark:hover:text-white" aria-label="Next month">
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -271,7 +273,7 @@ export default function ComplianceCalendarPage() {
                 <div className="p-3 sm:p-5">
                   <div className="grid grid-cols-7 mb-2">
                     {WEEKDAYS.map((w) => (
-                      <span key={w} className="text-center text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 py-1">
+                      <span key={w} className="text-center text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 py-1">
                         {w}
                       </span>
                     ))}
@@ -290,10 +292,10 @@ export default function ComplianceCalendarPage() {
                           onClick={() => setSelectedDay(selected ? null : day)}
                           className={`relative aspect-square rounded-xl flex flex-col items-center justify-center gap-1 text-sm font-bold transition-all ${
                             selected
-                              ? 'bg-[#10364E] text-white shadow-lg scale-105 z-10'
+                              ? 'bg-[#10364E] dark:bg-sky-600 text-white shadow-lg scale-105 z-10'
                               : items.length
-                                ? `bg-blue-50/70 hover:bg-blue-100 text-[#10364E] ${past ? 'opacity-50' : ''}`
-                                : 'text-slate-400 cursor-default'
+                                ? `bg-blue-50/70 hover:bg-blue-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-[#10364E] dark:text-white ${past ? 'opacity-50' : ''}`
+                                : 'text-slate-400 dark:text-slate-600 cursor-default'
                           } ${isToday(day) && !selected ? 'ring-2 ring-[#1C6FA5] ring-offset-2' : ''}`}
                         >
                           <span>{day}</span>
@@ -314,14 +316,14 @@ export default function ComplianceCalendarPage() {
               {/* Agenda */}
               <div className="lg:col-span-5">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-base font-extrabold text-[#10364E]">
+                  <h3 className="text-base font-extrabold text-[#10364E] dark:text-white">
                     {selectedDay
                       ? `${selectedDay} ${MONTH_NAMES[view.m]}`
                       : `All of ${MONTH_NAMES[view.m]}`}
-                    <span className="ml-2 text-xs font-bold text-slate-400">{agenda.length} due</span>
+                    <span className="ml-2 text-xs font-bold text-slate-400 dark:text-slate-500">{agenda.length} due</span>
                   </h3>
                   {selectedDay && (
-                    <button type="button" onClick={() => setSelectedDay(null)} className="inline-flex items-center gap-1 text-xs font-bold text-[#1C6FA5] hover:underline">
+                    <button type="button" onClick={() => setSelectedDay(null)} className="inline-flex items-center gap-1 text-xs font-bold text-[#1C6FA5] dark:text-sky-400 hover:underline">
                       <X className="w-3.5 h-3.5" /> Whole month
                     </button>
                   )}
@@ -330,7 +332,7 @@ export default function ComplianceCalendarPage() {
                 <div className="space-y-3 max-h-[560px] overflow-y-auto pr-1">
                   <AnimatePresence initial={false}>
                     {agenda.length === 0 && (
-                      <p className="text-sm text-slate-500 p-6 rounded-2xl border border-dashed border-slate-300 text-center">
+                      <p className="text-sm text-slate-500 dark:text-slate-400 p-6 rounded-2xl border border-dashed border-slate-300 dark:border-slate-800 text-center">
                         No deadlines match your filters this month.
                       </p>
                     )}
@@ -344,26 +346,26 @@ export default function ComplianceCalendarPage() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -16 }}
                           transition={{ duration: 0.2, delay: i * 0.02 }}
-                          className="relative flex gap-4 p-4 rounded-2xl bg-white border border-slate-200 glass-hover transition-all"
+                          className="relative flex gap-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 glass-hover transition-all"
                         >
                           <div className={`absolute left-0 top-4 bottom-4 w-1 rounded-r-full bg-gradient-to-b ${CATEGORIES[d.category].bar}`} />
                           <div className="w-14 shrink-0 text-center">
-                            <p className="text-2xl font-extrabold text-[#10364E] leading-none">{d.date.getDate()}</p>
-                            <p className="text-[10px] font-bold uppercase text-slate-400 mt-1">
+                            <p className="text-2xl font-extrabold text-[#10364E] dark:text-white leading-none">{d.date.getDate()}</p>
+                            <p className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500 mt-1">
                               {d.date.toLocaleDateString('en-IN', { weekday: 'short' })}
                             </p>
                           </div>
                           <div className="min-w-0 flex-1">
                             <div className="flex flex-wrap items-center gap-2">
-                              <p className="text-sm font-extrabold text-[#10364E]">{d.title}</p>
+                              <p className="text-sm font-extrabold text-[#10364E] dark:text-white">{d.title}</p>
                             </div>
-                            <p className="text-[11px] font-semibold text-slate-500 mt-0.5">{d.form}</p>
-                            <p className="text-xs text-slate-600 mt-2 leading-relaxed">{d.desc}</p>
+                            <p className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 mt-0.5">{d.form}</p>
+                            <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">{d.desc}</p>
                             <div className="mt-3 flex flex-wrap items-center gap-2">
                               <CategoryPill category={d.category} />
                               <span
                                 className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider ${
-                                  left < 0 ? 'text-slate-400' : left <= 7 ? 'text-rose-600' : 'text-emerald-600'
+                                  left < 0 ? 'text-slate-400 dark:text-slate-500' : left <= 7 ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'
                                 }`}
                               >
                                 <Clock className="w-3 h-3" />
@@ -379,8 +381,8 @@ export default function ComplianceCalendarPage() {
               </div>
             </div>
 
-            <p className="flex items-start gap-2 text-xs text-slate-500 leading-relaxed p-4 rounded-2xl bg-amber-50 border border-amber-200">
-              <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+            <p className="flex items-start gap-2 text-xs text-slate-500 dark:text-amber-200/90 leading-relaxed p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50">
+              <Info className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
               These are the standard statutory due dates. The CBIC, CBDT and MCA frequently extend deadlines by notification, and some dates
               (e.g. QRMP GSTR-3B, AGM-linked ROC filings) vary by state or by your company’s AGM date. Please confirm current dates before filing.
             </p>
@@ -388,16 +390,16 @@ export default function ComplianceCalendarPage() {
         </section>
 
         {/* CTA */}
-        <section className="pb-16 lg:pb-24 bg-white">
+        <section className="pb-16 lg:pb-24 bg-white dark:bg-[#091822]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl border border-slate-200 bg-gradient-to-r from-[#F5F7FA] via-white to-blue-50 p-8 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-gradient-to-r from-[#F5F7FA] via-white to-blue-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 p-8 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#10364E] text-white flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-[#10364E] dark:bg-sky-600 text-white flex items-center justify-center shrink-0">
                   <BellRing className="w-6 h-6" />
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-[#10364E]">Tired of tracking dates yourself?</h2>
-                  <p className="text-sm text-slate-600 mt-1 max-w-xl">
+                  <h2 className="text-xl sm:text-2xl font-extrabold text-[#10364E] dark:text-white">Tired of tracking dates yourself?</h2>
+                  <p className="text-sm text-slate-600 dark:text-slate-300 mt-1 max-w-xl">
                     Our compliance retainer covers every filing on this calendar, with reminders, preparation and on-time submission.
                   </p>
                 </div>
@@ -406,13 +408,13 @@ export default function ComplianceCalendarPage() {
                 <button
                   type="button"
                   onClick={() => setIsContactOpen(true)}
-                  className="btn-shimmer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#10364E] hover:bg-[#174E72] text-white font-bold text-xs uppercase tracking-wider"
+                  className="btn-shimmer inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#10364E] hover:bg-[#174E72] dark:bg-sky-600 dark:hover:bg-sky-500 text-white font-bold text-xs uppercase tracking-wider"
                 >
                   Get a Compliance Plan <ArrowRight className="w-4 h-4" />
                 </button>
                 <Link
                   to="/tools#late-fee"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-slate-300 text-[#10364E] font-bold text-xs uppercase tracking-wider hover:border-[#1C6FA5] hover:text-[#1C6FA5]"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-slate-300 dark:border-slate-700 text-[#10364E] dark:text-slate-200 font-bold text-xs uppercase tracking-wider hover:border-[#1C6FA5] dark:hover:border-sky-400 hover:text-[#1C6FA5] dark:hover:text-white"
                 >
                   Estimate a late fee
                 </Link>
